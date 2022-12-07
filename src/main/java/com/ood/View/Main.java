@@ -1,4 +1,4 @@
-package View;
+package com.ood.View;
 
 public class Main {
 
