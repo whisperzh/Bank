@@ -1,6 +1,6 @@
 package View;
 
-public abstract class CommonPage {
+public class CommonPage {
 
     protected ParentFrame frame = new ParentFrame();
 
@@ -10,11 +10,6 @@ public abstract class CommonPage {
     }
 
     public void initComponents(){
-
-        frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        frame.setTitle("Bank ATM");
-        frame.setBackground(new java.awt.Color(255, 255, 255));
-        frame.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         frame.BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
         frame.BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -58,21 +53,18 @@ public abstract class CommonPage {
                         .addComponent(frame.SidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(frame.getContentPane());
-        frame.getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        frame.layout.setHorizontalGroup(
+                frame.layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(frame.BackgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        frame.layout.setVerticalGroup(
+                frame.layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(frame.layout.createSequentialGroup()
                                 .addComponent(frame.BackgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1079, Short.MAX_VALUE)
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         frame.pack();
-        frame.setVisible(true);
     }
 
 //    public static void main(String args[]) {
