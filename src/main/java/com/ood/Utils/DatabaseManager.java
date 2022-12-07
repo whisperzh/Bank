@@ -1,4 +1,9 @@
 package com.ood.Utils;
+import com.ood.Accounts.AccountBean;
+import com.ood.Enums.AccountEnum;
+import com.ood.Enums.CurrencyEnum;
+import com.ood.Transactions.Transaction;
+import com.ood.Transactions.TransactionBean;
 import com.ood.Users.UserBean;
 
 import java.sql.Connection;
@@ -6,6 +11,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseManager {
     private Connection connection;
@@ -52,26 +59,6 @@ public class DatabaseManager {
         }
     }
 
-    private void createTable() {
-        String sql = "CREATE TABLE contacts ("
-                + "  id integer primary key,"
-                + "  firstName VARCHAR,"
-                + "  lastName VARCHAR,"
-                + "  email VARCHAR,"
-                + "  phoneNumber VARCHAR,"
-                + "  address VARCHAR,"
-                + "  webAddress VARCHAR,"
-                + "  notes VARCHAR)";
-        try {
-            statement.execute(sql);
-        } catch (SQLException ex) {
-            System.exit(-1);
-        }
-    }
-    public void creatTransactionDB(){
-
-    }
-
     public UserBean getUserbean(String userName, String password) {
         userName="\'"+userName+"\'";
         password="\'"+password+"\'";
@@ -83,7 +70,7 @@ public class DatabaseManager {
             {
                 UserBean bean=new UserBean();
                 bean.setAdmin(rs.getBoolean("is_admin"));
-                bean.setEmail(rs.getString("uid"));
+                bean.setSsn(rs.getString("uid"));
                 bean.setFirstName(rs.getString("first_name"));
                 bean.setUserName(rs.getString("username"));
                 bean.setLastName(rs.getString("last_name"));
@@ -97,9 +84,8 @@ public class DatabaseManager {
         return null;
     }
 
-
     public boolean hasUserBean(UserBean bean) {
-        String uid=bean.getEmail();
+        String uid=bean.getSsn();
         uid="\'"+uid+"\'";
         String sql = "SELECT * FROM User WHERE uid is "
                 +uid+";";
@@ -118,7 +104,7 @@ public class DatabaseManager {
 
     public void insertUserBean(UserBean bean) {
         String username="\'"+ bean.getUserName()+"\'";
-        String email= "\'"+bean.getEmail()+"\'";
+        String email= "\'"+bean.getSsn()+"\'";
         String fname= "\'"+bean.getFirstName()+"\'";
         String lname= "\'"+bean.getLastName()+"\'";
         String password= "\'"+bean.getPassword()+"\'";
@@ -148,5 +134,108 @@ public class DatabaseManager {
         } catch (SQLException ex) {
             System.exit(-1);
         }
+    }
+
+    public AccountBean getAccountBean(String uid,String email){
+        AccountBean bean=new AccountBean();
+        bean.setUid(uid);
+        bean.setEmail(email);
+        uid="\'"+uid+"\'";
+        email="\'"+email+"\'";
+        String sql = "SELECT * FROM Account WHERE uid is "
+                +uid+" AND email is "+email+";";
+        try {
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                bean.setAid(rs.getString("aid"));
+                bean.setAccountEnum(AccountEnum.StringtoType(rs.getString("type")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
+    public void insertAccountBean(AccountBean bean) {
+        String uid="\'"+ bean.getUid()+"\'";
+        String email= "\'"+bean.getEmail()+"\'";
+        String aid= "\'"+bean.getAid()+"\'";
+        String accountType="\'"+bean.getAccountEnum().toString()+"\'";
+
+        String sql = "INSERT INTO Account" +
+                " (aid," +
+                "uid," +
+                "type," +
+                "email)\n" +
+                "VALUES (" +
+                aid +","+
+                uid +","+
+                accountType+","+
+                email+
+                ");";
+        try {
+            statement.execute(sql);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<TransactionBean> getTransactionBean(String uid)
+    {
+        List<TransactionBean>  ans=new ArrayList<>();
+        String sql="";
+        try {
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                TransactionBean bean=new TransactionBean();
+                bean.setTid(rs.getString("tid"));
+                bean.setAmount(rs.getFloat("amount"));
+                bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
+                bean.setTimeStamp(rs.getString("datetime"));
+                bean.setFrom_uid(rs.getString("from_uid"));
+                bean.setTo_uid(rs.getString("to_uid"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ans;
+    }
+    public void insertTransactionBean(TransactionBean bean){
+        String tid=strWrap(bean.getTid());
+        String from_uid=strWrap(bean.getFrom_uid());
+        String to_uid=strWrap(bean.getTo_uid());
+        float amount= bean.getAmount();
+        String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
+        String timeStamp=strWrap(bean.getTimeStamp());
+
+        String sql = "INSERT INTO Account" +
+                " (tid," +
+                "from_uid," +
+                "to_uid," +
+                "amount" +
+                "currency"+
+                "datetime"+
+                ")\n" +
+                "VALUES (" +
+                tid +","+
+                from_uid +","+
+                to_uid+","+
+                amount+","+
+                currencyEnum+","+
+                timeStamp+
+                ");";
+        try {
+            statement.execute(sql);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private String strWrap(String str){
+        return "\'"+str+"\'";
     }
 }

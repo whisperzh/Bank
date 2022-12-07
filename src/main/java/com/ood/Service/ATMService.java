@@ -8,6 +8,14 @@ public class ATMService implements IService{
 
     @Override
     public void show_Frontend() {
+        /**
+         * naive code START
+         */
+        String username="";
 
+
+        /**
+         * naive code ENDS
+         */
     }
 }

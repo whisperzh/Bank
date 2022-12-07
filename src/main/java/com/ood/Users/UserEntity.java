@@ -2,10 +2,13 @@ package com.ood.Users;
 
 import com.ood.Accounts.IAccount;
 
+import java.util.List;
+
 public class UserEntity implements IUser{
     private UserBean bean;
-    private IAccount checkingAccount;
-    private IAccount savingAccount;
-    private IAccount securityAccount;
+    private List<IAccount> accounts;
+
+
+
 
 }

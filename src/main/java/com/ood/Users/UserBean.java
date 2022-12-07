@@ -2,7 +2,7 @@ package com.ood.Users;
 
 public class UserBean {
     private String userName;
-    private String email;
+    private String ssn;
     private boolean isAdmin;
     private String firstName;
     private String lastName;
@@ -59,11 +59,11 @@ public class UserBean {
         this.userName = userName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getSsn() {
+        return ssn;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
     }
 }
