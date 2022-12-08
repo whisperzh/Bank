@@ -1,4 +1,4 @@
-package com.ood.View;
+package com.ood.Views;
 
 
 public class SavingsApplication extends CommonPage {
