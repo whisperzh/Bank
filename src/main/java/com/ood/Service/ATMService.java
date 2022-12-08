@@ -1,6 +1,13 @@
 package com.ood.Service;
 
+import com.ood.Views.HomePage;
+
 public class ATMService implements IService{
+
+    public ATMService() {
+        show_Frontend();
+    }
+
     @Override
     public void show_BackEnd() {
 
@@ -11,7 +18,7 @@ public class ATMService implements IService{
         /**
          * naive code START
          */
-        String username="";
+        HomePage homePage=new HomePage();
         /**
          * naive code ENDS
          */

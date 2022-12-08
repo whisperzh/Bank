@@ -8,11 +8,14 @@ import java.util.UUID;
 
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Loan.LoanController;
+import com.ood.Service.ATMService;
+import com.ood.Service.IService;
 import com.ood.Utils.Utils;
 import com.ood.Users.UserBean;
 import com.ood.Utils.DatabaseManager;
 
 import javax.rmi.CORBA.Util;
+import javax.xml.ws.Service;
 
 public class Main {
     public static void main(String[] args) {
@@ -44,5 +47,6 @@ public class Main {
 //        LoanController lc=new LoanController();
 //        lc.createLoan("SSN01",100000.0f, CurrencyEnum.USD);
 //        lc.getUserLoanRecord("SSN01");
+//        IService service=new ATMService();
     }
 }

@@ -158,6 +158,28 @@ public class DatabaseManager {
         return null;
     }
 
+    public List<AccountBean> getUsersAccounts(String uid){
+        List<AccountBean> ans=new ArrayList();
+        uid=strWrap(uid);
+        String sql = "SELECT * FROM Account WHERE uid is "
+                +uid+";";
+        try {
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                AccountBean bean=new AccountBean();
+                bean.setUid(rs.getString("uid"));
+                bean.setAid(rs.getString("aid"));
+                bean.setAccountEnum(AccountEnum.StringtoType(rs.getString("type")));
+                bean.setEmail(rs.getString("email"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+
+    }
+
     public void insertAccountBean(AccountBean bean) {
         String uid="\'"+ bean.getUid()+"\'";
         String email= "\'"+bean.getEmail()+"\'";
