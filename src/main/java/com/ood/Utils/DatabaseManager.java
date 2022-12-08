@@ -2,6 +2,7 @@ package com.ood.Utils;
 import com.ood.Accounts.AccountBean;
 import com.ood.Enums.AccountEnum;
 import com.ood.Enums.CurrencyEnum;
+import com.ood.Loan.LoanBean;
 import com.ood.Transactions.Transaction;
 import com.ood.Transactions.TransactionBean;
 import com.ood.Users.UserBean;
@@ -235,7 +236,64 @@ public class DatabaseManager {
         }
     }
 
+    public List<LoanBean> getLoanBean(String uid){
+        uid=strWrap(uid);
+        List<LoanBean> ans=new ArrayList();
+        String sql="SELECT * FROM Loan where uid is "+uid+" ;";
+        try{
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                LoanBean bean=new LoanBean();
+                bean.setLid(rs.getString("lid"));
+                bean.setLid(rs.getString("uid"));
+                bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
+                bean.setAmount(rs.getFloat("amount"));
+                bean.setDate(rs.getString("date"));
+                bean.setIs_clear(rs.getBoolean("is_clear"));
+                bean.setClear_date(rs.getString("clear_date"));
+                ans.add(bean);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ans;
+    }
+
+    public void insertLoanBean(LoanBean bean){
+        String lid=strWrap(bean.getLid());
+        String uid=strWrap(bean.getUid());
+        float amount= bean.getAmount();
+        String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
+        String date = strWrap(bean.getDate());
+        String is_clear=bean.isIs_clear()?"1":"0";;
+
+        String sql = "INSERT INTO Loan" +
+                " (lid," +
+                "uid," +
+                "currency," +
+                "amount," +
+                "date,"+
+                "is_clear"+
+                ")" +
+                "VALUES (" +
+                lid +","+
+                uid +","+
+                currencyEnum+","+
+                amount+","+
+                date+","+
+                is_clear+
+                ");";
+        try {
+            statement.execute(sql);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private String strWrap(String str){
         return "\'"+str+"\'";
     }
+
 }

@@ -12,8 +12,6 @@ public class ATMService implements IService{
          * naive code START
          */
         String username="";
-
-
         /**
          * naive code ENDS
          */
