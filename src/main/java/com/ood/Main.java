@@ -48,5 +48,7 @@ public class Main {
 //        lc.createLoan("SSN01",100000.0f, CurrencyEnum.USD);
 //        lc.getUserLoanRecord("SSN01");
 //        IService service=new ATMService();
+
+//        DatabaseManager.getDbManager().updateStock("stk004",24345);
     }
 }

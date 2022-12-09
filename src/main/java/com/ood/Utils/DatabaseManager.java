@@ -3,6 +3,7 @@ import com.ood.Accounts.AccountBean;
 import com.ood.Enums.AccountEnum;
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Loan.LoanBean;
+import com.ood.Stocks.StockBean;
 import com.ood.Transactions.Transaction;
 import com.ood.Transactions.TransactionBean;
 import com.ood.Users.UserBean;
@@ -104,7 +105,7 @@ public class DatabaseManager {
     }
 
     public void insertUserBean(UserBean bean) {
-        String username="\'"+ bean.getUserName()+"\'";
+        String username=strWrap(bean.getUserName());
         String email= "\'"+bean.getSsn()+"\'";
         String fname= "\'"+bean.getFirstName()+"\'";
         String lname= "\'"+bean.getLastName()+"\'";
@@ -312,6 +313,49 @@ public class DatabaseManager {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public List<StockBean> getStocks(){
+        List<StockBean> beans=new ArrayList<>();
+        String sql="";
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                StockBean bean=new StockBean(
+                        rs.getString("sid"),
+                        rs.getString("company"),
+                        rs.getDouble("price"),
+                        rs.getString("last_update_time")
+                );
+                beans.add(bean);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return beans;
+    }
+
+    public void updateStock(String sid,double price){
+        sid=strWrap(sid);
+        String datetime=strWrap(Utils.getDateTime());
+        String pricestr=Double.toString(price);
+        String sql="UPDATE Stock "+
+                "SET price ="+
+                pricestr+","+
+                "last_update_time = "+
+                datetime+" "+
+                " WHERE "+
+                " sid = " +
+                sid +
+                ";";
+        try {
+            statement.execute(sql);
+
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
     }
 
     private String strWrap(String str){

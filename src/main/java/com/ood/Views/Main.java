@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String args[]){
 //        SavingsApplication home = new SavingsApplication();
-//        HomePage hp=new HomePage();
+        HomePage hp=new HomePage();
     }
 
 }
