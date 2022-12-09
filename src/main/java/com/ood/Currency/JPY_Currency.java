@@ -1,6 +1,7 @@
 package com.ood.Currency;
 
 import com.ood.Enums.CurrencyEnum;
+import com.ood.Utils.Constants;
 
 public class JPY_Currency extends AbsCurrency{
     private float usd_exchange_rate;
@@ -15,8 +16,8 @@ public class JPY_Currency extends AbsCurrency{
 
     public JPY_Currency(float amount){
         this.amount = amount;
-        this.eur_exchange_rate = (float)0.0070;
-        this.usd_exchange_rate = (float)0.0073;;
+        this.eur_exchange_rate = Constants.EXCHANGE_RATE_JPY_EUR;
+        this.usd_exchange_rate = Constants.EXCHANGE_RATE_JPY_USD;;
     }
     @Override
     public float convertTo(float amount, CurrencyEnum type) {
