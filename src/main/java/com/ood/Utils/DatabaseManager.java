@@ -354,13 +354,55 @@ public class DatabaseManager {
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
-
     }
     public List<UserBean> getAllUsers(){
         List<UserBean> user=new ArrayList();
-        // TODO
+        String sql="SELECT * from User";
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                UserBean userbean=new UserBean();
+                userbean.setAdmin(rs.getBoolean("is_admin"));
+                userbean.setSsn(rs.getString("uid"));
+                userbean.setFirstName(rs.getString("first_name"));
+                userbean.setUserName(rs.getString("username"));
+                userbean.setLastName(rs.getString("last_name"));
+                userbean.setBirthday(rs.getString("birthday"));
+                user.add(userbean);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return user;
     }
+
+    /**
+     *
+     * @param lid the id of certain loan
+     */
+    public void updateLoan(String lid,boolean isCleared){
+        // TODO need to update mentioned loan to update whether it is cleared, if it is cleared, update clear_date
+        lid=strWrap(lid);
+        int clearFlag = (isCleared == true) ? 1 : 0;
+        String datetime=strWrap(Utils.getDateTime());
+        String sql="UPDATE Loan "+
+                "SET clear_date ="+
+                datetime+","+
+                "is_clear = "+
+                clearFlag+" "+
+                " WHERE "+
+                " lid = " +
+                lid +
+                ";";
+        try {
+            statement.execute(sql);
+
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private String strWrap(String str){
         return "\'"+str+"\'";
     }
