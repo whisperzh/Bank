@@ -7,6 +7,6 @@ import com.ood.Enums.CurrencyEnum;
  * and can only be converted to us dollars or from us dollars.
  */
 public interface ICurrency {
-    float convertTo(float amount, CurrencyEnum type);
+    void convertTo(float amount, CurrencyEnum type);
 
 }
