@@ -12,7 +12,7 @@ public class EUR_Currency extends AbsCurrency{
         this.amount-=valueOf(otherAmount,type);
     }
 
-    public static float valueOf(float otherAmount, CurrencyEnum type) {
+    public static double valueOf(double otherAmount, CurrencyEnum type) {
         if(type.equals(CurrencyEnum.JPY))
         {
             return otherAmount/Constants.EXCHANGE_RATE_EUR_DIV_USD*Constants.EXCHANGE_RATE_JPY_DIV_USD;

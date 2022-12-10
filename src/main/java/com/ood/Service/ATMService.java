@@ -5,11 +5,10 @@ import com.ood.Views.HomePage;
 public class ATMService implements IService{
 
     public ATMService() {
-        show_Frontend();
     }
 
     @Override
-    public void show_BackEnd() {
+    public void start() {
 
     }
 

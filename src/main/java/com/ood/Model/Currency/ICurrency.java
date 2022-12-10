@@ -8,5 +8,6 @@ import com.ood.Enums.CurrencyEnum;
  */
 public interface ICurrency {
     void convertTo(float amount, CurrencyEnum type);
-
+    double getAmount();
+    void addAmount(double amount);
 }

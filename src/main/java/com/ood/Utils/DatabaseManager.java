@@ -356,7 +356,11 @@ public class DatabaseManager {
         }
 
     }
-
+    public List<UserBean> getAllUsers(){
+        List<UserBean> user=new ArrayList();
+        // TODO
+        return user;
+    }
     private String strWrap(String str){
         return "\'"+str+"\'";
     }

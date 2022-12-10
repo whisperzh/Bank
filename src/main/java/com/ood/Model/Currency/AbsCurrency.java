@@ -1,9 +1,14 @@
 package com.ood.Model.Currency;
 
 public abstract class AbsCurrency implements ICurrency{
-    protected float amount;
+    protected double amount;
 
-    public float getAmount() {
+    @Override
+    public void addAmount(double amount) {
+        this.amount+=amount;
+    }
+
+    public double getAmount() {
         return amount;
     }
 

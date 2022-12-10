@@ -1,4 +1,4 @@
-package com.ood.Judge;
+package com.ood.Validation;
 
 public class BankJudge {
 }

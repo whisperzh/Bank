@@ -8,7 +8,13 @@ import java.util.List;
 
 
 public class LoanController {
-    public void createLoan(String uid,float amount,CurrencyEnum currency){
+    private String uid;
+
+    public LoanController(String uid) {
+        this.uid = uid;
+    }
+
+    public void createLoan(float amount, CurrencyEnum currency){
         LoanBean bean=new LoanBean();
         bean.setLid(Utils.generateRandomUUID());
         bean.setUid(uid);
@@ -19,7 +25,7 @@ public class LoanController {
         DatabaseManager.getDbManager().insertLoanBean(bean);
     }
 
-    public List<LoanBean> getUserLoanRecord(String uid){
+    public List<LoanBean> getUserLoanRecord(){
         return DatabaseManager.getDbManager().getLoanBean(uid);
     }
 }
