@@ -1,7 +1,5 @@
 package com.ood.Enums;
 
-import com.ood.Accounts.AccountBean;
-
 public enum AccountEnum {
     CHECKINGS,
     SAVINGS,

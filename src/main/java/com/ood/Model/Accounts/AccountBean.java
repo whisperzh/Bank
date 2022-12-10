@@ -1,4 +1,4 @@
-package com.ood.Accounts;
+package com.ood.Model.Accounts;
 
 import com.ood.Enums.AccountEnum;
 

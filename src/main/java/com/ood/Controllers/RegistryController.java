@@ -1,6 +1,6 @@
 package com.ood.Controllers;
 
-import com.ood.Users.UserBean;
+import com.ood.Model.Users.UserBean;
 import com.ood.Utils.DatabaseManager;
 
 public class RegistryController {

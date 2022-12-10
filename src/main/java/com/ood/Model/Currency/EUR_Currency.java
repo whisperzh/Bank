@@ -1,4 +1,4 @@
-package com.ood.Currency;
+package com.ood.Model.Currency;
 
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Utils.Constants;

@@ -1,4 +1,4 @@
-package com.ood.Currency;
+package com.ood.Model.Currency;
 
 public abstract class AbsCurrency implements ICurrency{
     protected float amount;

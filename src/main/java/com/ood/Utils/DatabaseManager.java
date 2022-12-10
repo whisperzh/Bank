@@ -1,12 +1,11 @@
 package com.ood.Utils;
-import com.ood.Accounts.AccountBean;
+import com.ood.Model.Accounts.AccountBean;
 import com.ood.Enums.AccountEnum;
 import com.ood.Enums.CurrencyEnum;
-import com.ood.Loan.LoanBean;
-import com.ood.Stocks.StockBean;
-import com.ood.Transactions.Transaction;
-import com.ood.Transactions.TransactionBean;
-import com.ood.Users.UserBean;
+import com.ood.Model.Loan.LoanBean;
+import com.ood.Model.Stocks.StockBean;
+import com.ood.Model.Transactions.TransactionBean;
+import com.ood.Model.Users.UserBean;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -1,6 +1,6 @@
-package com.ood.Users;
+package com.ood.Model.Users;
 
-import com.ood.Accounts.IAccount;
+import com.ood.Model.Accounts.IAccount;
 
 import java.util.List;
 

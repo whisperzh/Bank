@@ -1,4 +1,4 @@
-package com.ood.Accounts;
+package com.ood.Model.Accounts;
 
 public abstract class AbsAccount implements IAccount{
     private AccountBean bean;

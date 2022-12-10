@@ -1,4 +1,4 @@
-package com.ood.Loan;
+package com.ood.Model.Loan;
 
 import com.ood.Enums.CurrencyEnum;
 

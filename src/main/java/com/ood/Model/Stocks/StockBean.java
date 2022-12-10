@@ -1,4 +1,4 @@
-package com.ood.Stocks;
+package com.ood.Model.Stocks;
 
 public class StockBean {
     private String sid;

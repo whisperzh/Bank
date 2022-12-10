@@ -1,4 +1,4 @@
-package com.ood.Accounts;
+package com.ood.Model.Accounts;
 
 public class SecurityAccount extends AbsAccount{
 }

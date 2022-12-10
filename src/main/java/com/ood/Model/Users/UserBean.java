@@ -1,4 +1,4 @@
-package com.ood.Users;
+package com.ood.Model.Users;
 
 public class UserBean {
     private String userName;

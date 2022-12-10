@@ -1,21 +1,5 @@
 package com.ood;
 
-import com.ood.Accounts.AccountBean;
-import com.ood.Controllers.LoginController;
-import com.ood.Controllers.RegistryController;
-import com.ood.Enums.AccountEnum;
-import java.util.UUID;
-
-import com.ood.Enums.CurrencyEnum;
-import com.ood.Loan.LoanController;
-import com.ood.Service.ATMService;
-import com.ood.Service.IService;
-import com.ood.Utils.Utils;
-import com.ood.Users.UserBean;
-import com.ood.Utils.DatabaseManager;
-
-import javax.xml.ws.Service;
-
 public class Main {
     public static void main(String[] args) {
         test();

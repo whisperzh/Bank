@@ -1,4 +1,4 @@
-package com.ood.Transactions;
+package com.ood.Model.Transactions;
 
 import com.ood.Enums.CurrencyEnum;
 

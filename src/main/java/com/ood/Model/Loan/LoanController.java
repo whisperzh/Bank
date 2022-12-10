@@ -1,9 +1,8 @@
-package com.ood.Loan;
+package com.ood.Model.Loan;
 
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
-import com.ood.Utils.Utils.*;
 
 import java.util.List;
 
