@@ -1,5 +1,12 @@
 package com.ood.Model.Accounts;
 
-public interface IAccount {
+import com.ood.Model.Deposits;
 
+public interface IAccount {
+    Deposits getDeposits();
+    void setDeposits(Deposits deposits);
+    AccountBean getBean();
+    void setBean(AccountBean bean);
+    double getRegularBalance();
+    void addAmount(double amount);
 }

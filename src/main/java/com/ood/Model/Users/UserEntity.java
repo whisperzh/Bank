@@ -1,10 +1,7 @@
 package com.ood.Model.Users;
 
 import com.ood.Model.Accounts.AccountBean;
-import com.ood.Model.Accounts.CheckingAccount;
 import com.ood.Model.Accounts.IAccount;
-import com.ood.Model.Deposits;
-import com.ood.Model.Loan.Loan;
 import com.ood.Model.Loan.LoanController;
 import com.ood.Utils.DatabaseManager;
 

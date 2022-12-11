@@ -30,4 +30,18 @@ public abstract class AbsAccount implements IAccount{
     public void setBean(AccountBean bean) {
         this.bean = bean;
     }
+
+    public void addMoney(double amount)
+    {
+        deposits.addAmount(amount);
+    }
+    @Override
+    public double getRegularBalance() {
+        return deposits.getUSDAmount();
+    }
+
+    @Override
+    public void addAmount(double amount) {
+
+    }
 }

@@ -25,6 +25,15 @@ public class LoanController {
         DatabaseManager.getDbManager().insertLoanBean(bean);
     }
 
+    /**
+     *
+     * @param lid the id of certain loan
+     * @param aid the id of certain account that will pay for the loan
+     */
+    public void payForLoan(String lid,String aid){
+
+    }
+
     public List<LoanBean> getUserLoanRecord(){
         return DatabaseManager.getDbManager().getLoanBean(uid);
     }
