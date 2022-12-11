@@ -403,6 +403,37 @@ public class DatabaseManager {
         }
     }
 
+    public void updateAccount(String aid,double changedAmount){
+        aid = strWrap(aid);
+        double oldAmount = 0.0;
+        double newAmount = 0.0;
+        int isMoneyAdded = (changedAmount >= 0) ? 1 : 0;
+        String sqlQueryAmount="SELECT amount FROM Balance WHERE aid is " +aid+ ";";
+        try {
+            rs=statement.executeQuery(sqlQueryAmount);
+            oldAmount = rs.getDouble("amount");
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        if(isMoneyAdded == 1){
+            newAmount = oldAmount + changedAmount;
+        }
+        else newAmount = oldAmount - changedAmount;
+        String sql="UPDATE Balance "+
+                "SET amount ="+
+                newAmount+
+                " WHERE "+
+                " aid = " +
+                aid +
+                ";";
+        try {
+            statement.execute(sql);
+
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     private String strWrap(String str){
         return "\'"+str+"\'";
     }
