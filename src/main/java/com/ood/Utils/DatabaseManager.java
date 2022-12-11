@@ -407,4 +407,29 @@ public class DatabaseManager {
         return "\'"+str+"\'";
     }
 
+
+    public UserBean getUserbean(String uid) {
+        uid=strWrap(uid);
+        String sql = "SELECT * FROM User WHERE uid is "+
+                uid+";";
+        try
+        {
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                UserBean bean=new UserBean();
+                bean.setAdmin(rs.getBoolean("is_admin"));
+                bean.setSsn(rs.getString("uid"));
+                bean.setFirstName(rs.getString("first_name"));
+                bean.setUserName(rs.getString("username"));
+                bean.setLastName(rs.getString("last_name"));
+                bean.setBirthday(rs.getString("birthday"));
+                return bean;
+            }
+
+        } catch (SQLException ex) {
+            System.exit(-1);
+        }
+        return null;
+    }
 }

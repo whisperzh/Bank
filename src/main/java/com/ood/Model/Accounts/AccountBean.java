@@ -7,7 +7,6 @@ public class AccountBean {
     private AccountEnum accountEnum;
     private String uid;
     private String aid;
-
     public String getAid() {
         return aid;
     }

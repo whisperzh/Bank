@@ -15,22 +15,24 @@ public abstract class AbsAccount implements IAccount{
         transactionController=new TransactionController(bean.getAid());
     }
 
+    @Override
     public Deposits getDeposits() {
         return deposits;
     }
 
+    @Override
     public void setDeposits(Deposits deposits) {
         this.deposits = deposits;
     }
-
+    @Override
     public AccountBean getBean() {
         return bean;
     }
-
+    @Override
     public void setBean(AccountBean bean) {
         this.bean = bean;
     }
-
+    @Override
     public void addMoney(double amount)
     {
         deposits.addAmount(amount);
@@ -40,8 +42,7 @@ public abstract class AbsAccount implements IAccount{
         return deposits.getUSDAmount();
     }
 
-    @Override
-    public void addAmount(double amount) {
-
+    public TransactionController getTransactionController() {
+        return transactionController;
     }
 }

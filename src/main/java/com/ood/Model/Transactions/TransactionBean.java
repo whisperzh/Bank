@@ -31,7 +31,7 @@ public class TransactionBean {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

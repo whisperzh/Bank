@@ -8,5 +8,5 @@ public interface IAccount {
     AccountBean getBean();
     void setBean(AccountBean bean);
     double getRegularBalance();
-    void addAmount(double amount);
+    void addMoney(double amount);
 }
