@@ -24,6 +24,7 @@ public class TransactionController {
     }
 
     public void createTransaction(String from_aid, String to_aid, double amount) {
+        createTransaction(from_aid,to_aid,amount,CurrencyEnum.USD);
         TransactionBean bean=new TransactionBean();
         bean.setAmount(amount);
         bean.setTid(Utils.generateRandomUUID());
@@ -31,7 +32,6 @@ public class TransactionController {
         bean.setTimeStamp(Utils.getDateTime());
         bean.setFrom_uid(from_aid);
         bean.setTo_uid(to_aid);
-
         new Transaction(bean);
     }
 }

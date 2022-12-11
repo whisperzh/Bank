@@ -6,7 +6,7 @@ import com.ood.Utils.DatabaseManager;
 public class RegistryController {
     public void register(UserBean bean)
     {
-        DatabaseManager dbm=DatabaseManager.getDbManager();
+        DatabaseManager dbm=DatabaseManager.getInstance();
         if(dbm.hasUserBean(bean))
         {
             //alert

@@ -5,7 +5,7 @@ import com.ood.Utils.DatabaseManager;
 public class LoginController {
     public void login(String userName,String password)
     {
-          DatabaseManager dbm=DatabaseManager.getDbManager();
+          DatabaseManager dbm=DatabaseManager.getInstance();
           UserBean bean=dbm.getUserbean(userName, password);
           if(bean!=null)
           {

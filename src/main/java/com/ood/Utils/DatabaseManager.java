@@ -26,7 +26,7 @@ public class DatabaseManager {
         conn(Constants.URL);
     }
 
-    public static DatabaseManager getDbManager() {
+    public static DatabaseManager getInstance() {
         if(dbManager==null)
             dbManager=new DatabaseManager();
         return dbManager;
@@ -314,6 +314,12 @@ public class DatabaseManager {
         }
     }
 
+    public StockBean getStock(String sid){
+        StockBean bean=new StockBean();
+        // TODO implementation
+        return bean;
+    }
+
     public List<StockBean> getStocks(){
         List<StockBean> beans=new ArrayList<>();
         String sql="";
@@ -431,5 +437,9 @@ public class DatabaseManager {
             System.exit(-1);
         }
         return null;
+    }
+
+    public void updateBalance(String aid,Double amount){
+        // TODO update balance amount
     }
 }

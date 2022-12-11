@@ -23,7 +23,7 @@ public abstract class UserEntity implements IUser{
     // TODO implementation
     public void initAccounts(){
         accounts=new ArrayList<>();
-        DatabaseManager dbManager=DatabaseManager.getDbManager();
+        DatabaseManager dbManager=DatabaseManager.getInstance();
         List<AccountBean> beans=dbManager.getUsersAccounts(bean.getSsn());
         for(int i=0;i<beans.size();i++)
         {

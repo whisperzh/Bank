@@ -22,7 +22,7 @@ public class LoanController {
         bean.setCurrencyEnum(currency);
         bean.setDate(Utils.getTodaysDate());
         bean.setIs_clear(false);
-        DatabaseManager.getDbManager().insertLoanBean(bean);
+        DatabaseManager.getInstance().insertLoanBean(bean);
     }
 
     /**
@@ -35,6 +35,6 @@ public class LoanController {
     }
 
     public List<LoanBean> getUserLoanRecord(){
-        return DatabaseManager.getDbManager().getLoanBean(uid);
+        return DatabaseManager.getInstance().getLoanBean(uid);
     }
 }

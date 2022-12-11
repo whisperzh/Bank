@@ -12,6 +12,8 @@ public class Constants {
     public final static double OPEN_ACCOUNT_FEE=25;
     //the fee customer need to pay when they open
     public final static double CLOSE_ACCOUNT_FEE=100;
+    public static final double WITHDRAW_FEE = 5;
+    public static final double BUY_STOCK_FEE = 0;
     //the fee customer need to pay when they open
 
 }
