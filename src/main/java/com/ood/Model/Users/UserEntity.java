@@ -8,7 +8,7 @@ import com.ood.Utils.DatabaseManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserEntity implements IUser{
+public abstract class UserEntity implements IUser{
     private UserBean bean;
     private List<IAccount> accounts;
 
