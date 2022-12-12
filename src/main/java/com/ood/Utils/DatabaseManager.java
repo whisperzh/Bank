@@ -5,6 +5,7 @@ import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Balance.BalanceBean;
 import com.ood.Model.Loan.LoanBean;
 import com.ood.Model.Stocks.StockBean;
+import com.ood.Model.Stocks.UserStock;
 import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Model.Users.UserBean;
 
@@ -524,5 +525,136 @@ public class DatabaseManager {
             ex.printStackTrace();
         }
         return ans;
+    }
+
+    public void insertUserStock(UserStock userStock) {
+        String aid=strWrap(userStock.getAid());
+        String sid=strWrap(userStock.getSid());
+        String datetime=strWrap(userStock.getStock_buy_time());
+        Double proportion=userStock.getProportion();
+        String sql = "INSERT INTO UserStock" +
+                " (aid," +
+                "sid," +
+                "proportion," +
+                "buy_date)\n" +
+                "VALUES (" +
+                aid + "," +
+                sid + "," +
+                proportion + "," +
+                datetime +
+                ");";
+        try {
+            statement.execute(sql);
+
+        } catch (SQLException ex) {
+            System.exit(-1);
+        }
+    }
+
+    public UserStock getSpecificUserStock(String aid, String sid){
+        UserStock stock = new UserStock();
+        String sql="SELECT * FROM UserStock WHERE aid is "
+                +aid+" AND sid is "+sid+";";
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                stock.setAid(rs.getString("aid"));
+                stock.setSid(rs.getString("sid"));
+                stock.setProportion(rs.getDouble("proportion"));
+                stock.setStock_buy_time(rs.getString("buy_date"));
+                stock.setLast_update_time(rs.getString("last_updated"));
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return stock;
+    }
+
+    public List<UserStock> getUserStocks(String aid){
+        List<UserStock> stocks=new ArrayList();
+        String sql="SELECT * FROM UserStock WHERE aid is "
+                +aid+";";
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                UserStock stock=new UserStock();
+                stock.setAid(rs.getString("aid"));
+                stock.setSid(rs.getString("sid"));
+                stock.setProportion(rs.getDouble("proportion"));
+                stock.setStock_buy_time(rs.getString("buy_date"));
+                stock.setLast_update_time(rs.getString("last_updated"));
+                stocks.add(stock);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return stocks;
+    }
+
+    public List<UserStock> getAllUserStocks(){
+        List<UserStock> stocks=new ArrayList();
+        String sql="SELECT * FROM UserStock;";
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                UserStock stock=new UserStock();
+                stock.setAid(rs.getString("aid"));
+                stock.setSid(rs.getString("sid"));
+                stock.setProportion(rs.getDouble("proportion"));
+                stock.setStock_buy_time(rs.getString("buy_date"));
+                stock.setLast_update_time(rs.getString("last_updated"));
+                stocks.add(stock);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return stocks;
+    }
+
+    public void updateUserStock(String aid, String sid, Double proportion){
+        UserStock stock = new UserStock();
+        Double newProportion;
+        Double oldProportion = 0.0;
+        String sql="SELECT * FROM UserStock WHERE aid is "
+                +aid+" AND sid is "+sid+";";
+        int isProportionAdded = (proportion >= 0) ? 1 : 0;
+        String currentDate=strWrap(Utils.getDateTime());
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                stock.setAid(rs.getString("aid"));
+                stock.setSid(rs.getString("sid"));
+                oldProportion = rs.getDouble("proportion");
+                stock.setStock_buy_time(rs.getString("buy_date"));
+                stock.setLast_update_time(rs.getString("last_updated"));
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        if(isProportionAdded == 1){
+            newProportion = oldProportion + proportion;
+        }
+        else newProportion = oldProportion - proportion;
+        String sqlUpdate="UPDATE UserStock "+
+                "SET proportion ="+
+                newProportion+
+                "last_updated ="+
+                currentDate+
+                " WHERE "+
+                " aid = " +
+                aid +
+                " and sid = " +
+                sid +
+                ";";
+        try {
+            statement.execute(sqlUpdate);
+
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }
