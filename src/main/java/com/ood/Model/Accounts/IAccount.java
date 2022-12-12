@@ -1,6 +1,6 @@
 package com.ood.Model.Accounts;
 
-import com.ood.Model.Deposits;
+import com.ood.Model.Balance.Deposits;
 
 public interface IAccount {
     Deposits getDeposits();

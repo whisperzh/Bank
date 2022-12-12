@@ -8,8 +8,6 @@ public class Transaction {
 
     public Transaction(TransactionBean bean) {
         this.bean = bean;
-        DatabaseManager.getInstance().insertTransactionBean(bean);
-
     }
 
     public TransactionBean getBean() {

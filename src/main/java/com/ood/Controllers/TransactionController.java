@@ -3,6 +3,7 @@ package com.ood.Controllers;
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Transactions.Transaction;
 import com.ood.Model.Transactions.TransactionBean;
+import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 
 public class TransactionController {
@@ -11,7 +12,7 @@ public class TransactionController {
     public TransactionController(String aid) {
         this.aid = aid;
     }
-    public void createTransaction(String from_aid, String to_aid, double amount, CurrencyEnum currencyEnum) {
+    public Transaction createTransaction(String from_aid, String to_aid, double amount, CurrencyEnum currencyEnum) {
         TransactionBean bean=new TransactionBean();
         bean.setAmount(amount);
         bean.setTid(Utils.generateRandomUUID());
@@ -19,8 +20,8 @@ public class TransactionController {
         bean.setTimeStamp(Utils.getDateTime());
         bean.setFrom_uid(from_aid);
         bean.setTo_uid(to_aid);
-
-        new Transaction(bean);
+        DatabaseManager.getInstance().insertTransactionBean(bean);
+        return new Transaction(bean);
     }
 
     public void createTransaction(String from_aid, String to_aid, double amount) {

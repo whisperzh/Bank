@@ -6,8 +6,6 @@ public abstract class AbsLoan {
     public AbsLoan(LoanBean bean) {
         this.bean = bean;
     }
-
-
     public double getAmount() {
         return bean.getAmount();
     }

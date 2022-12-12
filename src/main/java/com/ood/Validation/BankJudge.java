@@ -1,13 +1,18 @@
 package com.ood.Validation;
 
+import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Accounts.AbsAccount;
+import com.ood.Model.Accounts.AccountBean;
 import com.ood.Model.Accounts.IAccount;
 import com.ood.Model.Accounts.SecurityAccount;
+import com.ood.Model.Balance.BalanceBean;
 import com.ood.Model.Loan.AbsLoan;
 import com.ood.Model.Stocks.StockBean;
 import com.ood.Model.Users.UserBean;
 import com.ood.Utils.Constants;
 import com.ood.Utils.DatabaseManager;
+
+import java.util.List;
 
 public class BankJudge {
 
@@ -54,6 +59,22 @@ public class BankJudge {
             double price=stockProportion*bean.getPrice();
             if(Constants.BUY_STOCK_FEE+price>= controlledAccount.getRegularBalance())
                 return true;
+        }
+        return false;
+    }
+
+    public boolean canCloseAccount(String aid) {
+         List<BalanceBean> beans= db.getBalanceBean(aid);
+        for(int i=0;i<beans.size();i++)
+        {
+            BalanceBean bean=beans.get(i);
+            if(bean.getCurrencyEnum().equals(CurrencyEnum.USD))
+            {
+                if(bean.getAmount()>=Constants.CLOSE_ACCOUNT_FEE)
+                    return true;
+                else
+                    return false;
+            }
         }
         return false;
     }

@@ -1,4 +1,4 @@
-package com.ood.Model;
+package com.ood.Model.Balance;
 
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Currency.EUR_Currency;

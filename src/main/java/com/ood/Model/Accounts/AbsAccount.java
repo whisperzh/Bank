@@ -1,7 +1,7 @@
 package com.ood.Model.Accounts;
 
 import com.ood.Controllers.TransactionController;
-import com.ood.Model.Deposits;
+import com.ood.Model.Balance.Deposits;
 
 public abstract class AbsAccount implements IAccount{
     private AccountBean bean;

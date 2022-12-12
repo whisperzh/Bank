@@ -2,6 +2,7 @@ package com.ood.Utils;
 import com.ood.Model.Accounts.AccountBean;
 import com.ood.Enums.AccountEnum;
 import com.ood.Enums.CurrencyEnum;
+import com.ood.Model.Balance.BalanceBean;
 import com.ood.Model.Loan.LoanBean;
 import com.ood.Model.Stocks.StockBean;
 import com.ood.Model.Transactions.TransactionBean;
@@ -158,6 +159,25 @@ public class DatabaseManager {
         return null;
     }
 
+    public AccountBean getAccountBean(String aid){
+        AccountBean bean=new AccountBean();
+        bean.setAid(aid);
+        aid=strWrap(aid);
+        String sql = "SELECT * FROM Account WHERE aid is "
+                +aid+";";
+        try {
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                bean.setAid(rs.getString("aid"));
+                bean.setAccountEnum(AccountEnum.StringtoType(rs.getString("type")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
     public List<AccountBean> getUsersAccounts(String uid){
         List<AccountBean> ans=new ArrayList();
         uid=strWrap(uid);
@@ -285,7 +305,7 @@ public class DatabaseManager {
     public void insertLoanBean(LoanBean bean){
         String lid=strWrap(bean.getLid());
         String uid=strWrap(bean.getUid());
-        float amount= bean.getAmount();
+        double amount= bean.getAmount();
         String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
         String date = strWrap(bean.getDate());
         String is_clear=bean.isIs_clear()?"1":"0";;
@@ -409,7 +429,7 @@ public class DatabaseManager {
         }
     }
 
-    public void updateAccount(String aid,double changedAmount){
+    public void updateBalance(String aid,double changedAmount){
         aid = strWrap(aid);
         double oldAmount = 0.0;
         double newAmount = 0.0;
@@ -470,7 +490,26 @@ public class DatabaseManager {
         return null;
     }
 
-    public void updateBalance(String aid,Double amount){
-        // TODO update balance amount
+    public void deletAccount(String aid) {
+    }
+
+    public List<BalanceBean> getBalanceBean(String aid) {
+        List<BalanceBean> ans=new ArrayList();
+        aid=strWrap(aid);
+        String sql="SELECT * FROM Balance WHERE aid is "+aid+";";
+        try {
+            rs=statement.executeQuery(sql);
+            while(rs.next())
+            {
+                BalanceBean bean=new BalanceBean();
+                bean.setAid(rs.getString("aid"));
+                bean.setAmount(rs.getDouble("amount"));
+                bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
+                ans.add(bean);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return ans;
     }
 }

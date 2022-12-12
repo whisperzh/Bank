@@ -6,7 +6,7 @@ public class LoanBean {
     private String lid;
     private String uid;
     private CurrencyEnum currencyEnum;
-    private float amount;
+    private double amount;
     private String date;
     private boolean is_clear;
     private String clear_date;
@@ -51,11 +51,11 @@ public class LoanBean {
         this.currencyEnum = currencyEnum;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
