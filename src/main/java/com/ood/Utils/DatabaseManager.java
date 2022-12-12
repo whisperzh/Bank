@@ -336,7 +336,20 @@ public class DatabaseManager {
 
     public StockBean getStock(String sid){
         StockBean bean=new StockBean();
-        // TODO implementation
+        sid=strWrap(sid);
+        String sql="SELECT * FROM Stock where sid is "+sid+" ;";
+        try{
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                bean.setCompany(rs.getString("company"));
+                bean.setPrice(rs.getDouble("price"));
+                bean.setSid(rs.getString("sid"));
+                bean.setLast_update_time(rs.getString("last_update_time"));
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return bean;
     }
 
