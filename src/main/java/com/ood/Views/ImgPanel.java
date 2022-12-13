@@ -1,4 +1,4 @@
-package com.ood.Views;
+package View;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

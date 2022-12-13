@@ -1,4 +1,4 @@
-package com.ood.Views;/*
+package View;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
@@ -11,15 +11,15 @@ import javax.swing.*;
  */
 
 
-public class ParentFrame extends JFrame {
+public class ParentFrame extends javax.swing.JFrame {
 
-    JPanel BackgroundPanel = new JPanel();
-    JPanel SidePanel = new JPanel();
-    JPanel TitlePanel = new JPanel();
-    public GroupLayout BackgroundPanelLayout = new GroupLayout(BackgroundPanel);
-    public GroupLayout SidePanelLayout = new GroupLayout(SidePanel);
-    public GroupLayout TitlePanelLayout = new GroupLayout(TitlePanel);
-    public GroupLayout layout;
+    JPanel BackgroundPanel = new javax.swing.JPanel();
+    JPanel SidePanel = new javax.swing.JPanel();
+    JPanel TitlePanel = new javax.swing.JPanel();
+    public javax.swing.GroupLayout BackgroundPanelLayout = new javax.swing.GroupLayout(BackgroundPanel);
+    public javax.swing.GroupLayout SidePanelLayout = new javax.swing.GroupLayout(SidePanel);
+    public javax.swing.GroupLayout TitlePanelLayout = new javax.swing.GroupLayout(TitlePanel);
+    public javax.swing.GroupLayout layout;
 
 
 
@@ -32,10 +32,10 @@ public class ParentFrame extends JFrame {
         SidePanel.setLayout(SidePanelLayout);
         TitlePanel.setLayout(TitlePanelLayout);
 
-        layout = new GroupLayout(getContentPane());
+        layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
 
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bank ATM");
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1920, 1080));
