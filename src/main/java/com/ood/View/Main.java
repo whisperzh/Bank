@@ -1,9 +1,9 @@
-package com.ood.View;
+package View;
 
 public class Main {
 
     public static void main(String args[]){
-        SavingsApplication home = new SavingsApplication();
+        AccountActivity common = new AccountActivity();
     }
 
 }
