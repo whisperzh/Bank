@@ -251,7 +251,7 @@ public class DatabaseManager {
         String tid=strWrap(bean.getTid());
         String from_uid=strWrap(bean.getFrom_uid());
         String to_uid=strWrap(bean.getTo_uid());
-        float amount= bean.getAmount();
+        double amount= bean.getAmount();
         String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
         String timeStamp=strWrap(bean.getTimeStamp());
 

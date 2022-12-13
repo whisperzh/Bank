@@ -7,7 +7,7 @@ public class TransactionBean {
     private String tid;
     private String from_uid;
     private String to_uid;
-    private float amount;
+    private double amount;
     private CurrencyEnum currencyEnum;
     private String timeStamp;
 
@@ -27,7 +27,7 @@ public class TransactionBean {
         this.to_uid = to_uid;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 

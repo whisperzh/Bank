@@ -1,4 +1,4 @@
-package View;
+package com.ood.Views;
 
 public class CommonPage {
 
