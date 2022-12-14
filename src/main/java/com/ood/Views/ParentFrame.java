@@ -1,4 +1,4 @@
-package com.ood.View;
+package com.ood.Views;
 
 import javax.swing.*;
 
