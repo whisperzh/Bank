@@ -77,7 +77,7 @@ public class CheckingsActivity extends javax.swing.JFrame{
 
         jButton7.setBackground(new java.awt.Color(233, 204, 204));
         jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton7.setText("Account Details");
+        jButton7.setText("Checkings Account Details");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -162,7 +162,7 @@ public class CheckingsActivity extends javax.swing.JFrame{
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(102, 51, 0));
-        jLabel1.setText("Account Balance");
+        jLabel1.setText("Checkings Account Balance");
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel2.setText("0");
