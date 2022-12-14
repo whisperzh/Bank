@@ -20,7 +20,7 @@ public abstract class UserEntity implements IUser{
         loanController=new LoanController(bean.getSsn());
     }
 
-    // TODO implementation
+
     public void initAccounts(){
         accounts=new ArrayList<>();
         DatabaseManager dbManager=DatabaseManager.getInstance();

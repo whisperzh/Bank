@@ -422,7 +422,6 @@ public class DatabaseManager {
      * @param lid the id of certain loan
      */
     public void updateLoan(String lid,boolean isCleared){
-        // TODO need to update mentioned loan to update whether it is cleared, if it is cleared, update clear_date
         lid=strWrap(lid);
         int clearFlag = (isCleared == true) ? 1 : 0;
         String datetime=strWrap(Utils.getDateTime());
@@ -656,5 +655,10 @@ public class DatabaseManager {
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+    public List<UserBean> getAllUserByLoanDescend(){
+        List<UserBean> ans=new ArrayList<>();
+        // TODO get all user, join with loan table (sum of uncleared loans of certain users) DESC
+        return ans;
     }
 }
