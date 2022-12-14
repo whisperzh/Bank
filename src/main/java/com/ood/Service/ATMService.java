@@ -2,6 +2,9 @@ package com.ood.Service;
 
 import com.ood.Views.HomePage;
 
+/**
+ * Concrete class of Service
+ */
 public class ATMService implements IService{
 
     public ATMService() {

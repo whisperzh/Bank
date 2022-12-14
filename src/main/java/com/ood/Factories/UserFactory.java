@@ -2,6 +2,9 @@ package com.ood.Factories;
 
 import com.ood.Model.Users.*;
 
+/**
+ * Factory that generates User
+ */
 public class UserFactory {
     public IUser createUser(String userType, UserBean bean){
         if(userType == null || userType.isEmpty()){

@@ -17,6 +17,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Query collection of DB
+ */
 public class DatabaseManager {
     private Connection connection;
     private Statement statement;

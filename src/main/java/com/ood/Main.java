@@ -1,8 +1,13 @@
 package com.ood;
 
+import com.ood.Service.ATMService;
+import com.ood.Service.IService;
+
 public class Main {
     public static void main(String[] args) {
         test();
+        IService service=new ATMService();
+        service.start();
     }
 
     public static void test(){

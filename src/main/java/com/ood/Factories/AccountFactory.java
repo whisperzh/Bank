@@ -1,7 +1,9 @@
 package com.ood.Factories;
 
 import com.ood.Model.Accounts.*;
-
+/**
+ * Factory that generates Account
+ */
 public class AccountFactory {
     public static IAccount createAccount(String accountType, AccountBean bean){
         if(accountType == null || accountType.isEmpty()){

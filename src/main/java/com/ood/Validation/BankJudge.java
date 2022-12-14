@@ -7,6 +7,7 @@ import com.ood.Model.Accounts.IAccount;
 import com.ood.Model.Accounts.SecurityAccount;
 import com.ood.Model.Balance.BalanceBean;
 import com.ood.Model.Loan.AbsLoan;
+import com.ood.Model.Loan.LoanBean;
 import com.ood.Model.Stocks.StockBean;
 import com.ood.Model.Users.UserBean;
 import com.ood.Utils.Constants;
@@ -14,6 +15,9 @@ import com.ood.Utils.DatabaseManager;
 
 import java.util.List;
 
+/**
+ * Validation of Bank
+ */
 public class BankJudge {
 
     private DatabaseManager db;
@@ -77,5 +81,25 @@ public class BankJudge {
             }
         }
         return false;
+    }
+
+    public boolean isUserInDebt(String uid){
+        List<LoanBean> loans=db.getLoanBean(uid);
+        if(loans.size()>0)
+            return true;
+        return false;
+    }
+
+    public boolean isAccountExistByEmail(String uid,String email){
+        return db.getAccountBean(uid,email)!=null;
+    }
+    public boolean canLogin(String username,String password){
+        if(db.getUserbean(username, password)!=null)
+            return true;
+        return false;
+    }
+    public boolean isUserAdmin(String uid){
+        UserBean bean=db.getUserbean(uid);
+        return isUserAdmin(uid);
     }
 }

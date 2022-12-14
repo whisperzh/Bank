@@ -6,6 +6,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
 
+/**
+ * Tools that is public to all classes
+ */
 public class Utils {
     public static String generateRandomUUID(){
         return UUID.randomUUID().toString();
