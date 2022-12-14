@@ -4,12 +4,17 @@
  */
 package com.ood.Views;
 
+import com.ood.Controllers.AccountController;
+
 /**
  *
  * @author revathivipinachandran
  */
 public class AccountDetails extends javax.swing.JFrame {
-
+    private AccountController accountController;
+    public void setAccountController(AccountController accountController) {
+        this.accountController = accountController;
+    }
     /**
      * Creates new form AccountDetails
      */

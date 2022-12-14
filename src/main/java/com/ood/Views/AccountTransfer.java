@@ -4,6 +4,8 @@
  */
 package com.ood.Views;
 
+import com.ood.Controllers.AccountController;
+
 import javax.swing.*;
 
 /**
@@ -11,16 +13,17 @@ import javax.swing.*;
  * @author revathivipinachandran
  */
 public class AccountTransfer extends javax.swing.JFrame {
-
+    private AccountController accountController;
+    public void setAccountController(AccountController accountController) {
+        this.accountController = accountController;
+    }
     /**
      * Creates new form AccountDashboard
      */
     public AccountTransfer() {
         initComponents();
 
-        // Assigning value to the account balance label
-        Double account_balance = get_account_balance();
-        jLabel6.setText(account_balance.toString());
+        // Assigning value to the account balance labe
 
         String[] recipient_list = get_recipient_list();
         javax.swing.ComboBoxModel combobox_model = new javax.swing.DefaultComboBoxModel<>(recipient_list);
@@ -687,10 +690,6 @@ public class AccountTransfer extends javax.swing.JFrame {
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
     private java.awt.TextField textField5;
-    public void updateBalanceText(double num)
-    {
-        jLabel6.setText(Double.toString(num));
-    }
 
     // End of variables declaration
 }

@@ -3,11 +3,18 @@ package com.ood.Views;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import com.ood.Controllers.AccountController;
+
 /**
  *
  * @author revathivipinachandran
  */
 public class AccountWithdraw extends javax.swing.JFrame {
+    private AccountController accountController;
+
+    public void setAccountController(AccountController accountController) {
+        this.accountController = accountController;
+    }
 
     /**
      * Creates new form AccountWithdraw
