@@ -325,26 +325,45 @@ public class AccountWithdraw extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("3");
+        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("4");
+
+        ViewContainer.getInstance().getPage("AccountTransfer").setVisible(true);
+        this.setVisible(false);
+
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+        System.out.println("5");
         // TODO add your handling code here:
+//        ViewContainer.getInstance().getPage("AccountWithdraw").setVisible(true);
+//        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("7");
+        ViewContainer.getInstance().getPage("AccountDetails").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("6");
+        ViewContainer.getInstance().getPage("CustomerDashboard").setVisible(true);
+        this.setVisible(false);
     }
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("1");
     }
 
     /**

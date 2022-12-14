@@ -483,32 +483,42 @@ public class AccountTransfer extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose(); // this will close current login box window
+        // TODO add your handling code here:
+        System.out.println("3");
+        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
+        this.setVisible(false);
+    }
 
-        AccountActivity page=new AccountActivity();
-        page.setVisible(true);
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        System.out.println("4");
+//
+//        ViewContainer.getInstance().getPage("AccountTransfer").setVisible(true);
+//        this.setVisible(false);
+
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose(); // this will close current login box window
-
-        AccountWithdraw page=new AccountWithdraw();
-        page.setVisible(true);
+        System.out.println("5");
+        // TODO add your handling code here:
+        ViewContainer.getInstance().getPage("AccountWithdraw").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose(); // this will close current login box window
-
-        AccountDetails page=new AccountDetails();
-        page.setVisible(true);
+        // TODO add your handling code here:
+        System.out.println("7");
+        ViewContainer.getInstance().getPage("AccountDetails").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose(); // this will close current login box window
-
-        CustomerDashboard page=new CustomerDashboard();
-        page.setVisible(true);
+        // TODO add your handling code here:
+        System.out.println("6");
+        ViewContainer.getInstance().getPage("CustomerDashboard").setVisible(true);
+        this.setVisible(false);
     }
+
 
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -677,6 +687,11 @@ public class AccountTransfer extends javax.swing.JFrame {
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
     private java.awt.TextField textField5;
+    public void updateBalanceText(double num)
+    {
+        jLabel6.setText(Double.toString(num));
+    }
+
     // End of variables declaration
 }
 
