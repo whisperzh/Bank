@@ -4,6 +4,8 @@
  */
 package com.ood.Views;
 
+import javax.swing.text.View;
+
 /**
  *
  * @author revathivipinachandran
@@ -199,11 +201,15 @@ public class ManagerViewTransactions extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+
+
         // TODO add your handling code here:
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+//        ViewContainer.getInstance().getPage("ManagerViewTransactions").setVisible(true);
+//        setVisible(false);
     }
 
     /**
