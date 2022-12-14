@@ -658,10 +658,7 @@ public class DatabaseManager {
     }
     public List<UserBean> getAllUserByLoanDescend(){
         List<UserBean> ans=new ArrayList<>();
-        String sql = "SELECT User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 ORDER BY Loan.Amount DESC;";
-        //enable the below query if a single user can have multiple different loan records in the "Loan" table.
-        //String sql = "SELECT User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
-        // TODO get all user, join with loan table (sum of uncleared loans of certain users) DESC
+        String sql = "SELECT User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
         try {
             rs = statement.executeQuery(sql);
             while(rs.next())
