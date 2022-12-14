@@ -356,7 +356,7 @@ public class DatabaseManager {
 
     public List<StockBean> getStocks(){
         List<StockBean> beans=new ArrayList<>();
-        String sql="";
+        String sql="SELECT * FROM Stock;";
         try {
             rs=statement.executeQuery(sql);
             while(rs.next())
@@ -622,7 +622,7 @@ public class DatabaseManager {
         int isProportionAdded = (proportion >= 0) ? 1 : 0;
         String currentDate=strWrap(Utils.getDateTime());
         try {
-            rs=statement.executeQuery(sql);
+            rs = statement.executeQuery(sql);
             while(rs.next())
             {
                 stock.setAid(rs.getString("aid"));
@@ -658,7 +658,26 @@ public class DatabaseManager {
     }
     public List<UserBean> getAllUserByLoanDescend(){
         List<UserBean> ans=new ArrayList<>();
+        String sql = "SELECT User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 ORDER BY Loan.Amount DESC;";
+        //enable the below query if a single user can have multiple different loan records in the "Loan" table.
+        //String sql = "SELECT User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
         // TODO get all user, join with loan table (sum of uncleared loans of certain users) DESC
+        try {
+            rs = statement.executeQuery(sql);
+            while(rs.next())
+            {
+                UserBean userbean=new UserBean();
+                userbean.setAdmin(rs.getBoolean("is_admin"));
+                userbean.setSsn(rs.getString("uid"));
+                userbean.setFirstName(rs.getString("first_name"));
+                userbean.setLastName(rs.getString("last_name"));
+                userbean.setUserName(rs.getString("username"));
+                userbean.setBirthday(rs.getString("birthday"));
+                ans.add(userbean);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return ans;
     }
 }
