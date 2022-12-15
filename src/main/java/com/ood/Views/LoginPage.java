@@ -5,6 +5,9 @@
 package com.ood.Views;
 
 import com.ood.Controllers.LoginController;
+import com.ood.Controllers.UserControllerManager;
+
+import javax.swing.*;
 
 /**
  *
@@ -13,9 +16,11 @@ import com.ood.Controllers.LoginController;
 public class LoginPage extends javax.swing.JFrame {
 
     private LoginController controller;
+    private ViewContainer viewContainer;
 
     public void setController(LoginController controller) {
         this.controller = controller;
+        viewContainer=ViewContainer.getInstance();
     }
 
     /**
@@ -346,7 +351,13 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println("1");
         //login
-        controller.login(jTextField2.getText(),jTextField1.getText());
+        if(controller.login(jTextField2.getText(),jTextField1.getText()))
+        {
+            viewContainer.getPage("CustomerDashboard").setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "Incorrect username or password");
+        }
 
 
     }
