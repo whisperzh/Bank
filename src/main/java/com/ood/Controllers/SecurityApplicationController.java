@@ -10,7 +10,6 @@ import com.ood.Views.SecurityApplication;
 import com.ood.Views.ViewContainer;
 
 import javax.swing.*;
-import java.util.ArrayList;
 import java.util.Dictionary;
 
 public class SecurityApplicationController {
@@ -37,7 +36,40 @@ public class SecurityApplicationController {
         view.setController(this);
     }
 
+    public void validateFirstForm(Dictionary userDetails){
+        String firstname = userDetails.get("firstname").toString();
+        String lastname = userDetails.get("lastname").toString();
+        String email = userDetails.get("email").toString();
+        String address = userDetails.get("address").toString();
+        String ssn = userDetails.get("ssn").toString();
+        int flag = 0;
+        if(firstname.equals("")){
+            JOptionPane.showMessageDialog(view, "Enter a valid first name.");
+            flag = 1;
+        }
+        if(lastname.equals("")){
+            JOptionPane.showMessageDialog(view, "Enter a valid last name.");
+            flag = 1;
+        }
+        if(address.equals("")){
+            JOptionPane.showMessageDialog(view, "Enter a valid address.");
+            flag = 1;
+        }
+        if(!BankJudge.getInstance().check_integer(ssn) || !BankJudge.getInstance().check_ssn(ssn)){
+            JOptionPane.showMessageDialog(view, "Please enter a valid social security number");
+            flag = 1;
+        }
+        if(email.equals("") || !BankJudge.getInstance().check_emailAddress(email)){
+            JOptionPane.showMessageDialog(view, "Please enter a valid email address");
+            flag = 1;
+        }
+        if(flag == 0){
+            view.getjPanel2().setVisible(true);
+        }
+    }
+
     public void openAccount(Dictionary bean){
+        validateSecondForm(bean);
         if(bankJudge.canCreateSecurityAccount(uid)) {
             String username = bean.get("username").toString();
             String password = bean.get("password").toString();
@@ -63,6 +95,21 @@ public class SecurityApplicationController {
             JOptionPane.showMessageDialog(view, "A new security account has been opened for user with ssn "+uid);
         }
         JOptionPane.showMessageDialog(view, "You do not have sufficient balance to open a security account.\nMinimum required balance is 5000 dollars");;
+    }
+
+    private void validateSecondForm(Dictionary bean) {
+        String username = bean.get("username").toString();
+        String password = bean.get("password").toString();
+        String amount = bean.get("amount").toString();
+        if(username.equals("")){
+            JOptionPane.showMessageDialog(view, "Please enter a valid username");
+        }
+        if(!BankJudge.getInstance().checkPassword(password)){
+            JOptionPane.showMessageDialog(view, "Please enter a valid password. \nPassword must have:\n-at least 8 characters and at most 20 characters\n-at least one digit\n-at least one upper case alphabet.\n -at least one lower case alphabet.\n-at least one special character which includes !@#$%&*()-+=^.\n-should not contain any white space.");
+        }
+        if(!BankJudge.getInstance().check_integer(amount)){
+            JOptionPane.showMessageDialog(view, "Please enter a valid amount");
+        }
     }
 
 }
