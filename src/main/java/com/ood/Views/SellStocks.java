@@ -13,7 +13,7 @@ public class SellStocks extends javax.swing.JFrame {
     public SellStocks() {
         viewContainer=ViewContainer.getInstance();
         initComponents();
-        initComponents();
+        //initComponents();
     }
 
     /**
@@ -37,16 +37,11 @@ public class SellStocks extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jButton7 = new javax.swing.JButton();
 
-        jButton5.setBackground(new java.awt.Color(238, 86, 34));
+        /*jButton5.setBackground(new java.awt.Color(238, 86, 34));
         jButton5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(224, 240, 234));
+        jButton5.setForeground(new java.awt.Color(2, 240, 234));
         jButton5.setText("Sell Stocks");
-        jButton5.setBorderPainted(false);
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
+        jButton5.setBorderPainted(false);*/
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,8 +80,8 @@ public class SellStocks extends javax.swing.JFrame {
 
         jButton6.setBackground(new java.awt.Color(238, 86, 34));
         jButton6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(224, 240, 234));
-        jButton6.setText("Sell Stocks");
+        jButton6.setForeground(new java.awt.Color(0,0,0));
+        jButton6.setText("Sell");
         jButton6.setBorderPainted(false);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +106,7 @@ public class SellStocks extends javax.swing.JFrame {
 
         jButton7.setBackground(new java.awt.Color(238, 86, 34));
         jButton7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(224, 240, 234));
+        jButton7.setForeground(new java.awt.Color(0,0,0));
         jButton7.setText("Dashboard");
         jButton7.setBorderPainted(false);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -157,10 +152,10 @@ public class SellStocks extends javax.swing.JFrame {
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(85, 85, 85)
                                 .addGroup(BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel2)
                                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(162, Short.MAX_VALUE))
         );
 
@@ -182,11 +177,6 @@ public class SellStocks extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        //hidden button
-        //couldn't find it
-    }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
