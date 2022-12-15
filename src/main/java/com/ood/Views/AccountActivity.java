@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * @author revathivipinachandran
+ *  Account Activity page contains a briefing of the activity summary of the specific account the user has chosen from the customer dashboard which includes the transaction history, remaining balance, etc.
  */
 public class AccountActivity extends javax.swing.JFrame {
 
@@ -77,7 +77,7 @@ public class AccountActivity extends javax.swing.JFrame {
 
         jButton5.setBackground(new java.awt.Color(233, 204, 204));
         jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton5.setText("Withdraw");
+        jButton5.setText("Withdraw/Deposit");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -232,7 +232,7 @@ public class AccountActivity extends javax.swing.JFrame {
                         {null, null, null, null, null, null, null, null}
                 },
                 new String [] {
-                        "Date", "Time", "Description", "Type", "Amount", "From Account", "To Account", "Title 8"
+                        "Date", "Time", "Description", "Type", "Amount", "From Account", "To Account", "Available Balance"
                 }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -299,7 +299,7 @@ public class AccountActivity extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {

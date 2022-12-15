@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Validation of Bank
+ * Validation of Bank, contains validation mathods that let the user know if they have entered the right input
  */
 public class BankJudge {
 
