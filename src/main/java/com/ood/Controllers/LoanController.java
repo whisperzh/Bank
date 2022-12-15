@@ -21,7 +21,7 @@ import java.util.Dictionary;
 import java.util.Map;
 
 
-public class LoanController extends Component {
+public class LoanController {
 
     private BankJudge bankJudge;
 

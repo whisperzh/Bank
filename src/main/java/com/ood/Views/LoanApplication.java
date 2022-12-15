@@ -26,8 +26,6 @@ public class LoanApplication extends javax.swing.JFrame {
      * Creates new form LoanApplication
      */
     public LoanApplication() {
-        user_controller_manager = UserControllerManager.getInstance();
-//        controller = user_controller_manager.getLoanController();
         viewContainer=ViewContainer.getInstance();
         initComponents();
         jPanel2.setVisible(false);
