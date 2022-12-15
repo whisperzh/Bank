@@ -72,4 +72,23 @@ public abstract class AbsAccount implements IAccount{
     public TransactionController getTransactionController() {
         return transactionController;
     }
+
+    @Override
+    public void updateDeposits() {
+        deposits=new Deposits();
+        List<BalanceBean> balanceBeans=db.getBalanceBean(bean.getAid());
+        for(BalanceBean b:balanceBeans)
+        {
+            if(b.getCurrencyEnum().equals(CurrencyEnum.USD))
+            {
+                deposits.setUSDAmount(b.getAmount());
+            }else if(b.getCurrencyEnum().equals(CurrencyEnum.EUR))
+            {
+                deposits.setEURAmount(b.getAmount());
+            }else if(b.getCurrencyEnum().equals(CurrencyEnum.JPY))
+            {
+                deposits.setJPYAmount(b.getAmount());
+            }
+        }
+    }
 }

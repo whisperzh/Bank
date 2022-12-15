@@ -34,7 +34,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        withdrawButton = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         TitlePanel = new javax.swing.JPanel();
@@ -81,12 +81,12 @@ public class AccountWithdraw extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setBackground(new java.awt.Color(205, 164, 164));
-        jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton5.setText("Withdraw");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        withdrawButton.setBackground(new java.awt.Color(205, 164, 164));
+        withdrawButton.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        withdrawButton.setText("Withdraw");
+        withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                withdrawActionPerformed(evt);
             }
         });
 
@@ -117,7 +117,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                        .addComponent(withdrawButton, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                         .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
                         .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
         );
@@ -131,7 +131,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(withdrawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -342,11 +342,10 @@ public class AccountWithdraw extends javax.swing.JFrame {
 
     }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {
         System.out.println("5");
         // TODO add your handling code here:
-//        ViewContainer.getInstance().getPage("AccountWithdraw").setVisible(true);
-//        this.setVisible(false);
+
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,6 +366,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("1");
+        accountController.withdrawMoney(Double.valueOf(jTextField1.getText()));
     }
 
     public void setBalance(double amount) {
@@ -415,7 +415,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton withdrawButton;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;

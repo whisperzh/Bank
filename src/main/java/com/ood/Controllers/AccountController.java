@@ -11,6 +11,7 @@ import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
 import com.ood.Views.*;
 
+import javax.swing.*;
 import java.util.List;
 
 public class AccountController {
@@ -55,9 +56,13 @@ public class AccountController {
     public void withdrawMoney(double amount){
         if(BankJudge.getInstance().canWithdraw(controlledAccount,amount))
         {
-            dbManager.updateBalance(controlledAccount.getBean().getAid(),amount+ Constants.WITHDRAW_FEE);
+            System.out.println("withdraw");
+            dbManager.updateBalance(controlledAccount.getBean().getAid(),-amount - Constants.WITHDRAW_FEE);
+            controlledAccount.updateDeposits();
+            updateView();
         }else
         {
+            JOptionPane.showMessageDialog(withdrawTab,"You don't got enough money");
             //TODO alert user not enough deposites.
         }
     }

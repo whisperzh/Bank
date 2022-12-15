@@ -9,4 +9,6 @@ public interface IAccount {
     void setBean(AccountBean bean);
     double getRegularBalance();
     void addMoney(double amount);
+
+    void updateDeposits();
 }

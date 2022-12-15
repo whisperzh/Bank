@@ -480,10 +480,9 @@ public class DatabaseManager {
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
-        if(isMoneyAdded == 1){
-            newAmount = oldAmount + changedAmount;
-        }
-        else newAmount = oldAmount - changedAmount;
+
+        newAmount = oldAmount + changedAmount;
+
         String sql="UPDATE Balance "+
                 "SET amount ="+
                 newAmount+
