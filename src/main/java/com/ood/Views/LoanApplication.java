@@ -3,17 +3,33 @@ package com.ood.Views;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import com.ood.Controllers.LoanController;
+
+import javax.swing.*;
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
+
 /**
  *
  * @author revathivipinachandran
  */
 public class LoanApplication extends javax.swing.JFrame {
+    private LoanController controller;
+
+    private ViewContainer viewContainer;
 
     /**
      * Creates new form LoanApplication
      */
     public LoanApplication() {
+        viewContainer=ViewContainer.getInstance();
         initComponents();
+    }
+
+    public void setController(LoanController controller) {
+        this.controller = controller;
     }
 
     /**
@@ -301,7 +317,7 @@ public class LoanApplication extends javax.swing.JFrame {
         jLabel12.setText("Amount of Loan:");
 
         jLabel13.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel13.setText("Upload Documents:");
+        jLabel13.setText("Upload Collateral Documents:");
 
         jButton2.setText("Apply");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +331,7 @@ public class LoanApplication extends javax.swing.JFrame {
         jLabel9.setText("(Max Amount: ");
 
         jLabel15.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel15.setText("Passowrd:");
+        jLabel15.setText("Password:");
 
         jButton3.setText("Select File");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -471,19 +487,73 @@ public class LoanApplication extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("4");
+        viewContainer.getPage("SavingsApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("8");
+        viewContainer.getPage("SecurityApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("LoginPage").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String firstName = jTextField1.getText();
+        String lastName = jTextField5.getText();
+        String emailAddress = jTextField2.getText();
+        String homeAddress = jTextField3.getText();
+        String socialSecurityNumber = jTextField4.getText();
+        boolean pass = true;
+        if(firstName.equals("")){
+            pass=false;
+        }
+        if(lastName.equals("")){
+            pass = false;
+        }
+        if(emailAddress.equals("") || emailAddress.toString().contains("@")){
+
+            pass = false;
+        }
+        if(homeAddress.equals("")){
+            pass = false;}
+        if(socialSecurityNumber.equals("") || socialSecurityNumber.toString().length()<9|| !is_integer(socialSecurityNumber.toString())){
+            pass = false;
+        }
+        if(!pass){
+            JOptionPane.showMessageDialog(this, "Please enter valid input");
+        }
+        /*Map<String,String> loanCredentials = new HashMap<>();
+        loanCredentials.put("firstName", firstName);
+        loanCredentials.put("lastName", lastName);
+        loanCredentials.put("emailAddress",emailAddress);
+        loanCredentials.put("homeAddress", homeAddress);
+        loanCredentials.put("socialSecurityNumber", socialSecurityNumber);
+        controller.validateCredentials(firstName, lastName, emailAddress, homeAddress,);*/
+
     }
+    //private void addLoanApplication
+    private boolean validateSSN(int SSN){
+        return true;
+    }
+    private boolean is_integer(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -491,35 +561,13 @@ public class LoanApplication extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //no task to do cause same page
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoanApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoanApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoanApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoanApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

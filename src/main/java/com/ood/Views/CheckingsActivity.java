@@ -1,7 +1,9 @@
 package com.ood.Views;
 
 public class CheckingsActivity extends javax.swing.JFrame{
+    private ViewContainer viewContainer;
     public CheckingsActivity(){
+        viewContainer=ViewContainer.getInstance();
         initComponents();
     }
     private void initComponents() {
@@ -285,22 +287,31 @@ public class CheckingsActivity extends javax.swing.JFrame{
     }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //do nothing stay in the same page
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("CheckingsTransfer").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("CheckingsWithdraw").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("CheckingsDetails").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("CustomerDashboard").setVisible(true);
+        this.setVisible(false);
     }
 
     /**

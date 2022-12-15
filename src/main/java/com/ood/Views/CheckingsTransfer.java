@@ -3,8 +3,10 @@ package com.ood.Views;
 import javax.swing.*;
 
 public class CheckingsTransfer extends javax.swing.JFrame{
+    private ViewContainer viewContainer;
     public CheckingsTransfer(){
         initComponents();
+        viewContainer=ViewContainer.getInstance();
         Double account_balance = get_account_balance();
         jLabel6.setText(account_balance.toString());
 
@@ -464,30 +466,26 @@ public class CheckingsTransfer extends javax.swing.JFrame{
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         dispose(); // this will close current login box window
-
-        AccountActivity page=new AccountActivity();
-        page.setVisible(true);
+        viewContainer.getPage("CheckingsActivity").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         dispose(); // this will close current login box window
-
-        AccountWithdraw page=new AccountWithdraw();
-        page.setVisible(true);
+        viewContainer.getPage("CheckingsWithdraw").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         dispose(); // this will close current login box window
-
-        AccountDetails page=new AccountDetails();
-        page.setVisible(true);
+        viewContainer.getPage("CheckingsDetails").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         dispose(); // this will close current login box window
-
-        CustomerDashboard page=new CustomerDashboard();
-        page.setVisible(true);
+        viewContainer.getPage("CustomerDashboard").setVisible(true);
+        this.setVisible(false);
     }
 
     private void textField1ActionPerformed(java.awt.event.ActionEvent evt) {

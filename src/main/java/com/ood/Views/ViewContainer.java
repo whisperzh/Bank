@@ -40,14 +40,26 @@ public class ViewContainer {
             {
                 jFrame=new AccountWithdraw();
 
-            }else if(name.contains("CustomerDashboard"))
-            {
-                jFrame=new CustomerDashboard();
+            }else if(name.contains("CustomerDashboard")) {
+                jFrame = new CustomerDashboard();
+            } else if (name.contains("CheckingsActivity")) {
+                jFrame = new CheckingsActivity();
+            }else if (name.contains("CheckingsDetails")) {
+                jFrame = new CheckingsDetails();
+            }else if (name.contains("CheckingsTransfer")) {
+                jFrame = new CheckingsTransfer();
+            }else if (name.contains("CheckingsWithdraw")) {
+                jFrame = new CheckingsWithdraw();
 
-            }else if(name.contains("LoanApplication"))
+
+
+        }else if(name.contains("LoanApplication"))
             {
                 jFrame=new LoanApplication();
-            }else if(name.contains("LoginPage"))
+            }else if(name.contains("SavingsApplication")){
+                jFrame=new SavingsApplication();
+            }
+            else if(name.contains("LoginPage"))
             {
                 jFrame=new LoginPage();
             }
