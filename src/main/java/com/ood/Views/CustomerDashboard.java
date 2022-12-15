@@ -349,6 +349,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return;
         }
         controller.setControlledAccount((AbsAccount) saving);
+        controller.updateView();
         ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
 

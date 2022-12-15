@@ -10,4 +10,6 @@ public interface ICurrency {
     void convertTo(float amount, CurrencyEnum type);
     double getAmount();
     void addAmount(double amount);
+
+    void setAmount(double amount);
 }

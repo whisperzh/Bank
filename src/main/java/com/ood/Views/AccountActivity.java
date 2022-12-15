@@ -399,5 +399,9 @@ public class AccountActivity extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+
+    public void setBalance(double amount) {
+        jLabel2.setText(String.format("%.2f",amount));
+    }
     // End of variables declaration
 }

@@ -4,7 +4,7 @@ import com.ood.Enums.CurrencyEnum;
 import com.ood.Utils.Constants;
 
 public class USD_Currency extends AbsCurrency{
-    public USD_Currency(float amount){
+    public USD_Currency(double amount){
         this.amount = amount;
 
     }
