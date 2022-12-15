@@ -411,7 +411,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("LoginPage").setVisible(true);
+        viewContainer.getPage("LoanApplication").setVisible(true);
         this.setVisible(false);
     }
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
