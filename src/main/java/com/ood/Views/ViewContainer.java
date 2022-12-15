@@ -5,6 +5,12 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This is a class which allows us to create instances of all the web pages previously called.
+ * This allows the time taken to load the page reduce drastically.
+ * We only return the instances when the pages are called and the data is filled in the template accordingly.
+ * The page's visibility is then set to true, until then the previously opened pages can't be seen by the user.
+ */
 public class ViewContainer {
     private Map<String, JFrame> map;
     private static ViewContainer viewContainer;

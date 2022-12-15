@@ -7,8 +7,9 @@ package com.ood.Views;
  */
 
 /**
- *
- * @author newfashionedoats
+ * This class allows us to create a template for displaying the stock information that bank allows the user to invest in.
+ * This page contains read only information.
+ * The customer can navigate through the stocks he/she owns page and dashboard.
  */
 public class StockInfo extends javax.swing.JFrame {
 

@@ -1,5 +1,10 @@
 package com.ood.Views;
 
+/**
+ * This class allows us to create a page to display Customer to withdraw the cash in dollars.
+ * The amount entered when exceeded shows the user to input amount less than or equal to his balance amount.
+ * This page also allows the user to navigate to other pages of Checkings Account and Customer Dashboard.
+ */
 public class CheckingsWithdraw extends javax.swing.JFrame {
     private ViewContainer viewContainer;
     public CheckingsWithdraw() {

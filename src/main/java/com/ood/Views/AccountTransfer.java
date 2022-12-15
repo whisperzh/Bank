@@ -9,8 +9,9 @@ import com.ood.Controllers.AccountController;
 import javax.swing.*;
 
 /**
- *
- * @author revathivipinachandran
+ * This class helps us create a template for a Transfer details page for the Savings Account.
+ * It helps the customer transfer money through wire transfer in 3 different currencies.
+ * This page allows user to navigate to other Savings Page including Activity, Account Details.
  */
 public class AccountTransfer extends javax.swing.JFrame {
     private AccountController accountController;

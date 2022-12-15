@@ -8,7 +8,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-
+/**
+ * This is a class which extends the JPanel to read the images in the project to create a part of the Bank Page.
+ */
 
 public class ImgPanel extends JPanel {
 

@@ -1,19 +1,17 @@
-package com.ood.Views;/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+package com.ood.Views;
+
 
 import javax.swing.*;
 
-/**
- *
- * @author revathivipinachandran
- */
-public class SavingsApplication extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SavingsApplication
-     */
+/**
+ * This class allows us to create a page for the customer to open a new Savings account.
+ * This page takes input from the user to open an account and verifies if the user is an old user with the bank.
+ * If yes, it would prompt the user to login
+ * This page lets the customer navigate through different pages.
+ */
+
+public class SavingsApplication extends javax.swing.JFrame {
     private ViewContainer viewContainer;
     public SavingsApplication() {
         viewContainer=ViewContainer.getInstance();

@@ -6,8 +6,10 @@ package com.ood.Views;
  */
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for the page which allows the manager to see a single customer's details.
+ * Three options presented on the page - Savings, Security and Checkings.
+ * When chosen he can view the specific customer details who have an account with us based on the account type.
+ * This page allows the manager to navigate back to viewing all customers.
  */
 public class ManagerViewOfCustomerAccounts extends javax.swing.JFrame {
 

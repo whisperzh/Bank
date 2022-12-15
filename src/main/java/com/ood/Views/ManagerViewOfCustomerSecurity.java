@@ -6,8 +6,9 @@ package com.ood.Views;
  */
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for the page which a manager views specific customer's security account details.
+ * This page prints read only information about the specific customer security account.
+ * The manager can also navigate through other pages where he can see all the other customers.
  */
 public class ManagerViewOfCustomerSecurity extends javax.swing.JFrame {
 

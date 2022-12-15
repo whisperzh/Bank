@@ -9,8 +9,10 @@ import javax.swing.*;
 
 
 /**
- *
- * @author revathivipinachandran
+ * This is a class which allows us to create a template for the Loan Application Bank Page.
+ * The customer can add his/her details including SSN to apply for a loan
+ * We are checking if the details mentioned are present in our database prompting the user to login before he/she proceeds with the application
+ * The customer can also upload documents as a collateral. This page allows user to navigate to other pages.
  */
 public class LoanApplication extends javax.swing.JFrame {
     private LoanController controller;

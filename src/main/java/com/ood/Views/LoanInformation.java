@@ -5,8 +5,10 @@
 package com.ood.Views;
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for Loan Information bank page.
+ * This page is interactive with user.
+ * The user can input data to check by when he can pay off the loan based on the interest, type of collateral.
+ * This page allows user to navigate through other bank pages.
  */
 public class LoanInformation extends javax.swing.JFrame {
 

@@ -1,5 +1,12 @@
 package com.ood.Views;
 
+/**
+ * This is a class to create a savings activity page for the logged in customer.
+ * The customer can view his account balance in dollars.
+ * The Transaction history is also being displayed.
+ * The customer can navigate to Checkings Withdraw and Checkings Transfer page.
+ * He/She can also go back to the Customer Dashboard.
+ */
 public class CheckingsActivity extends javax.swing.JFrame{
     private ViewContainer viewContainer;
     public CheckingsActivity(){

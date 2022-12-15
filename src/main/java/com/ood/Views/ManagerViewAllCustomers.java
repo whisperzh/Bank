@@ -1,6 +1,10 @@
 package com.ood.Views;
 
-
+/**
+ * This class allows us to create template for create a bank page for the manager to see all the Bank customers.
+ * This page displays all the bank customer details.
+ * The manager can navigate to other page where he can see all the recent bank transaction.
+ */
 public class ManagerViewAllCustomers extends javax.swing.JFrame {
 
 

@@ -1,6 +1,10 @@
 package com.ood.Views;
 
-
+/**
+ * This class gives us template to fetch details of the active loan of the customer with the bank
+ * The information is read-only.
+ * The user can only go back to the dashboard.
+ */
 public class LoanDetails extends javax.swing.JFrame {
 
 

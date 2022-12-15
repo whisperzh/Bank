@@ -2,6 +2,9 @@ package com.ood.Views;
 
 import javax.swing.*;
 
+/**
+ *  This class allows us to create a new form BankJFrame
+ */
 public class ParentFrame extends javax.swing.JFrame {
 
     JPanel BackgroundPanel;

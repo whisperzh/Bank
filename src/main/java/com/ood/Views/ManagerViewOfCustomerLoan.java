@@ -6,8 +6,9 @@ package com.ood.Views;
  */
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for creating a page for the manager to see a specific customer's loan details.
+ * This page prints read only information about the current loan of the customer.
+ * The manager can choose to navigate to view all customers.
  */
 public class ManagerViewOfCustomerLoan extends javax.swing.JFrame {
 

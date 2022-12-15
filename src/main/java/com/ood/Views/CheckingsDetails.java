@@ -1,5 +1,10 @@
 package com.ood.Views;
 
+/**
+ * This class allows us to create a Details page for Checkings Account.
+ * This page displays the current account type, account balance, account number and routing number.
+ * This page also allows us to navigate to other pages of the Checkings Account and the user Dashboard.
+ */
 public class CheckingsDetails extends javax.swing.JFrame{
     private ViewContainer viewContainer;
     public CheckingsDetails(){

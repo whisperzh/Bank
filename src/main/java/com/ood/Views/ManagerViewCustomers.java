@@ -5,8 +5,8 @@
 package com.ood.Views;
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for a page to allow the manager to see few of his customers who have a loan with the bank
+ * The manager can navigate through pages where he can see the transaction history of the bank.
  */
 public class ManagerViewCustomers extends javax.swing.JFrame {
 

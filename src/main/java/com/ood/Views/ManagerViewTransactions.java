@@ -7,8 +7,9 @@ package com.ood.Views;
 import javax.swing.text.View;
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create template for create a bank page for the manager to see all the Bank transactions.
+ * This page displays all the transaction details including the time, the type of transaction and customer details.
+ * The manager can navigate to other page where he can see all the bank customers.
  */
 public class ManagerViewTransactions extends javax.swing.JFrame {
 
