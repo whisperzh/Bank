@@ -2,7 +2,6 @@ package com.ood.Controllers;
 
 import com.ood.Enums.AccountEnum;
 import com.ood.Model.Accounts.AccountBean;
-import com.ood.Model.Users.UserBean;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
@@ -11,6 +10,10 @@ import com.ood.Views.ViewContainer;
 
 import javax.swing.*;
 import java.util.Dictionary;
+
+/**
+ * Controller Class for handling security accounts, connection between user accounts in front end, validation using bankJudge and data in the backend
+ */
 
 public class SecurityApplicationController {
     private SecurityApplication view;
@@ -36,6 +39,7 @@ public class SecurityApplicationController {
         view.setController(this);
     }
 
+    //handle validation of the first form passed from Views - Security Application
     public void validateFirstForm(Dictionary userDetails){
 
         String email = userDetails.get("email").toString();
@@ -54,6 +58,8 @@ public class SecurityApplicationController {
         }
     }
 
+    //handle validation for the second form in the Security Application using BankJudge and display appropriate message
+    //if all validations pass, create a security account for the user
     public void openAccount(Dictionary bean){
         validateSecondForm(bean);
         if(bankJudge.canCreateSecurityAccount(uid)) {
@@ -83,6 +89,7 @@ public class SecurityApplicationController {
         JOptionPane.showMessageDialog(view, "You do not have sufficient balance to open a security account.\nMinimum required balance is 5000 dollars");;
     }
 
+    //handle primary validation for the second form in the Security Application
     private void validateSecondForm(Dictionary bean) {
         String username = bean.get("username").toString();
         String password = bean.get("password").toString();

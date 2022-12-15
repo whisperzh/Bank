@@ -8,6 +8,9 @@ import com.ood.Validation.BankJudge;
 import com.ood.Views.LoginPage;
 import com.ood.Views.ViewContainer;
 
+/**
+ * Controller Class for handling login functionality of user accounts in front end, validation using bankJudge and data in the backend
+ */
 public class LoginController {
     private LoginPage view;
     private DatabaseManager dbManager;
@@ -40,6 +43,7 @@ public class LoginController {
 
               //activate backend service.
               System.out.println("yes");
+              UserControllerManager.getInstance().setLoggedin(true);
               return true;
           }
           else{

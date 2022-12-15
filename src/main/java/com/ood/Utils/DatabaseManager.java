@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Query collection of DB
+ * Query collection for Database. All the queries- to insert, select and update data for front end as well as backend functionality is updated in this file.
  */
 public class DatabaseManager {
     private Connection connection;
@@ -249,8 +249,8 @@ public class DatabaseManager {
                 bean.setAmount(rs.getFloat("amount"));
                 bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
                 bean.setTimeStamp(rs.getString("datetime"));
-                bean.setFrom_uid(rs.getString("from_uid"));
-                bean.setTo_uid(rs.getString("to_uid"));
+                bean.setFrom_aid(rs.getString("from_uid"));
+                bean.setTo_aid(rs.getString("to_uid"));
                 bean.setFromName(rs.getString("from_name"));
                 bean.setToName(rs.getString("to_name"));
 
@@ -262,8 +262,8 @@ public class DatabaseManager {
     }
     public void insertTransactionBean(TransactionBean bean){
         String tid=strWrap(bean.getTid());
-        String from_uid=strWrap(bean.getFrom_uid());
-        String to_uid=strWrap(bean.getTo_uid());
+        String from_uid=strWrap(bean.getFrom_aid());
+        String to_uid=strWrap(bean.getTo_aid());
         String from_username=strWrap(bean.getFromName());
         String to_username=strWrap(bean.getToName());
         String amount= Double.toString(bean.getAmount());
@@ -480,10 +480,9 @@ public class DatabaseManager {
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
-        if(isMoneyAdded == 1){
-            newAmount = oldAmount + changedAmount;
-        }
-        else newAmount = oldAmount - changedAmount;
+
+        newAmount = oldAmount + changedAmount;
+
         String sql="UPDATE Balance "+
                 "SET amount ="+
                 newAmount+
@@ -694,7 +693,7 @@ public class DatabaseManager {
     }
     public List<UserBean> getAllUserByLoanDescend(){
         List<UserBean> ans=new ArrayList<>();
-        //checked - working. hoever remember that it is mandatory for order by to work on sum - that the sum is also selected in the select part of query
+        //checked - working. however remember that it is mandatory for order by to work on sum - that the sum is also selected in the select part of query
         String sql = "SELECT SUM(Loan.Amount), User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
         try {
             rs = statement.executeQuery(sql);
@@ -746,8 +745,8 @@ public class DatabaseManager {
                 transactionBean.setTid(rs.getString("tid"));
                 transactionBean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
                 transactionBean.setTimeStamp(rs.getString("datetime"));
-                transactionBean.setFrom_uid(rs.getString("from_aid"));
-                transactionBean.setTo_uid(rs.getString("to_aid"));
+                transactionBean.setFrom_aid(rs.getString("from_aid"));
+                transactionBean.setTo_aid(rs.getString("to_aid"));
                 transactionBean.setFromName(rs.getString("from_name"));
                 transactionBean.setFromName(rs.getString("to_name"));
                 ans.add(transactionBean);

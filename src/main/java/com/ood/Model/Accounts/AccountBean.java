@@ -2,6 +2,9 @@ package com.ood.Model.Accounts;
 
 import com.ood.Enums.AccountEnum;
 
+/**
+ * Concrete class that contains all the attributes and methods required to maintain an Account in the Bank
+ */
 public class AccountBean {
     private String email;
     private AccountEnum accountEnum;

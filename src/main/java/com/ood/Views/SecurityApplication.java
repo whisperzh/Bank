@@ -6,6 +6,7 @@ package com.ood.Views;
 import javax.swing.*;
 
 import com.ood.Controllers.SecurityApplicationController;
+import com.ood.Controllers.UserControllerManager;
 import com.ood.Validation.BankJudge;
 
 import java.util.Dictionary;
@@ -44,7 +45,7 @@ public class SecurityApplication extends javax.swing.JFrame {
         SidePanel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
-        //jButton5 = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -92,14 +93,16 @@ public class SecurityApplication extends javax.swing.JFrame {
         jLabel19.setForeground(new java.awt.Color(223, 223, 246));
         jLabel19.setText("Would you like to:");
 
-        /*jButton5.setBackground(new java.awt.Color(233, 204, 204));
-        jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton5.setText("Open Savings & Checkings Account");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setBackground(new java.awt.Color(233, 204, 204));
+        backButton.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+//        jButton5.setText("Back to Home Page");
+        backButton.setText("Back");
+
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
-        });*/
+        });
 
         jButton7.setBackground(new java.awt.Color(205, 164, 164));
         jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
@@ -133,7 +136,7 @@ public class SecurityApplication extends javax.swing.JFrame {
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
                 jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        //.addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(backButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
                         .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -147,7 +150,7 @@ public class SecurityApplication extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                //.addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -478,6 +481,10 @@ public class SecurityApplication extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jButton6.setVisible(false);
+        jButton7.setVisible(false);
+        jButton8.setVisible(false);
+
         pack();
     }// </editor-fold>
 
@@ -509,12 +516,16 @@ public class SecurityApplication extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    /*private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("5");
-        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
-        this.setVisible(false);
-    }*/
+        if(!UserControllerManager.getInstance().isLoggedin()) {
+            ViewContainer.getInstance().getPage("HomePage").setVisible(true);
+            this.setVisible(false);
+        }else {
+            ViewContainer.getInstance().getPage("CustomerDashboard").setVisible(true);
+            this.setVisible(false);
+        }
+    }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -522,14 +533,13 @@ public class SecurityApplication extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("6");
-        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        ViewContainer.getInstance().getPage("LoginPage").setVisible(true);
         this.setVisible(false);
+
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("7");
         ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
         this.setVisible(false);
     }
@@ -644,7 +654,7 @@ public class SecurityApplication extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
-    //private javax.swing.JButton jButton5;
+    private javax.swing.JButton backButton;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

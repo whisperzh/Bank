@@ -4,7 +4,6 @@ import com.ood.Model.Accounts.AbsAccount;
 import com.ood.Model.Accounts.AccountBean;
 import com.ood.Model.Stocks.StockBean;
 import com.ood.Model.Stocks.UserStock;
-import com.ood.Model.Transactions.Transaction;
 import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Utils.Constants;
 import com.ood.Utils.DatabaseManager;
@@ -12,14 +11,16 @@ import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
 import com.ood.Views.*;
 
-import java.util.ArrayList;
+import javax.swing.*;
 import java.util.List;
-
+/**
+ * Controller Class for handling connection between user accounts in front end, validation using bankJudge and data in the backend
+ */
 public class AccountController {
     private AbsAccount controlledAccount;
     private AccountActivity activityTab;
     private AccountDetails detailTab;
-    private AccountTransfer TransferTab;
+    private AccountTransfer transferTab;
     private AccountWithdraw withdrawTab;
     private DatabaseManager dbManager;
     private ViewContainer viewContainer;
@@ -35,9 +36,9 @@ public class AccountController {
         detailTab.setVisible(false);
         detailTab.setAccountController(this);
 
-        TransferTab= (AccountTransfer) viewContainer.getPage("AccountTransfer");
-        TransferTab.setVisible(false);
-        TransferTab.setAccountController(this);
+        transferTab = (AccountTransfer) viewContainer.getPage("AccountTransfer");
+        transferTab.setVisible(false);
+        transferTab.setAccountController(this);
 
         withdrawTab= (AccountWithdraw) viewContainer.getPage("AccountWithdraw");
         withdrawTab.setVisible(false);
@@ -57,15 +58,21 @@ public class AccountController {
     public void withdrawMoney(double amount){
         if(BankJudge.getInstance().canWithdraw(controlledAccount,amount))
         {
-            dbManager.updateBalance(controlledAccount.getBean().getAid(),amount+ Constants.WITHDRAW_FEE);
+            System.out.println("withdraw");
+            dbManager.updateBalance(controlledAccount.getBean().getAid(),-amount - Constants.WITHDRAW_FEE);
+            controlledAccount.updateDeposits();
+            updateView();
         }else
         {
+            JOptionPane.showMessageDialog(withdrawTab,"You don't got enough money");
             //TODO alert user not enough deposites.
         }
     }
 
     public void addMoney(double amount){
-        dbManager.updateBalance(controlledAccount.getBean().getAid(),amount+ Constants.WITHDRAW_FEE);
+        dbManager.updateBalance(controlledAccount.getBean().getAid(),amount- Constants.WITHDRAW_FEE);
+        controlledAccount.updateDeposits();
+        updateView();
     }
 
     public void buyStock(float stockProportion,String sid){
@@ -106,16 +113,20 @@ public class AccountController {
     public void setControlledAccount(AbsAccount controlledAccount) {
         this.controlledAccount = controlledAccount;
     }
-
     public void updateView(){
         AccountBean bean=controlledAccount.getBean();
         String aid= bean.getAid();
         String email= bean.getEmail();
-        String accountType=controlledAccount.getBean().getAccountEnum().toString();
+        String accountType=bean.getAccountEnum().toString();
         List<TransactionBean> transactions=dbManager.getTransactionBeanByAid(aid);
-        activityTab.setBalance(controlledAccount.getBalance());
-    }
 
+        activityTab.setBalance(controlledAccount.getBalance());
+        detailTab.setBalance(controlledAccount.getBalance());
+        transferTab.setBalance(controlledAccount.getBalance());
+        withdrawTab.setBalance(controlledAccount.getBalance());
+
+        detailTab.updateByBean(bean);
+    }
     public void showPage(){
         activityTab.setVisible(true);
     }

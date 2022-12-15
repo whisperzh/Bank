@@ -319,7 +319,9 @@ public class LoginPage extends javax.swing.JFrame {
                                 .addComponent(BackgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
-
+        jButton4.setVisible(false);
+        jButton7.setVisible(false);
+        jButton8.setVisible(false);
         pack();
     }// </editor-fold>
 
@@ -337,28 +339,30 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("4");
+        //System.out.println("4");
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("8");
+        //System.out.println("8");
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("5");
+        //System.out.println("5");
+        viewContainer.getPage("HomePage").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("7");
+        //System.out.println("7");
 
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("1");
+        //System.out.println("1");
         //login
         if(controller.login(jTextField2.getText(),jTextField1.getText()))
         {
