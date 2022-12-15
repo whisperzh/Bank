@@ -6,10 +6,7 @@ package com.ood.Views;/*
 import com.ood.Controllers.LoanController;
 
 import javax.swing.*;
-import java.util.Dictionary;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Map;
+
 
 /**
  *
@@ -487,14 +484,14 @@ public class LoanApplication extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("4");
+        //System.out.println("4");
         viewContainer.getPage("SavingsApplication").setVisible(true);
         this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("8");
+        //System.out.println("8");
         viewContainer.getPage("SecurityApplication").setVisible(true);
         this.setVisible(false);
     }
