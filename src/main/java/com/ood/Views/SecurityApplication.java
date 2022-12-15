@@ -6,10 +6,8 @@ package com.ood.Views;
 import javax.swing.*;
 
 import com.ood.Controllers.SecurityApplicationController;
-import com.ood.Utils.DatabaseManager;
 import com.ood.Validation.BankJudge;
 
-import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
@@ -18,7 +16,6 @@ import java.util.Hashtable;
  * @author revathivipinachandran
  */
 public class SecurityApplication extends javax.swing.JFrame {
-//    private BankJudge bankJudge;
 
     private SecurityApplicationController controller;
 
@@ -32,7 +29,6 @@ public class SecurityApplication extends javax.swing.JFrame {
     public SecurityApplication() {
         initComponents();
         jPanel2.setVisible(false);
-//        bankJudge=BankJudge.getInstance();
     }
 
     /**
@@ -545,35 +541,13 @@ public class SecurityApplication extends javax.swing.JFrame {
         String email_address = jTextField2.getText();
         String home_address = jTextField3.getText();
         String applicant_ssn = jTextField4.getText();
-
-        int flag = 0;
-
-        if(applicant_first_name.equals("")){
-            JOptionPane.showMessageDialog(this, "Please enter a valid first name");
-            flag = 1;
-        }
-        if(applicant_last_name.equals("")){
-            JOptionPane.showMessageDialog(this, "Please enter a valid last name");
-            flag = 1;
-        }
-        if(email_address.equals("") || !BankJudge.getInstance().check_emailAddress(email_address)){
-            JOptionPane.showMessageDialog(this, "Please enter a valid email address");
-            flag = 1;
-        }
-        if(home_address.equals("")){
-            JOptionPane.showMessageDialog(this, "Please enter a valid home address");
-            flag = 1;
-        }
-        if(!BankJudge.getInstance().check_integer(applicant_ssn) || !BankJudge.getInstance().check_ssn(applicant_ssn)){
-            JOptionPane.showMessageDialog(this, "Please enter a valid social security number");
-            flag = 1;
-        }
-        if(flag == 0){
-            jPanel2.setVisible(true);
-        }
-        else if(flag == 1){
-            JOptionPane.showMessageDialog(this, "Form Validation was not correct. Security account can only be created when form is validated successfully!");
-        }
+        Dictionary userDetails = new Hashtable();
+        userDetails.put("firstname", applicant_first_name);
+        userDetails.put("lastname", applicant_last_name);
+        userDetails.put("email", email_address);
+        userDetails.put("address", home_address);
+        userDetails.put("ssn", applicant_ssn);
+        controller.validateFirstForm(userDetails);
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -591,28 +565,6 @@ public class SecurityApplication extends javax.swing.JFrame {
         userDetails.put("password", password);
         userDetails.put("amount", amount);
         controller.openAccount(userDetails);
-//        int flag = 0;
-//
-//        if(username.equals("")){
-//            JOptionPane.showMessageDialog(this, "Please enter a valid username");
-//            flag = 1;
-//        }
-//        if(!BankJudge.getInstance().checkPassword(password)){
-//            JOptionPane.showMessageDialog(this, "Please enter a valid password. \nPassword must have:\n-at least 8 characters and at most 20 characters\n-at least one digit\n-at least one upper case alphabet.\n -at least one lower case alphabet.\n-at least one special character which includes !@#$%&*()-+=^.\n-should not contain any white space.");
-//            flag = 1;
-//        }
-//        if(!BankJudge.getInstance().check_integer(amount)){
-//            JOptionPane.showMessageDialog(this, "Please enter a valid amount");
-//            flag = 1;
-//        }
-//        if(flag == 0){
-//            jPanel2.setVisible(true);
-//            //if security amount creation is allowed and validation is correct then
-//            //anwesha create entry for security account for user in database
-//        }
-//        if(flag == 1){
-//            JOptionPane.showMessageDialog(this, "Form Validation was not correct. Security account could not be created!");
-//        }
     }
 
     /**
@@ -676,6 +628,15 @@ public class SecurityApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
+
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
