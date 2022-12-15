@@ -1,9 +1,11 @@
 package com.ood.Views;
 
 import com.ood.Controllers.AccountController;
+import com.ood.Model.Transactions.TransactionBean;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  *  Account Activity page contains a briefing of the activity summary of the specific account the user has chosen from the customer dashboard which includes the transaction history, remaining balance, etc.
@@ -224,15 +226,16 @@ public class AccountActivity extends javax.swing.JFrame {
         jLabel5.setText("Transaction History");
 
         jTable1.setBackground(new java.awt.Color(234, 234, 234));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null}
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null}
                 },
                 new String [] {
-                        "Date", "Time", "Description", "Type", "Amount", "From Account", "To Account", "Available Balance"
+                        "Time Stamp", "Currency", "Amount", "From Account", "To Account"
                 }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -299,6 +302,32 @@ public class AccountActivity extends javax.swing.JFrame {
         );
 
         pack();
+    }
+
+    private void WriteToTable(ArrayList<TransactionBean> transactions){
+
+        for(int i=0; i<transactions.size(); i++){
+
+            TransactionBean bean = transactions.get(i);
+            String timestamp = bean.getTimeStamp().toString();
+            String currency = bean.getCurrencyEnum().toString();
+            String amount = bean.getAmount().toString();
+
+
+            javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                    new Object [][] {
+                            {null, null, null, null, null},
+                            {null, null, null, null, null},
+                            {null, null, null, null, null},
+                            {null, null, null, null, null}
+                    },
+                    new String [] {
+                            "Time Stamp", "Currency", "Amount", "From Account", "To Account"
+                    }
+            );
+            jTable1.setModel(model);
+        }
+
     }
 
 
