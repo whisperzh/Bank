@@ -41,6 +41,6 @@ public class UserControllerManager {
     }
 
     public void showLogin() {
-
+        view.setVisible(true);
     }
 }

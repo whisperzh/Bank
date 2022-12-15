@@ -3,16 +3,26 @@ package com.ood.Views;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import com.ood.Controllers.UserControllerManager;
+
 /**
  *
  * @author revathivipinachandran
  */
 public class HomePage extends javax.swing.JFrame {
 
+    private ViewContainer viewContainer;
+    private UserControllerManager controllerManager;
+
+    public void setViewContainer(ViewContainer viewContainer) {
+        this.viewContainer = viewContainer;
+    }
+
     /**
      * Creates new form HomePage
      */
     public HomePage() {
+        viewContainer=ViewContainer.getInstance();
         initComponents();
     }
 
@@ -469,19 +479,35 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        viewContainer.getPage("SavingsApplication").setVisible(true);
+        this.setVisible(false);
+        //
         // TODO add your handling code here:
+        //left
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("SecurityApplication").setVisible(true);
+        this.setVisible(false);
+        //middle
+
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("LoanApplication").setVisible(true);
+        this.setVisible(false);
+        //right
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //login
+        System.out.println("5");
+        viewContainer.getPage("LoginPage").setVisible(true);
+        this.setVisible(false);
+
     }
 
     /**
