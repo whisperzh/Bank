@@ -20,6 +20,8 @@ public class TransactionController {
         bean.setTimeStamp(Utils.getDateTime());
         bean.setFrom_uid(from_aid);
         bean.setTo_uid(to_aid);
+        bean.setFromName(DatabaseManager.getInstance().getUsernameForAccount(from_aid));
+        bean.setToName(DatabaseManager.getInstance().getUsernameForAccount(to_aid));
         DatabaseManager.getInstance().insertTransactionBean(bean);
         return new Transaction(bean);
     }
@@ -33,6 +35,8 @@ public class TransactionController {
         bean.setTimeStamp(Utils.getDateTime());
         bean.setFrom_uid(from_aid);
         bean.setTo_uid(to_aid);
+        bean.setFromName(DatabaseManager.getInstance().getUsernameForAccount(from_aid));
+        bean.setToName(DatabaseManager.getInstance().getUsernameForAccount(to_aid));
         new Transaction(bean);
     }
 }

@@ -254,6 +254,8 @@ public class DatabaseManager {
         String tid=strWrap(bean.getTid());
         String from_uid=strWrap(bean.getFrom_uid());
         String to_uid=strWrap(bean.getTo_uid());
+        String from_username=strWrap(bean.getFromName());
+        String to_username=strWrap(bean.getToName());
         double amount= bean.getAmount();
         String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
         String timeStamp=strWrap(bean.getTimeStamp());
@@ -262,9 +264,11 @@ public class DatabaseManager {
                 " (tid," +
                 "from_uid," +
                 "to_uid," +
-                "amount" +
-                "currency"+
-                "datetime"+
+                "amount," +
+                "currency,"+
+                "datetime,"+
+                "from_name,"+
+                "to_name"+
                 ")\n" +
                 "VALUES (" +
                 tid +","+
@@ -272,7 +276,9 @@ public class DatabaseManager {
                 to_uid+","+
                 amount+","+
                 currencyEnum+","+
-                timeStamp+
+                timeStamp+","+
+                from_username+","+
+                to_username+
                 ");";
         try {
             statement.execute(sql);
@@ -684,7 +690,7 @@ public class DatabaseManager {
     public double getTotalAmountForUser(String uid){
         List<UserBean> ans=new ArrayList<>();
         double amount = 0.0;
-        String sql = "SELECT Balance.amount FROM Account,Balance WHERE Account.aid = Balance.aid";
+        String sql = "SELECT Balance.amount FROM Account,Balance WHERE Account.aid = Balance.aid and Account.uid = "+uid+";";
         try {
             rs = statement.executeQuery(sql);
             while(rs.next())
@@ -700,7 +706,40 @@ public class DatabaseManager {
 
     public List<TransactionBean> getTransactionBeanByAid(String aid) {
         List<TransactionBean> ans=new ArrayList<>();
-        // TODO
+        String sql = "SELECT * FROM Transaction WHERE from_aid = "+aid +"or to_aid = " +aid+";";
+        try {
+            rs = statement.executeQuery(sql);
+            while(rs.next())
+            {
+                TransactionBean transactionBean = new TransactionBean();
+                transactionBean.setAmount(rs.getDouble("amount"));
+                transactionBean.setTid(rs.getString("tid"));
+                transactionBean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
+                transactionBean.setTimeStamp(rs.getString("datetime"));
+                transactionBean.setFrom_uid(rs.getString("from_aid"));
+                transactionBean.setTo_uid(rs.getString("to_aid"));
+                transactionBean.setFromName(rs.getString("from_name"));
+                transactionBean.setFromName(rs.getString("to_name"));
+                ans.add(transactionBean);
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
         return ans;
+    }
+
+    public String getUsernameForAccount(String aid){
+        String username = "";
+        String sql = "SELECT User.first_name, User.last_name FROM User,Account WHERE Account.uid = User.aid and Account.aid = "+aid+";";
+        try {
+            rs = statement.executeQuery(sql);
+            while(rs.next())
+            {
+                username = rs.getString("first_name") + rs.getString("last_name");
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return username;
     }
 }
