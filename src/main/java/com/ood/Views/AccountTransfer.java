@@ -130,7 +130,7 @@ public class AccountTransfer extends javax.swing.JFrame {
         jButton7.setBackground(new java.awt.Color(233, 204, 204));
         jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton7.setText("Account Details");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
@@ -495,7 +495,6 @@ public class AccountTransfer extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("4");
-//
 //        ViewContainer.getInstance().getPage("AccountTransfer").setVisible(true);
 //        this.setVisible(false);
 
@@ -506,6 +505,9 @@ public class AccountTransfer extends javax.swing.JFrame {
         // TODO add your handling code here:
         ViewContainer.getInstance().getPage("AccountWithdraw").setVisible(true);
         this.setVisible(false);
+//        new AccountWithdraw();
+//        this.setVisible(false);
+
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
