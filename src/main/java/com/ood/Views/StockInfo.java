@@ -62,6 +62,16 @@ public class StockInfo extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(205, 164, 164));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton2.setText("Stocks Owned");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,6 +211,19 @@ public class StockInfo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        viewContainer.getPage("CustomerDashboard").setVisible(true);
+        this.setVisible(false);
+
+    }
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        viewContainer.getPage("StocksOwned").setVisible(true);
+        this.setVisible(false);
+
+    }
 
     /**
      * @param args the command line arguments
