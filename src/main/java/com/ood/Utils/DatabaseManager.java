@@ -232,7 +232,7 @@ public class DatabaseManager {
     public List<TransactionBean> getTransactionBean(String uid)
     {
         List<TransactionBean>  ans=new ArrayList<>();
-        String sql="";
+        String sql="SELECT * FROM Account, Transaction WHERE Account.uid = "+uid+" and Transaction.from_aid = Account.aid or (Transaction.to_aid = Account.aid)";
         try {
             rs=statement.executeQuery(sql);
             while (rs.next())
