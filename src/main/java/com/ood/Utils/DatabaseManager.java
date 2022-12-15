@@ -697,4 +697,10 @@ public class DatabaseManager {
         }
         return amount;
     }
+
+    public List<TransactionBean> getTransactionBeanByAid(String aid) {
+        List<TransactionBean> ans=new ArrayList<>();
+        // TODO
+        return ans;
+    }
 }

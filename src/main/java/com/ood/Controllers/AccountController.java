@@ -4,6 +4,8 @@ import com.ood.Model.Accounts.AbsAccount;
 import com.ood.Model.Accounts.AccountBean;
 import com.ood.Model.Stocks.StockBean;
 import com.ood.Model.Stocks.UserStock;
+import com.ood.Model.Transactions.Transaction;
+import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Utils.Constants;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
@@ -106,7 +108,10 @@ public class AccountController {
     }
 
     public void updateView(AccountBean bean){
-
+        String aid= bean.getAid();
+        String email= bean.getEmail();
+        String accountType=controlledAccount.getBean().getAccountEnum().toString();
+        List<TransactionBean> transactions=dbManager.getTransactionBeanByAid(aid);
     }
 
     public void showPage(){

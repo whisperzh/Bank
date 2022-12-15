@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class ViewContainer {
     private Map<String, JFrame> map;
-
     private static ViewContainer viewContainer;
     public ViewContainer() {
         this.map =new HashMap<>();
@@ -51,12 +50,10 @@ public class ViewContainer {
             }else if(name.contains("LoginPage"))
             {
                 jFrame=new LoginPage();
-
             }
             else if(name.contains("ManagerViewCustomers"))
             {
                 jFrame=new ManagerViewCustomers();
-
             }else if(name.contains("ManagerViewTransactions"))
             {
                 jFrame=new ManagerViewTransactions();
@@ -64,6 +61,9 @@ public class ViewContainer {
             }else if(name.contains("SecurityApplication"))
             {
                 jFrame=new SecurityApplication();
+            }else if(name.contains("HomePage"))
+            {
+                jFrame=new HomePage();
             }
             map.put(name,jFrame);
             return jFrame;

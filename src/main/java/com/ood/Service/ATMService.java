@@ -1,5 +1,6 @@
 package com.ood.Service;
 
+import com.ood.Controllers.UserControllerManager;
 import com.ood.Views.HomePage;
 
 /**
@@ -7,22 +8,13 @@ import com.ood.Views.HomePage;
  */
 public class ATMService implements IService{
 
+    private UserControllerManager controllerManager;
     public ATMService() {
+        controllerManager=new UserControllerManager();
     }
-
     @Override
     public void start() {
-
+        controllerManager.showLogin();
     }
 
-    @Override
-    public void show_Frontend() {
-        /**
-         * naive code START
-         */
-        HomePage homePage=new HomePage();
-        /**
-         * naive code ENDS
-         */
-    }
 }
