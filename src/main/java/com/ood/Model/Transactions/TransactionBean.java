@@ -10,6 +10,8 @@ public class TransactionBean {
     private double amount;
     private CurrencyEnum currencyEnum;
     private String timeStamp;
+    private String fromName;
+    private String toName;
 
     public String getFrom_uid() {
         return from_uid;
@@ -57,5 +59,20 @@ public class TransactionBean {
 
     public void setTid(String tid) {
         this.tid = tid;
+    }
+    public String getFromName() {
+        return fromName;
+    }
+
+    public void setFromName(String fromName) {
+        this.fromName = fromName;
+    }
+
+    public String getToName() {
+        return toName;
+    }
+
+    public void setToName(String toName) {
+        this.toName = toName;
     }
 }

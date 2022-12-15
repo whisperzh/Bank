@@ -1,20 +1,51 @@
 package com.ood.Controllers;
+import com.ood.Model.Users.NormalUser;
+import com.ood.Model.Users.SuperUser;
 import com.ood.Model.Users.UserBean;
+import com.ood.Model.Users.UserEntity;
 import com.ood.Utils.DatabaseManager;
+import com.ood.Validation.BankJudge;
+import com.ood.Views.LoginPage;
+import com.ood.Views.ViewContainer;
 
 public class LoginController {
-    public void login(String userName,String password)
+    private LoginPage view;
+    private DatabaseManager dbManager;
+    private ViewContainer viewContainer;
+    private BankJudge judge;
+
+    public LoginController() {
+        dbManager=DatabaseManager.getInstance();
+        judge=BankJudge.getInstance();
+        viewContainer=ViewContainer.getInstance();
+        view= (LoginPage) viewContainer.getPage("LoginPage");
+        view.setVisible(false);
+        view.setController(this);
+    }
+
+    public boolean login(String userName, String password)
     {
-          DatabaseManager dbm=DatabaseManager.getInstance();
-          UserBean bean=dbm.getUserbean(userName, password);
+          UserBean bean=dbManager.getUserbean(userName, password);
           if(bean!=null)
           {
+              UserEntity user;
+              if(bean.isAdmin())
+              {
+                  user=new SuperUser(bean);
+              }else
+              {
+                  user=new NormalUser(bean);
+              }
+              UserControllerManager.getInstance().setControlling_user(user);
+
               //activate backend service.
               System.out.println("yes");
+              return true;
           }
           else{
               //alert
               System.out.printf("no");
+              return false;
           }
     }
 }

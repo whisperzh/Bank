@@ -1,33 +1,20 @@
+package com.ood.Views;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.ood.Views;
-
-import com.ood.Controllers.AccountController;
-import com.ood.Controllers.UserControllerManager;
-import com.ood.Model.Accounts.AbsAccount;
-import com.ood.Model.Accounts.IAccount;
-import com.ood.Model.Users.UserEntity;
-
-import javax.swing.*;
-import javax.swing.text.View;
 
 /**
  *
  * @author revathivipinachandran
  */
-public class CustomerDashboard extends javax.swing.JFrame {
+public class ManagerViewOfCustomerAccounts extends javax.swing.JFrame {
 
     /**
-     * Creates new form CustomerDashboard
+     * Creates new form ManagerViewOfCustomerAccounts
      */
-    private ViewContainer viewContainer;
-    private UserControllerManager userControllerManager;
-
-    public CustomerDashboard() {
-        userControllerManager=UserControllerManager.getInstance();
-        viewContainer=ViewContainer.getInstance();
+    public ManagerViewOfCustomerAccounts() {
         initComponents();
     }
 
@@ -40,14 +27,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        BackgroundPanel = new javax.swing.JPanel();
-        SidePanel = new javax.swing.JPanel();
+        BackgroundPanel1 = new javax.swing.JPanel();
+        SidePanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
         TitlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -63,10 +47,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
-        BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        BackgroundPanel1.setBackground(new java.awt.Color(234, 227, 227));
+        BackgroundPanel1.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+        SidePanel1.setBackground(new java.awt.Color(102, 0, 0));
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -76,36 +60,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(233, 204, 204));
         jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton3.setText("Open Savings & Checkings Account");
+        jButton3.setText("Back To View All Customers");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setBackground(new java.awt.Color(233, 204, 204));
-        jButton4.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton4.setText("Open Security Account");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setBackground(new java.awt.Color(233, 204, 204));
-        jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton5.setText("Apply for Loan");
-        jButton12.setBackground(new java.awt.Color(233, 204, 204));
-        jButton12.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton12.setText("Logout");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
             }
         });
 
@@ -115,11 +73,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 20, Short.MAX_VALUE))
                         .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
-                        .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,26 +83,21 @@ public class CustomerDashboard extends javax.swing.JFrame {
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(176, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout SidePanelLayout = new javax.swing.GroupLayout(SidePanel);
-        SidePanel.setLayout(SidePanelLayout);
-        SidePanelLayout.setHorizontalGroup(
-                SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SidePanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout SidePanel1Layout = new javax.swing.GroupLayout(SidePanel1);
+        SidePanel1.setLayout(SidePanel1Layout);
+        SidePanel1Layout.setHorizontalGroup(
+                SidePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SidePanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
         );
-        SidePanelLayout.setVerticalGroup(
-                SidePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(SidePanelLayout.createSequentialGroup()
+        SidePanel1Layout.setVerticalGroup(
+                SidePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(SidePanel1Layout.createSequentialGroup()
                                 .addGap(52, 52, 52)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -169,7 +119,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
                         .addGroup(TitlePanelLayout.createSequentialGroup()
                                 .addGap(464, 464, 464)
                                 .addComponent(jLabel16)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(949, Short.MAX_VALUE))
         );
         TitlePanelLayout.setVerticalGroup(
                 TitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -299,45 +249,45 @@ public class CustomerDashboard extends javax.swing.JFrame {
                                 .addGap(0, 53, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout BackgroundPanelLayout = new javax.swing.GroupLayout(BackgroundPanel);
-        BackgroundPanel.setLayout(BackgroundPanelLayout);
-        BackgroundPanelLayout.setHorizontalGroup(
-                BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundPanelLayout.createSequentialGroup()
-                                .addComponent(SidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(BackgroundPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout BackgroundPanel1Layout = new javax.swing.GroupLayout(BackgroundPanel1);
+        BackgroundPanel1.setLayout(BackgroundPanel1Layout);
+        BackgroundPanel1Layout.setHorizontalGroup(
+                BackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BackgroundPanel1Layout.createSequentialGroup()
+                                .addComponent(SidePanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(BackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(BackgroundPanel1Layout.createSequentialGroup()
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(TitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1571, Short.MAX_VALUE))
-                                        .addGroup(BackgroundPanelLayout.createSequentialGroup()
-                                                .addGap(54, 54, 54)
-                                                .addGroup(BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(BackgroundPanel1Layout.createSequentialGroup()
+                                                .addGap(61, 61, 61)
+                                                .addGroup(BackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(0, 0, Short.MAX_VALUE))))
         );
-        BackgroundPanelLayout.setVerticalGroup(
-                BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(BackgroundPanelLayout.createSequentialGroup()
+        BackgroundPanel1Layout.setVerticalGroup(
+                BackgroundPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BackgroundPanel1Layout.createSequentialGroup()
                                 .addComponent(TitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(51, 51, 51)
+                                .addGap(27, 27, 27)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(202, Short.MAX_VALUE))
-                        .addComponent(SidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap(251, Short.MAX_VALUE))
+                        .addComponent(SidePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BackgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BackgroundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                                .addComponent(BackgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BackgroundPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -346,129 +296,90 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
-        this.setVisible(false);
     }
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        AccountController controller=userControllerManager.getAccountController();
-        UserEntity user=userControllerManager.getControlling_user();
-        IAccount saving= user.getUserSavingAccount();
-        if(saving==null) {
-            JOptionPane.showMessageDialog(this, "You don't have Savings Account");
-            return;
-        }
-        controller.setControlledAccount((AbsAccount) saving);
-        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
-        this.setVisible(false);
-
-    }
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        //ViewContainer.getInstance().getPage("").setVisible();
-        //loan2
-    }
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        //ViewContainer.getInstance().getPage("").setVisible();
-        //loan3
-
-    }
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        //ViewContainer.getInstance().getPage("").setVisible(true);
-        //this.setVisible(false);
-        //loan1
-    }
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        System.out.println("4");
-        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
-        this.setVisible(false);
-    }
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("LoginPage").setVisible(true);
-        this.setVisible(false);
-    }
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
-        ViewContainer.getInstance().getPage("HomePage").setVisible(true);
-        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        System.out.println("7");
-        // TODO add your handling code here:
-        AccountController controller=userControllerManager.getAccountController();
-        UserEntity user=userControllerManager.getControlling_user();
-        IAccount checking= user.getUserCheckingAccount();
-        if(checking==null) {
-            JOptionPane.showMessageDialog(this, "You don't have Checkings Account");
-            return;
-        }
-        controller.setControlledAccount((AbsAccount) checking);
-        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
-        this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+    }
 
-        AccountController controller=userControllerManager.getAccountController();
-        UserEntity user=userControllerManager.getControlling_user();
-        IAccount security= user.getUserSecurityAccount();
-        if(security==null) {
-            JOptionPane.showMessageDialog(this, "You don't have Security Account");
-            return;
-        }
-        controller.setControlledAccount((AbsAccount) security);
-        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
-        this.setVisible(false);
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+    }
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
     }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ManagerViewOfCustomerAccounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ManagerViewOfCustomerAccounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ManagerViewOfCustomerAccounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ManagerViewOfCustomerAccounts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerDashboard().setVisible(true);
+                new ManagerViewOfCustomerAccounts().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify
     private javax.swing.JPanel BackgroundPanel;
+    private javax.swing.JPanel BackgroundPanel1;
     private javax.swing.JPanel SidePanel;
+    private javax.swing.JPanel SidePanel1;
     private javax.swing.JPanel TitlePanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration
 }
+
