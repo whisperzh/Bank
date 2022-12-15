@@ -736,7 +736,7 @@ public class DatabaseManager {
     public List<TransactionBean> getTransactionBeanByAid(String aid) {
         List<TransactionBean> ans=new ArrayList<>();
         //checked - working
-        String sql = "SELECT * FROM Transaction WHERE from_aid = "+aid +"or to_aid = " +aid+";";
+        String sql = "SELECT * FROM `Transaction` WHERE from_aid = "+strWrap(aid) +" OR to_aid = " +strWrap(aid)+";";
         try {
             rs = statement.executeQuery(sql);
             while(rs.next())

@@ -415,6 +415,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return;
         }
         controller.setControlledAccount((AbsAccount) checking);
+        controller.updateView();
         ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
     }
@@ -430,6 +431,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return;
         }
         controller.setControlledAccount((AbsAccount) security);
+        controller.updateView();
         ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
     }
