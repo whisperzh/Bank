@@ -3,7 +3,7 @@ package com.ood.Factories;
 import com.ood.Model.Users.*;
 
 /**
- * Factory that generates User
+ * Factory that generates Users of the required type using the appropriate classes
  */
 public class UserFactory {
     public IUser createUser(String userType, UserBean bean){

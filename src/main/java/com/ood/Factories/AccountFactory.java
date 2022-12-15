@@ -2,7 +2,7 @@ package com.ood.Factories;
 
 import com.ood.Model.Accounts.*;
 /**
- * Factory that generates Account
+ * Factory that generates Account of the required type using the appropriate classes
  */
 public class AccountFactory {
     public static IAccount createAccount( AccountBean bean){

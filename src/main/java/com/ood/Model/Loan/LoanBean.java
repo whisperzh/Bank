@@ -2,6 +2,9 @@ package com.ood.Model.Loan;
 
 import com.ood.Enums.CurrencyEnum;
 
+/**
+ * Concrete class that contains all the attributes and methods required to maintain a loan in the bank
+ */
 public class LoanBean {
     private String lid;
     private String uid;

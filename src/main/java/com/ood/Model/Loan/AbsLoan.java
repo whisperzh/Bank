@@ -3,6 +3,9 @@ package com.ood.Model.Loan;
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Currency.USD_Currency;
 
+/**
+ * Concrete class that holds common properties possessed by each loan record
+ */
 public abstract class AbsLoan {
     private LoanBean bean;
 

@@ -2,6 +2,9 @@ package com.ood.Model.Transactions;
 
 import com.ood.Enums.CurrencyEnum;
 
+/**
+ * Concrete class that contains all the attributes and methods required to perform transactions in the Bank
+ */
 public class TransactionBean {
 
     private String tid;

@@ -2,6 +2,9 @@ package com.ood.Model.Transactions;
 
 import com.ood.Utils.DatabaseManager;
 
+/**
+ * Concrete class that maintains functionality for performing transactions
+ */
 public class Transaction {
     private TransactionBean bean;
 

@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Query collection of DB
+ * Query collection for Database. All the queries- to insert, select and update data for front end as well as backend functionality is updated in this file.
  */
 public class DatabaseManager {
     private Connection connection;
@@ -693,7 +693,7 @@ public class DatabaseManager {
     }
     public List<UserBean> getAllUserByLoanDescend(){
         List<UserBean> ans=new ArrayList<>();
-        //checked - working. hoever remember that it is mandatory for order by to work on sum - that the sum is also selected in the select part of query
+        //checked - working. however remember that it is mandatory for order by to work on sum - that the sum is also selected in the select part of query
         String sql = "SELECT SUM(Loan.Amount), User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
         try {
             rs = statement.executeQuery(sql);

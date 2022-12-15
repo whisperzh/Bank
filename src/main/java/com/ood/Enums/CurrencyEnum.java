@@ -1,5 +1,8 @@
 package com.ood.Enums;
 
+/**
+ * Enum Class for enumerating all possible types of currencies- currently 3 that a user in the bank can deposit and maintain
+ */
 public enum CurrencyEnum {
     USD,
     EUR,

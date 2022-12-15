@@ -1,5 +1,8 @@
 package com.ood.Model.Stocks;
 
+/**
+ * Concrete class for maintaining functionality that associates the user to the stock owned by them.
+ */
 public class UserStock {
     private String sid;
     private String aid;

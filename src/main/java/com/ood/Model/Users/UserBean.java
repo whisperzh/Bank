@@ -1,5 +1,8 @@
 package com.ood.Model.Users;
 
+/**
+ * Concrete class that contains all the attributes and methods required to be a user in the Bank
+ */
 public class UserBean {
     private String userName;
     private String ssn;

@@ -9,6 +9,9 @@ import com.ood.Utils.DatabaseManager;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Abstract class for maintaining functionality related to qll users
+ */
 public abstract class UserEntity implements IUser{
     private UserBean bean;
     private List<IAccount> accounts;

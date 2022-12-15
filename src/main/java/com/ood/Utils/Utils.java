@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.UUID;
 
 /**
- * Tools that is public to all classes
+ * Common Tools that is public to all classes. Any function with generic functionality should be updated here.
  */
 public class Utils {
     public static String generateRandomUUID(){

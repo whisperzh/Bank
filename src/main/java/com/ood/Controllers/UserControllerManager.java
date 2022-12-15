@@ -8,7 +8,7 @@ import com.ood.Views.HomePage;
 import com.ood.Views.ViewContainer;
 
 /**
- * Manager has several controllers and controls all users actions
+ * Controller Class where Manager has several controllers and controls all users actions
  */
 public class UserControllerManager {
     private UserEntity controlling_user;

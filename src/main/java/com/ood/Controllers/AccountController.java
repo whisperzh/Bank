@@ -13,7 +13,9 @@ import com.ood.Views.*;
 
 import javax.swing.*;
 import java.util.List;
-
+/**
+ * Controller Class for handling connection between user accounts in front end, validation using bankJudge and data in the backend
+ */
 public class AccountController {
     private AbsAccount controlledAccount;
     private AccountActivity activityTab;
