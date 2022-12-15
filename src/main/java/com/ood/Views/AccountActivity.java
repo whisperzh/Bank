@@ -306,28 +306,32 @@ public class AccountActivity extends javax.swing.JFrame {
 
     private void WriteToTable(ArrayList<TransactionBean> transactions){
 
+        Object[][] data = new Object[4][];
+
         for(int i=0; i<transactions.size(); i++){
 
             TransactionBean bean = transactions.get(i);
             String timestamp = bean.getTimeStamp().toString();
             String currency = bean.getCurrencyEnum().toString();
-            String amount = bean.getAmount().toString();
+            String amount = String.valueOf(bean.getAmount());
+            String from = String.valueOf(bean.getFrom_aid());
+            String to = String.valueOf(bean.getTo_aid());
 
+            data[i][0] = timestamp;
+            data[i][1] = currency;
+            data[i][2] = amount;
+            data[i][3] = from;
+            data[i][4] = to;
 
-            javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
-                    new Object [][] {
-                            {null, null, null, null, null},
-                            {null, null, null, null, null},
-                            {null, null, null, null, null},
-                            {null, null, null, null, null}
-                    },
-                    new String [] {
-                            "Time Stamp", "Currency", "Amount", "From Account", "To Account"
-                    }
-            );
-            jTable1.setModel(model);
         }
 
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Time Stamp", "Currency", "Amount", "From Account", "To Account"
+                }
+        );
+        jTable1.setModel(model);
     }
 
 
