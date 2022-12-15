@@ -13,8 +13,10 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a page for the customer to open a new Security account.
+ * This page takes input from the user to open an account and verifies if the user is an old user with the bank.
+ * If yes, it would prompt the user to log in
+ * This page lets the customer navigate through different pages.
  */
 public class SecurityApplication extends javax.swing.JFrame {
 

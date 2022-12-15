@@ -9,6 +9,9 @@ import com.ood.Model.Accounts.AccountBean;
 
 /**
  * Account Details page is the view/page that the user can use to view the details of the specific account they have chosen
+ * This class allows us to create a Details page for Savings Account.
+ * This page displays the current account type, account balance, account number and routing number.
+ * This page also allows us to navigate to other pages of the Savings Account and the user Dashboard.
  */
 public class AccountDetails extends javax.swing.JFrame {
     private AccountController accountController;

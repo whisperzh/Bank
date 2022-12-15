@@ -5,8 +5,9 @@ package com.ood.Views;
  */
 
 /**
- *
- * @author newfashionedoats
+ * This class allows us to create a template to create a bank page for the customer to see the stocks he own
+ * The customer can navigate to a the page where he can sell the stocks he own and the Customer Dashboard.
+ * This page displays read only information for the customer.
  */
 public class StocksOwned extends javax.swing.JFrame {
 

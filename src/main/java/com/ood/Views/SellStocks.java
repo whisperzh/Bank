@@ -1,8 +1,9 @@
 package com.ood.Views;
 
 /**
- *
- * @author newfashionedoats
+ * This class allows us to create a template to create a bank page for the customer to view the stocks he/she holds.
+ * The page gives an option to the user to select the stock and enter the number of stocks to sell
+ * The customer can also navigate to his dashboard.
  */
 public class SellStocks extends javax.swing.JFrame {
 

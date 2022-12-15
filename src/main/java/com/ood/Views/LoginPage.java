@@ -11,8 +11,10 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for a customer to log in to his bank page.
+ * This page wants the user to enter his Username and Password.
+ * We check if these credentials match in our database. If not, we prompt the user to enter the right details.
+ * The user cannot navigate further without entering the right details. Hence, can only move backward to the Home Page.
  */
 public class LoginPage extends javax.swing.JFrame {
 

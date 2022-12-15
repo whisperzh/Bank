@@ -14,8 +14,11 @@ import javax.swing.*;
 import javax.swing.text.View;
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to template a page for the Customer to see his dashboard.
+ * This page allows user to choose to navigate to his/her Savings, checkings and Loan applications.
+ * The Customer can also view his current loans.
+ * The customer can also open a security account and stock information.
+ * This is the first page a customer will see after logging into his account.
  */
 public class CustomerDashboard extends javax.swing.JFrame {
 

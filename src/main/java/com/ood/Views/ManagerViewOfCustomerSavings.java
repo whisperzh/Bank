@@ -6,8 +6,8 @@ package com.ood.Views;
  */
 
 /**
- *
- * @author revathivipinachandran
+ * This class allows us to create a template for the page which a manager views specific customer's saving account details.
+ * This page prints read only information about the specific customer saving's account.
  */
 public class ManagerViewOfCustomerSavings extends javax.swing.JFrame {
 

@@ -2,6 +2,11 @@ package com.ood.Views;
 
 import javax.swing.*;
 
+/**
+ * This class helps us create a template for a Transfer details page for the Checkings Account.
+ * It helps the customer transfer money through wire transfer in 3 different currencies.
+ * This page allows user to navigate to other Checkings Page including Account Activity, Account Details and Customer Dashboard.
+ */
 public class CheckingsTransfer extends javax.swing.JFrame{
     private ViewContainer viewContainer;
     public CheckingsTransfer(){

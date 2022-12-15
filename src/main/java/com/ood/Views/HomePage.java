@@ -9,8 +9,9 @@ import com.ood.Controllers.UserControllerManager;
 import javax.swing.*;
 
 /**
- *
- * @author revathivipinachandran
+ * This Class allows us to create a template for creating a Home Page for the bank.
+ * This page contains details about the bank and the type of bank accounts the bank has to offer
+ * The Customer can choose to log in through the Bank's Home page.
  */
 public class HomePage extends javax.swing.JFrame {
 
