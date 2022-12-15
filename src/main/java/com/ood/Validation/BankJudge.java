@@ -13,7 +13,10 @@ import com.ood.Model.Users.UserBean;
 import com.ood.Utils.Constants;
 import com.ood.Utils.DatabaseManager;
 
+import javax.swing.*;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Validation of Bank
@@ -33,6 +36,53 @@ public class BankJudge {
             bankJudge=new BankJudge();
         return bankJudge;
     }
+
+    public static boolean checkPassword(String password)
+    {
+        //password must match the following criteria:
+        //a digit must occur at least once.
+        //a lower case alphabet must occur at least once.
+        //an upper case alphabet must occur at least once.
+        //a special character must occur at least once.
+        //white spaces are not allowed
+        //password must be between 8 and 20 characters long
+        String standard_regex = "^(?=.*[0-9])"
+                + "(?=.*[a-z])(?=.*[A-Z])"
+                + "(?=.*[@#$%^&+=])"
+                + "(?=\\S+$).{8,20}$";
+        Pattern pattern = Pattern.compile(standard_regex);
+        if (password == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(password);
+        return matcher.matches();
+    }
+
+    public static boolean check_integer(String recipient_number) {
+        try {
+            Integer.parseInt(recipient_number);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static boolean check_ssn(String ssn) {
+        int length = String.valueOf(ssn).length();
+        if (length != 9) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean check_emailAddress(String emailAddress) {
+        String regexPattern = "^(.+)@(\\\\S+)$";
+        return Pattern.compile(regexPattern)
+                .matcher(emailAddress)
+                .matches();
+    }
+
     public boolean canPayForLoan(IAccount account, AbsLoan loan)
     {
         if(account.getRegularBalance()>=loan.getAmount())
@@ -101,5 +151,21 @@ public class BankJudge {
     public boolean isUserAdmin(String uid){
         UserBean bean=db.getUserbean(uid);
         return isUserAdmin(uid);
+    }
+
+    public boolean canCreateSecurityAccount(String uid) {
+        double userAmount = db.getTotalAmountForUser(uid);
+        if(userAmount > 5000){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkCorrectCombination(String username, String password, String ssn) {
+        UserBean userbean = db.getUserbean(username, password);
+        if(userbean.getSsn().equals(ssn)){
+            return true;
+        }
+        return false;
     }
 }

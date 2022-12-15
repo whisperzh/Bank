@@ -3,18 +3,36 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.ood.Views;
+import javax.swing.*;
+
+import com.ood.Controllers.SecurityApplicationController;
+import com.ood.Utils.DatabaseManager;
+import com.ood.Validation.BankJudge;
+
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 /**
  *
  * @author revathivipinachandran
  */
 public class SecurityApplication extends javax.swing.JFrame {
+//    private BankJudge bankJudge;
+
+    private SecurityApplicationController controller;
+
+    public void setController(SecurityApplicationController controller) {
+        this.controller = controller;
+    }
 
     /**
      * Creates new form SecurityApplication
      */
     public SecurityApplication() {
         initComponents();
+        jPanel2.setVisible(false);
+//        bankJudge=BankJudge.getInstance();
     }
 
     /**
@@ -112,6 +130,7 @@ public class SecurityApplication extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
             }
+
         });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -311,7 +330,7 @@ public class SecurityApplication extends javax.swing.JFrame {
         jLabel17.setText("Amount:");
 
         jLabel18.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel18.setText("Passowrd:");
+        jLabel18.setText("Password:");
 
         jButton2.setText("Apply");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -496,6 +515,9 @@ public class SecurityApplication extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("5");
+        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -504,18 +526,93 @@ public class SecurityApplication extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("6");
+        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("7");
+        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String applicant_first_name = jTextField1.getText();
+        String applicant_last_name = jTextField5.getText();
+        String email_address = jTextField2.getText();
+        String home_address = jTextField3.getText();
+        String applicant_ssn = jTextField4.getText();
+
+        int flag = 0;
+
+        if(applicant_first_name.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid first name");
+            flag = 1;
+        }
+        if(applicant_last_name.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid last name");
+            flag = 1;
+        }
+        if(email_address.equals("") || !BankJudge.getInstance().check_emailAddress(email_address)){
+            JOptionPane.showMessageDialog(this, "Please enter a valid email address");
+            flag = 1;
+        }
+        if(home_address.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid home address");
+            flag = 1;
+        }
+        if(!BankJudge.getInstance().check_integer(applicant_ssn) || !BankJudge.getInstance().check_ssn(applicant_ssn)){
+            JOptionPane.showMessageDialog(this, "Please enter a valid social security number");
+            flag = 1;
+        }
+        if(flag == 0){
+            jPanel2.setVisible(true);
+        }
+        else if(flag == 1){
+            JOptionPane.showMessageDialog(this, "Form Validation was not correct. Security account can only be created when form is validated successfully!");
+        }
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String username = jTextField7.getText();
+        String password = jTextField8.getText();
+        String amount = jTextField6.getText();
+        String applicant_ssn = jTextField4.getText();
+        String email = jTextField2.getText();
+
+        Dictionary userDetails = new Hashtable();
+        userDetails.put("ssn", applicant_ssn);
+        userDetails.put("email", email);
+        userDetails.put("username", username);
+        userDetails.put("password", password);
+        userDetails.put("amount", amount);
+        controller.openAccount(userDetails);
+//        int flag = 0;
+//
+//        if(username.equals("")){
+//            JOptionPane.showMessageDialog(this, "Please enter a valid username");
+//            flag = 1;
+//        }
+//        if(!BankJudge.getInstance().checkPassword(password)){
+//            JOptionPane.showMessageDialog(this, "Please enter a valid password. \nPassword must have:\n-at least 8 characters and at most 20 characters\n-at least one digit\n-at least one upper case alphabet.\n -at least one lower case alphabet.\n-at least one special character which includes !@#$%&*()-+=^.\n-should not contain any white space.");
+//            flag = 1;
+//        }
+//        if(!BankJudge.getInstance().check_integer(amount)){
+//            JOptionPane.showMessageDialog(this, "Please enter a valid amount");
+//            flag = 1;
+//        }
+//        if(flag == 0){
+//            jPanel2.setVisible(true);
+//            //if security amount creation is allowed and validation is correct then
+//            //anwesha create entry for security account for user in database
+//        }
+//        if(flag == 1){
+//            JOptionPane.showMessageDialog(this, "Form Validation was not correct. Security account could not be created!");
+//        }
     }
 
     /**
