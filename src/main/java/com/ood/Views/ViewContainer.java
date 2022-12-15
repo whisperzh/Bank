@@ -1,6 +1,7 @@
 package com.ood.Views;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,10 +17,16 @@ public class ViewContainer {
             viewContainer=new ViewContainer();
         return viewContainer;
     }
+    public static void fullSizeFrame(JFrame jFrame){
+        Dimension myScreen = Toolkit.getDefaultToolkit().getScreenSize();
+        jFrame.setSize(myScreen.width,myScreen.height);
+    }
 
     public void addPage(String name,JFrame instance){
+        //fullSizeFrame(instance);
         map.put(name,instance);
     }
+
 
     public JFrame getPage(String name)
     {
@@ -42,30 +49,34 @@ public class ViewContainer {
 
             }else if(name.contains("CustomerDashboard")) {
                 jFrame = new CustomerDashboard();
+
             } else if (name.contains("CheckingsActivity")) {
                 jFrame = new CheckingsActivity();
+
             }else if (name.contains("CheckingsDetails")) {
                 jFrame = new CheckingsDetails();
+
             }else if (name.contains("CheckingsTransfer")) {
                 jFrame = new CheckingsTransfer();
+
             }else if (name.contains("CheckingsWithdraw")) {
                 jFrame = new CheckingsWithdraw();
 
-
-
-        }else if(name.contains("LoanApplication"))
-            {
+            }else if(name.contains("LoanApplication")) {
                 jFrame=new LoanApplication();
+
             }else if(name.contains("SavingsApplication")){
                 jFrame=new SavingsApplication();
             }
             else if(name.contains("LoginPage"))
             {
                 jFrame=new LoginPage();
+
             }
             else if(name.contains("ManagerViewCustomers"))
             {
                 jFrame=new ManagerViewCustomers();
+
             }else if(name.contains("ManagerViewTransactions"))
             {
                 jFrame=new ManagerViewTransactions();
@@ -77,6 +88,9 @@ public class ViewContainer {
             {
                 jFrame=new HomePage();
             }
+            //fullSizeFrame(jFrame);
+            //jFrame.setState(Frame.NORMAL);
+            jFrame.setExtendedState(Frame.MAXIMIZED_BOTH);
             map.put(name,jFrame);
             return jFrame;
         }else {

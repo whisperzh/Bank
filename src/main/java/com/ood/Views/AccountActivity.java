@@ -2,6 +2,9 @@ package com.ood.Views;
 
 import com.ood.Controllers.AccountController;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * @author revathivipinachandran
  */
@@ -15,7 +18,9 @@ public class AccountActivity extends javax.swing.JFrame {
      * Creates new form AccountTransfer
      */
     public AccountActivity() {
+
         initComponents();
+        //fullSizeFrame(this);
     }
 
     /**
@@ -304,6 +309,7 @@ public class AccountActivity extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
+
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("3");
@@ -344,6 +350,10 @@ public class AccountActivity extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
+    /*public static void fullSizeFrame(JFrame jFrame){
+        Dimension myScreen = Toolkit.getDefaultToolkit().getScreenSize();
+        jFrame.setSize(myScreen.width,myScreen.height);
+    }*/
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -374,6 +384,7 @@ public class AccountActivity extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
                 new AccountActivity().setVisible(true);
             }
         });
