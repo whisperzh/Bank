@@ -18,7 +18,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Validation of Bank, contains validation mathods that let the user know if they have entered the right input
+ * Validation classs for all components
+ * This class handles all required checks - including those for integer components,verifications required from database
  */
 public class BankJudge {
 
@@ -57,6 +58,7 @@ public class BankJudge {
         return matcher.matches();
     }
 
+    //check for integers passed as strings
     public static boolean check_integer(String recipient_number) {
         try {
             Integer.parseInt(recipient_number);
@@ -67,6 +69,7 @@ public class BankJudge {
         }
     }
 
+    //check whether the provided social security number matches the set standard - i.e. it is a number that is 9 digits long
     public static boolean check_ssn(String ssn) {
         int length = String.valueOf(ssn).length();
         if (length != 9) {
@@ -75,6 +78,7 @@ public class BankJudge {
         return true;
     }
 
+    //check whether the supplied string is actually an email address
     public static boolean check_emailAddress(String emailAddress) {
         String regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +
@@ -85,6 +89,7 @@ public class BankJudge {
                 .matches();
     }
 
+    //verify whether a user who takes out a loan can actually repay the loan
     public boolean canPayForLoan(IAccount account, AbsLoan loan)
     {
         if(account.getRegularBalance()>=loan.getAmount())
@@ -92,6 +97,7 @@ public class BankJudge {
         return false;
     }
 
+    //verify whether the user is authorised to update stocks
     public boolean canUpdateStock(String uid){
         UserBean bean= db.getUserbean(uid);
         if(bean.isAdmin())
@@ -99,6 +105,7 @@ public class BankJudge {
         return false;
     }
 
+    //verify whether the user has enough money to make a withdrawal after paying the withdrawal fee
     public boolean canWithdraw(AbsAccount controlledAccount, double amount) {
         double balance = controlledAccount.getRegularBalance();
         if(Constants.WITHDRAW_FEE+balance>=amount)
@@ -119,6 +126,7 @@ public class BankJudge {
         return false;
     }
 
+    //verify whether the user has enough money to be able to close his account
     public boolean canCloseAccount(String aid) {
          List<BalanceBean> beans= db.getBalanceBean(aid);
         for(int i=0;i<beans.size();i++)
@@ -135,6 +143,7 @@ public class BankJudge {
         return false;
     }
 
+    //verify whether the user already has loans associated to himself
     public boolean isUserInDebt(String uid){
         List<LoanBean> loans=db.getLoanBean(uid);
         if(loans.size()>0)
@@ -142,19 +151,25 @@ public class BankJudge {
         return false;
     }
 
+    //verify whether the uses exists using his email and uid
     public boolean isAccountExistByEmail(String uid,String email){
         return db.getAccountBean(uid,email)!=null;
     }
+
+    //veirfy whether the user can login using the given username, password combination
     public boolean canLogin(String username,String password){
         if(db.getUserbean(username, password)!=null)
             return true;
         return false;
     }
+
+    //check whether the user is an administrator
     public boolean isUserAdmin(String uid){
         UserBean bean=db.getUserbean(uid);
         return isUserAdmin(uid);
     }
 
+    //verify whether the user has a sum of more than 5000 dollars in all his accounts so that he is eligible to open a security account
     public boolean canCreateSecurityAccount(String uid) {
         double userAmount = db.getTotalAmountForUser(uid);
         if(userAmount > 5000){
@@ -163,6 +178,7 @@ public class BankJudge {
         return false;
     }
 
+    //verify whether the username,password combination of a user matches his existing ssn
     public boolean checkCorrectCombination(String username, String password, String ssn) {
         UserBean userbean = db.getUserbean(username, password);
         if(userbean.getSsn().equals(ssn)){

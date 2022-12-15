@@ -61,7 +61,7 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextField1 = new JPasswordField(20);
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -366,6 +366,7 @@ public class LoginPage extends javax.swing.JFrame {
         //login
         if(controller.login(jTextField2.getText(),jTextField1.getText()))
         {
+            System.out.println(jTextField1.getText());
             viewContainer.getPage("CustomerDashboard").setVisible(true);
             this.setVisible(false);
         }else{
