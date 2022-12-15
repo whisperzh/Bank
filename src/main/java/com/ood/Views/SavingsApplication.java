@@ -3,6 +3,8 @@ package com.ood.Views;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.*;
+
 /**
  *
  * @author revathivipinachandran
@@ -12,7 +14,9 @@ public class SavingsApplication extends javax.swing.JFrame {
     /**
      * Creates new form SavingsApplication
      */
+    private ViewContainer viewContainer;
     public SavingsApplication() {
+        viewContainer=ViewContainer.getInstance();
         initComponents();
     }
 
@@ -443,26 +447,82 @@ public class SavingsApplication extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //viewContainer.getPage("SecurityApplication").setVisible(true);
+        //this.setVisible(false);
+        //validation logic after db setup
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //we do not want to do anything here, cause we stay on the same page
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("SecurityApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("LoginPage").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        viewContainer.getPage("LoanApplication").setVisible(true);
+        this.setVisible(false);
     }
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        String firstName = jTextField1.getText();
+        String lastName = jTextField5.getText();
+        String emailAddress = jTextField2.getText();
+        String homeAddress = jTextField3.getText();
+        String socialSecurityNumber = jTextField4.getText();
+        boolean pass = true;
+        if(firstName.equals("")){
+            pass=false;
+        }
+        if(lastName.equals("")){
+            pass = false;
+        }
+        if(emailAddress.equals("") || emailAddress.toString().contains("@")){
+
+            pass = false;
+        }
+        if(homeAddress.equals("")){
+            pass = false;}
+        if(socialSecurityNumber.equals("") || socialSecurityNumber.toString().length()<9|| !is_integer(socialSecurityNumber.toString())){
+            pass = false;
+        }
+        if(!pass){
+            JOptionPane.showMessageDialog(this, "Please enter valid input");
+        }
+        /*Map<String,String> loanCredentials = new HashMap<>();
+        loanCredentials.put("firstName", firstName);
+        loanCredentials.put("lastName", lastName);
+        loanCredentials.put("emailAddress",emailAddress);
+        loanCredentials.put("homeAddress", homeAddress);
+        loanCredentials.put("socialSecurityNumber", socialSecurityNumber);
+        controller.validateCredentials(firstName, lastName, emailAddress, homeAddress,);*/
+
+    }
+    private boolean validateSSN(int SSN){
+        //backend
+        return true;
+    }
+    private boolean is_integer(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
     }
 
     /**
