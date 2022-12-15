@@ -6,6 +6,8 @@ package com.ood.Views;/*
 import com.ood.Controllers.LoginController;
 import com.ood.Controllers.UserControllerManager;
 
+import javax.swing.*;
+
 /**
  *
  * @author revathivipinachandran
@@ -500,9 +502,10 @@ public class HomePage extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        viewContainer.getPage("LoanApplication").setVisible(true);
-        this.setVisible(false);
+//        viewContainer.getPage("LoanApplication").setVisible(true);
+//        this.setVisible(false);
         //right
+        JOptionPane.showMessageDialog(this,"You have to Login first");
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {

@@ -319,7 +319,9 @@ public class LoginPage extends javax.swing.JFrame {
                                 .addComponent(BackgroundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
-
+        jButton4.setVisible(false);
+        jButton7.setVisible(false);
+        jButton8.setVisible(false);
         pack();
     }// </editor-fold>
 
@@ -348,6 +350,8 @@ public class LoginPage extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("5");
+        viewContainer.getPage("HomePage").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {

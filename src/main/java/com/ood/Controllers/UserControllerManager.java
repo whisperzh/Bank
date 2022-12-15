@@ -16,7 +16,7 @@ public class UserControllerManager {
     private HomePage view;
     private ViewContainer viewContainer;
     private BankJudge bankJudge;
-
+    private boolean isLoggedin;
     private AccountController accountController;
     private LoanController loanController;
     private LoginController loginController;
@@ -91,4 +91,11 @@ public class UserControllerManager {
         return stockController;
     }
 
+    public boolean isLoggedin() {
+        return isLoggedin;
+    }
+
+    public void setLoggedin(boolean loggedin) {
+        isLoggedin = loggedin;
+    }
 }

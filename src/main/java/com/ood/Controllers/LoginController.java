@@ -40,6 +40,7 @@ public class LoginController {
 
               //activate backend service.
               System.out.println("yes");
+              UserControllerManager.getInstance().setLoggedin(true);
               return true;
           }
           else{

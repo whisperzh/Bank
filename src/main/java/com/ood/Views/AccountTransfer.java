@@ -61,7 +61,7 @@ public class AccountTransfer extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        balanceText = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -216,8 +216,8 @@ public class AccountTransfer extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(102, 51, 0));
         jLabel5.setText("Account Balance");
 
-        jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jLabel6.setText("0");
+        balanceText.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        balanceText.setText("0");
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         jLabel7.setText("$");
@@ -235,7 +235,7 @@ public class AccountTransfer extends javax.swing.JFrame {
                                                 .addGap(88, 88, 88)
                                                 .addComponent(jLabel7)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap(306, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -245,7 +245,7 @@ public class AccountTransfer extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(balanceText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel7))
                                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -599,6 +599,9 @@ public class AccountTransfer extends javax.swing.JFrame {
             make_transaction(amount, recipient_account_number, currency);
         }
     }
+    public void setBalance(double amount) {
+        balanceText.setText(String.format("%.2f",amount));
+    }
 
     private void make_transaction(String amount, String recipient_account_number, String currency) {
     }
@@ -678,7 +681,7 @@ public class AccountTransfer extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel balanceText;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
