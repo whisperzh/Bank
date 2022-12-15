@@ -66,8 +66,9 @@ public class DatabaseManager {
     }
 
     public UserBean getUserbean(String userName, String password) {
-        userName="\'"+userName+"\'";
-        password="\'"+password+"\'";
+        userName=strWrap(userName);
+        password=strWrap(password);
+        //tested - working
         String sql = "SELECT * FROM User WHERE username is "
                 +userName+" AND password is "+password+";";
         try {
@@ -93,6 +94,7 @@ public class DatabaseManager {
     public boolean hasUserBean(UserBean bean) {
         String uid=bean.getSsn();
         uid="\'"+uid+"\'";
+        //tested - working
         String sql = "SELECT * FROM User WHERE uid is "
                 +uid+";";
         try {
@@ -110,13 +112,13 @@ public class DatabaseManager {
 
     public void insertUserBean(UserBean bean) {
         String username=strWrap(bean.getUserName());
-        String email= "\'"+bean.getSsn()+"\'";
-        String fname= "\'"+bean.getFirstName()+"\'";
-        String lname= "\'"+bean.getLastName()+"\'";
-        String password= "\'"+bean.getPassword()+"\'";
-        String birthday= "\'"+bean.getBirthday()+"\'";
+        String ssn = strWrap(bean.getSsn());
+        String fname= strWrap(bean.getFirstName());
+        String lname= strWrap(bean.getLastName());
+        String password= strWrap(bean.getPassword());
+        String birthday= strWrap(bean.getBirthday());
         String isadmin= bean.isAdmin()?"1":"0";
-
+        //tested-working
         String sql = "INSERT INTO User" +
                 " (uid," +
                 "username," +
@@ -126,7 +128,7 @@ public class DatabaseManager {
                 "birthday," +
                 "is_admin)\n" +
                 "VALUES (" +
-                email +","+
+                ssn +","+
                 username +","+
                 password+","+
                 fname +","+
@@ -148,6 +150,7 @@ public class DatabaseManager {
         bean.setEmail(email);
         uid="\'"+uid+"\'";
         email="\'"+email+"\'";
+        //tested-working
         String sql = "SELECT * FROM Account WHERE uid is "
                 +uid+" AND email is "+email+";";
         try {
@@ -167,6 +170,7 @@ public class DatabaseManager {
         AccountBean bean=new AccountBean();
         bean.setAid(aid);
         aid=strWrap(aid);
+        //tested-working
         String sql = "SELECT * FROM Account WHERE aid is "
                 +aid+";";
         try {
@@ -185,6 +189,7 @@ public class DatabaseManager {
     public List<AccountBean> getUsersAccounts(String uid){
         List<AccountBean> ans=new ArrayList();
         uid=strWrap(uid);
+        //tested-working
         String sql = "SELECT * FROM Account WHERE uid is "
                 +uid+";";
         try {
@@ -210,7 +215,7 @@ public class DatabaseManager {
         String email= "\'"+bean.getEmail()+"\'";
         String aid= "\'"+bean.getAid()+"\'";
         String accountType="\'"+bean.getAccountEnum().toString()+"\'";
-
+        //tested-working
         String sql = "INSERT INTO Account" +
                 " (aid," +
                 "uid," +
@@ -233,7 +238,8 @@ public class DatabaseManager {
     public List<TransactionBean> getTransactionBean(String uid)
     {
         List<TransactionBean>  ans=new ArrayList<>();
-        String sql="";
+        //tested - works
+        String sql="SELECT * FROM Account, Transaction WHERE Account.uid = "+uid+" and (Transaction.from_aid = Account.aid or Transaction.to_aid = Account.aid);";
         try {
             rs=statement.executeQuery(sql);
             while (rs.next())
@@ -245,6 +251,9 @@ public class DatabaseManager {
                 bean.setTimeStamp(rs.getString("datetime"));
                 bean.setFrom_uid(rs.getString("from_uid"));
                 bean.setTo_uid(rs.getString("to_uid"));
+                bean.setFromName(rs.getString("from_name"));
+                bean.setToName(rs.getString("to_name"));
+
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -257,10 +266,10 @@ public class DatabaseManager {
         String to_uid=strWrap(bean.getTo_uid());
         String from_username=strWrap(bean.getFromName());
         String to_username=strWrap(bean.getToName());
-        double amount= bean.getAmount();
+        String amount= Double.toString(bean.getAmount());
         String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
         String timeStamp=strWrap(bean.getTimeStamp());
-
+        //tested - works
         String sql = "INSERT INTO Account" +
                 " (tid," +
                 "from_uid," +
@@ -292,6 +301,7 @@ public class DatabaseManager {
     public List<LoanBean> getLoanBean(String uid){
         uid=strWrap(uid);
         List<LoanBean> ans=new ArrayList();
+        //tested - works
         String sql="SELECT * FROM Loan where uid is "+uid+" ;";
         try{
             rs=statement.executeQuery(sql);
@@ -316,11 +326,11 @@ public class DatabaseManager {
     public void insertLoanBean(LoanBean bean){
         String lid=strWrap(bean.getLid());
         String uid=strWrap(bean.getUid());
-        double amount= bean.getAmount();
+        String amount= Double.toString(bean.getAmount());
         String currencyEnum=strWrap(bean.getCurrencyEnum().toString());
         String date = strWrap(bean.getDate());
         String is_clear=bean.isIs_clear()?"1":"0";;
-
+        //tested - works
         String sql = "INSERT INTO Loan" +
                 " (lid," +
                 "uid," +
@@ -348,6 +358,7 @@ public class DatabaseManager {
     public StockBean getStock(String sid){
         StockBean bean=new StockBean();
         sid=strWrap(sid);
+        //tested - works
         String sql="SELECT * FROM Stock where sid is "+sid+" ;";
         try{
             rs=statement.executeQuery(sql);
@@ -366,6 +377,7 @@ public class DatabaseManager {
 
     public List<StockBean> getStocks(){
         List<StockBean> beans=new ArrayList<>();
+        //tested - works
         String sql="SELECT * FROM Stock;";
         try {
             rs=statement.executeQuery(sql);
@@ -389,6 +401,7 @@ public class DatabaseManager {
         sid=strWrap(sid);
         String datetime=strWrap(Utils.getDateTime());
         String pricestr=Double.toString(price);
+        //tested - working
         String sql="UPDATE Stock "+
                 "SET price ="+
                 pricestr+","+
@@ -407,7 +420,8 @@ public class DatabaseManager {
     }
     public List<UserBean> getAllUsers(){
         List<UserBean> user=new ArrayList();
-        String sql="SELECT * from User";
+        //tested - working
+        String sql="SELECT * from User;";
         try {
             rs=statement.executeQuery(sql);
             while(rs.next())
@@ -435,6 +449,7 @@ public class DatabaseManager {
         lid=strWrap(lid);
         int clearFlag = (isCleared == true) ? 1 : 0;
         String datetime=strWrap(Utils.getDateTime());
+        //checked - working
         String sql="UPDATE Loan "+
                 "SET clear_date ="+
                 datetime+","+
@@ -457,6 +472,7 @@ public class DatabaseManager {
         double oldAmount = 0.0;
         double newAmount = 0.0;
         int isMoneyAdded = (changedAmount >= 0) ? 1 : 0;
+        //tested - working
         String sqlQueryAmount="SELECT amount FROM Balance WHERE aid is " +aid+ ";";
         try {
             rs=statement.executeQuery(sqlQueryAmount);
@@ -490,6 +506,7 @@ public class DatabaseManager {
 
     public UserBean getUserbean(String uid) {
         uid=strWrap(uid);
+        //tested - working
         String sql = "SELECT * FROM User WHERE uid is "+
                 uid+";";
         try
@@ -519,6 +536,7 @@ public class DatabaseManager {
     public List<BalanceBean> getBalanceBean(String aid) {
         List<BalanceBean> ans=new ArrayList();
         aid=strWrap(aid);
+        //tested - working
         String sql="SELECT * FROM Balance WHERE aid is "+aid+";";
         try {
             rs=statement.executeQuery(sql);
@@ -541,15 +559,18 @@ public class DatabaseManager {
         String sid=strWrap(userStock.getSid());
         String datetime=strWrap(userStock.getStock_buy_time());
         Double proportion=userStock.getProportion();
+        //tested - working but sid and aid have to exist
         String sql = "INSERT INTO UserStock" +
                 " (aid," +
                 "sid," +
                 "proportion," +
-                "buy_date)\n" +
+                "buy_date," +
+                "last_updated)\n" +
                 "VALUES (" +
                 aid + "," +
                 sid + "," +
                 proportion + "," +
+                datetime + "," +
                 datetime +
                 ");";
         try {
@@ -562,6 +583,7 @@ public class DatabaseManager {
 
     public UserStock getSpecificUserStock(String aid, String sid){
         UserStock stock = new UserStock();
+        //checked - working
         String sql="SELECT * FROM UserStock WHERE aid is "
                 +aid+" AND sid is "+sid+";";
         try {
@@ -582,6 +604,7 @@ public class DatabaseManager {
 
     public List<UserStock> getUserStocks(String aid){
         List<UserStock> stocks=new ArrayList();
+        //checked - working
         String sql="SELECT * FROM UserStock WHERE aid is "
                 +aid+";";
         try {
@@ -604,6 +627,7 @@ public class DatabaseManager {
 
     public List<UserStock> getAllUserStocks(){
         List<UserStock> stocks=new ArrayList();
+        //checked - working
         String sql="SELECT * FROM UserStock;";
         try {
             rs=statement.executeQuery(sql);
@@ -624,6 +648,7 @@ public class DatabaseManager {
     }
 
     public void updateUserStock(String aid, String sid, Double proportion){
+        //the proportion here refers to the change in proportion only and not the absolute value of the proportion owned by the individual
         UserStock stock = new UserStock();
         Double newProportion;
         Double oldProportion = 0.0;
@@ -648,6 +673,7 @@ public class DatabaseManager {
             newProportion = oldProportion + proportion;
         }
         else newProportion = oldProportion - proportion;
+        //checked - working
         String sqlUpdate="UPDATE UserStock "+
                 "SET proportion ="+
                 newProportion+
@@ -668,7 +694,8 @@ public class DatabaseManager {
     }
     public List<UserBean> getAllUserByLoanDescend(){
         List<UserBean> ans=new ArrayList<>();
-        String sql = "SELECT User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
+        //checked - working. hoever remember that it is mandatory for order by to work on sum - that the sum is also selected in the select part of query
+        String sql = "SELECT SUM(Loan.Amount), User.uid, User.username, User.first_name, User.last_name, User.birthday, User.is_admin, User.phone_number FROM User,Loan WHERE User.uid = Loan.uid and Loan.is_clear == 0 GROUP BY User.uid, User.username ORDER BY SUM(Loan.amount) DESC;";
         try {
             rs = statement.executeQuery(sql);
             while(rs.next())
@@ -691,6 +718,7 @@ public class DatabaseManager {
     public double getTotalAmountForUser(String uid){
         List<UserBean> ans=new ArrayList<>();
         double amount = 0.0;
+        //checked - working
         String sql = "SELECT Balance.amount FROM Account,Balance WHERE Account.aid = Balance.aid and Account.uid = "+uid+";";
         try {
             rs = statement.executeQuery(sql);
@@ -707,6 +735,7 @@ public class DatabaseManager {
 
     public List<TransactionBean> getTransactionBeanByAid(String aid) {
         List<TransactionBean> ans=new ArrayList<>();
+        //checked - working
         String sql = "SELECT * FROM Transaction WHERE from_aid = "+aid +"or to_aid = " +aid+";";
         try {
             rs = statement.executeQuery(sql);
@@ -731,7 +760,7 @@ public class DatabaseManager {
 
     public String getUsernameForAccount(String aid){
         String username = "";
-        String sql = "SELECT User.first_name, User.last_name FROM User,Account WHERE Account.uid = User.aid and Account.aid = "+aid+";";
+        String sql = "SELECT User.first_name, User.last_name FROM User,Account WHERE Account.uid = User.uid and Account.aid = "+aid+";";
         try {
             rs = statement.executeQuery(sql);
             while(rs.next())
