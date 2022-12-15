@@ -3,6 +3,7 @@ package com.ood.Views;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import com.ood.Controllers.LoginController;
 import com.ood.Controllers.UserControllerManager;
 
 /**
@@ -14,8 +15,10 @@ public class HomePage extends javax.swing.JFrame {
     private ViewContainer viewContainer;
     private UserControllerManager controllerManager;
 
-    public void setViewContainer(ViewContainer viewContainer) {
-        this.viewContainer = viewContainer;
+    private LoginController loginController;
+
+    public void setControllerManager(UserControllerManager controllerManager) {
+        this.controllerManager = controllerManager;
     }
 
     /**
@@ -479,6 +482,7 @@ public class HomePage extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+
         viewContainer.getPage("SavingsApplication").setVisible(true);
         this.setVisible(false);
         //
@@ -504,6 +508,7 @@ public class HomePage extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //login
+        UserControllerManager.getInstance().getLoginController();
         System.out.println("5");
         viewContainer.getPage("LoginPage").setVisible(true);
         this.setVisible(false);

@@ -12,7 +12,12 @@ public class LoginController {
     private BankJudge judge;
 
     public LoginController() {
-//        view=
+        dbManager=DatabaseManager.getInstance();
+        judge=BankJudge.getInstance();
+        viewContainer=ViewContainer.getInstance();
+        view= (LoginPage) viewContainer.getPage("LoginPage");
+        view.setVisible(false);
+        view.setController(this);
     }
 
     public void login(String userName, String password)

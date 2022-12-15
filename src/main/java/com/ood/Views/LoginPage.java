@@ -4,11 +4,19 @@
  */
 package com.ood.Views;
 
+import com.ood.Controllers.LoginController;
+
 /**
  *
  * @author revathivipinachandran
  */
 public class LoginPage extends javax.swing.JFrame {
+
+    private LoginController controller;
+
+    public void setController(LoginController controller) {
+        this.controller = controller;
+    }
 
     /**
      * Creates new form LoginPage
@@ -303,30 +311,44 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //pwd
+
     }
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        //usename
+
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("4");
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("8");
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("5");
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("7");
+
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("1");
+        //login
+        controller.login(jTextField2.getText(),jTextField1.getText());
+
+
     }
 
     /**
