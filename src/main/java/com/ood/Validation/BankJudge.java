@@ -77,7 +77,10 @@ public class BankJudge {
     }
 
     public static boolean check_emailAddress(String emailAddress) {
-        String regexPattern = "^(.+)@(\\\\S+)$";
+        String regexPattern = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
         return Pattern.compile(regexPattern)
                 .matcher(emailAddress)
                 .matches();

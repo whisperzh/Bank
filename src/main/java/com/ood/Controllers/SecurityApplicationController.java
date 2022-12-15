@@ -37,24 +37,10 @@ public class SecurityApplicationController {
     }
 
     public void validateFirstForm(Dictionary userDetails){
-        String firstname = userDetails.get("firstname").toString();
-        String lastname = userDetails.get("lastname").toString();
+
         String email = userDetails.get("email").toString();
-        String address = userDetails.get("address").toString();
         String ssn = userDetails.get("ssn").toString();
         int flag = 0;
-        if(firstname.equals("")){
-            JOptionPane.showMessageDialog(view, "Enter a valid first name.");
-            flag = 1;
-        }
-        if(lastname.equals("")){
-            JOptionPane.showMessageDialog(view, "Enter a valid last name.");
-            flag = 1;
-        }
-        if(address.equals("")){
-            JOptionPane.showMessageDialog(view, "Enter a valid address.");
-            flag = 1;
-        }
         if(!BankJudge.getInstance().check_integer(ssn) || !BankJudge.getInstance().check_ssn(ssn)){
             JOptionPane.showMessageDialog(view, "Please enter a valid social security number");
             flag = 1;
