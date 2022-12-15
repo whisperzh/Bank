@@ -6,6 +6,8 @@ import com.ood.Model.Loan.AbsLoan;
 import com.ood.Model.Loan.EducationLoan;
 import com.ood.Model.Loan.LoanBean;
 import com.ood.Model.Loan.NormalLoan;
+import com.ood.Model.Users.UserBean;
+import com.ood.Model.Users.UserEntity;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
@@ -14,11 +16,12 @@ import com.ood.Views.ViewContainer;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Dictionary;
 import java.util.Map;
 
 
-public class LoanController {
+public class LoanController extends Component {
 
     private BankJudge bankJudge;
 
@@ -26,14 +29,29 @@ public class LoanController {
 
     private ViewContainer viewContainer;
 
+    private DatabaseManager dbManager;
+
     public LoanController() {
+        dbManager = DatabaseManager.getInstance();
         this.bankJudge = BankJudge.getInstance();
         viewContainer=ViewContainer.getInstance();
         view= (LoanApplication) viewContainer.getPage("LoanApplication");
-        view.setController(this)
-        ;
+        view.setController(this);
         view.setVisible(false);
 
+    }
+
+    public boolean check_if_user(String socialSecurityNumber) {
+        UserBean user = new UserBean();
+        user.setSsn(socialSecurityNumber);
+
+//      UserControllerManager.getInstance().getControlling_user();
+        if(dbManager.hasUserBean(user)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public AbsLoan createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
@@ -71,4 +89,37 @@ public class LoanController {
             JOptionPane.showMessageDialog(view ,"You have entered invalid input");
         }
     }*/
+
+    public boolean VerifyDetails(String fname, String lname, String email, String address, String SSN){
+        boolean pass = true;
+        if(fname.equals("")){
+            pass=false;
+        }
+        if(lname.equals("")){
+            pass = false;
+        }
+        if(email.equals("") || email.toString().contains("@")){
+
+            pass = false;
+        }
+        if(address.equals("")){
+            pass = false;}
+        if(SSN.equals("") || SSN.toString().length()<9|| !is_integer(SSN.toString())){
+            pass = false;
+        }
+//        if(!pass){
+//            JOptionPane.showMessageDialog(this, "Please enter valid input");
+//        }
+        return pass;
+    }
+
+    private boolean is_integer(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

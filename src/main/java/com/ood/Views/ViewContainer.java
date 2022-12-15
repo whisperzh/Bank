@@ -23,7 +23,6 @@ public class ViewContainer {
     }
 
     public void addPage(String name,JFrame instance){
-        //fullSizeFrame(instance);
         map.put(name,instance);
     }
 
@@ -49,34 +48,30 @@ public class ViewContainer {
 
             }else if(name.contains("CustomerDashboard")) {
                 jFrame = new CustomerDashboard();
-
             } else if (name.contains("CheckingsActivity")) {
                 jFrame = new CheckingsActivity();
-
             }else if (name.contains("CheckingsDetails")) {
                 jFrame = new CheckingsDetails();
-
             }else if (name.contains("CheckingsTransfer")) {
                 jFrame = new CheckingsTransfer();
-
             }else if (name.contains("CheckingsWithdraw")) {
                 jFrame = new CheckingsWithdraw();
 
-            }else if(name.contains("LoanApplication")) {
-                jFrame=new LoanApplication();
 
+
+        }else if(name.contains("LoanApplication"))
+            {
+                jFrame=new LoanApplication();
             }else if(name.contains("SavingsApplication")){
                 jFrame=new SavingsApplication();
             }
             else if(name.contains("LoginPage"))
             {
                 jFrame=new LoginPage();
-
             }
             else if(name.contains("ManagerViewCustomers"))
             {
                 jFrame=new ManagerViewCustomers();
-
             }else if(name.contains("ManagerViewTransactions"))
             {
                 jFrame=new ManagerViewTransactions();

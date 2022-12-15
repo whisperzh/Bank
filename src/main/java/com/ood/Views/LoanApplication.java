@@ -4,6 +4,7 @@ package com.ood.Views;/*
  */
 
 import com.ood.Controllers.LoanController;
+import com.ood.Controllers.UserControllerManager;
 
 import javax.swing.*;
 
@@ -13,7 +14,11 @@ import javax.swing.*;
  * @author revathivipinachandran
  */
 public class LoanApplication extends javax.swing.JFrame {
+//    private UserControllerManager user_controller_manager;
+
     private LoanController controller;
+
+    private UserControllerManager user_controller_manager;
 
     private ViewContainer viewContainer;
 
@@ -21,8 +26,11 @@ public class LoanApplication extends javax.swing.JFrame {
      * Creates new form LoanApplication
      */
     public LoanApplication() {
+        user_controller_manager = UserControllerManager.getInstance();
+//        controller = user_controller_manager.getLoanController();
         viewContainer=ViewContainer.getInstance();
         initComponents();
+        jPanel2.setVisible(false);
     }
 
     public void setController(LoanController controller) {
@@ -471,7 +479,11 @@ public class LoanApplication extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        String username = jTextField7.getText();
+        String password = jTextField8.getText();
+        String amount = jTextField6.getText();
+
+
     }
 
     private void jPanel2ComponentHidden(java.awt.event.ComponentEvent evt) {
@@ -504,30 +516,30 @@ public class LoanApplication extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("Entered button function");
         String firstName = jTextField1.getText();
         String lastName = jTextField5.getText();
         String emailAddress = jTextField2.getText();
         String homeAddress = jTextField3.getText();
         String socialSecurityNumber = jTextField4.getText();
-        boolean pass = true;
-        if(firstName.equals("")){
-            pass=false;
-        }
-        if(lastName.equals("")){
-            pass = false;
-        }
-        if(emailAddress.equals("") || emailAddress.toString().contains("@")){
 
-            pass = false;
+        boolean verification = controller.VerifyDetails(firstName, lastName, emailAddress, homeAddress, socialSecurityNumber);
+        System.out.println("Verification");
+        System.out.println(verification);
+
+        if(verification){
+            boolean is_user = controller.check_if_user(socialSecurityNumber);
+            if(is_user){
+                jPanel2.setVisible(true);
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Sorry, we are unable to provide you loan as you do not have an account with us.");
+            }
         }
-        if(homeAddress.equals("")){
-            pass = false;}
-        if(socialSecurityNumber.equals("") || socialSecurityNumber.toString().length()<9|| !is_integer(socialSecurityNumber.toString())){
-            pass = false;
-        }
-        if(!pass){
+        else{
             JOptionPane.showMessageDialog(this, "Please enter valid input");
         }
+
         /*Map<String,String> loanCredentials = new HashMap<>();
         loanCredentials.put("firstName", firstName);
         loanCredentials.put("lastName", lastName);
@@ -535,7 +547,6 @@ public class LoanApplication extends javax.swing.JFrame {
         loanCredentials.put("homeAddress", homeAddress);
         loanCredentials.put("socialSecurityNumber", socialSecurityNumber);
         controller.validateCredentials(firstName, lastName, emailAddress, homeAddress,);*/
-
     }
     //private void addLoanApplication
     private boolean validateSSN(int SSN){
