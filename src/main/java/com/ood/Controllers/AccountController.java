@@ -1,26 +1,50 @@
 package com.ood.Controllers;
 
 import com.ood.Model.Accounts.AbsAccount;
+import com.ood.Model.Accounts.AccountBean;
 import com.ood.Model.Stocks.StockBean;
 import com.ood.Model.Stocks.UserStock;
 import com.ood.Utils.Constants;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
+import com.ood.Views.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AccountController {
     private AbsAccount controlledAccount;
-
+    private AccountActivity activityTab;
+    private AccountDetails detailTab;
+    private AccountTransfer TransferTab;
+    private AccountWithdraw withdrawTab;
     private DatabaseManager dbManager;
-
+    private ViewContainer viewContainer;
     private BankJudge bankJudge;
+
 
     public AccountController() {
         bankJudge=BankJudge.getInstance();
         dbManager=DatabaseManager.getInstance();
+        viewContainer= ViewContainer.getInstance();
+
+        detailTab= (AccountDetails) viewContainer.getPage("AccountDetails");
+        detailTab.setVisible(false);
+        detailTab.setAccountController(this);
+
+        TransferTab= (AccountTransfer) viewContainer.getPage("AccountTransfer");
+        TransferTab.setVisible(false);
+        TransferTab.setAccountController(this);
+
+        withdrawTab= (AccountWithdraw) viewContainer.getPage("AccountWithdraw");
+        withdrawTab.setVisible(false);
+        withdrawTab.setAccountController(this);
+
+        activityTab= (AccountActivity) viewContainer.getPage("AccountActivity");
+        activityTab.setVisible(false);
+        activityTab.setAccountController(this);
+
     }
 
     public void sendMoneyTo(String to_aid, double amount){
@@ -81,5 +105,12 @@ public class AccountController {
         this.controlledAccount = controlledAccount;
     }
 
+    public void updateView(AccountBean bean){
+
+    }
+
+    public void showPage(){
+        activityTab.setVisible(true);
+    }
 
 }

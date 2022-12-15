@@ -1,13 +1,16 @@
-package com.ood.Views;/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+package com.ood.Views;
+import com.ood.Controllers.AccountController;
 
 /**
  *
  * @author revathivipinachandran
  */
 public class AccountWithdraw extends javax.swing.JFrame {
+    private AccountController accountController;
+
+    public void setAccountController(AccountController accountController) {
+        this.accountController = accountController;
+    }
 
     /**
      * Creates new form AccountWithdraw

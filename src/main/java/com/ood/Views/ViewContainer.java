@@ -17,6 +17,11 @@ public class ViewContainer {
             viewContainer=new ViewContainer();
         return viewContainer;
     }
+
+    public void addPage(String name,JFrame instance){
+        map.put(name,instance);
+    }
+
     public JFrame getPage(String name)
     {
         if(map.getOrDefault(name,null)==null)
