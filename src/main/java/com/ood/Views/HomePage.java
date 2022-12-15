@@ -509,7 +509,7 @@ public class HomePage extends javax.swing.JFrame {
         // TODO add your handling code here:
         //login
         UserControllerManager.getInstance().getLoginController();
-        System.out.println("5");
+        //System.out.println("5");
         viewContainer.getPage("LoginPage").setVisible(true);
         this.setVisible(false);
 

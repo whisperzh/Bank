@@ -8,6 +8,7 @@ import com.ood.Controllers.LoginController;
 import com.ood.Controllers.UserControllerManager;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  *
@@ -21,13 +22,21 @@ public class LoginPage extends javax.swing.JFrame {
     public void setController(LoginController controller) {
         this.controller = controller;
         viewContainer=ViewContainer.getInstance();
+
     }
+    /*public static void fullSizeFrame(JPanel panel){
+        Dimension myScreen = Toolkit.getDefaultToolkit().getScreenSize();
+        panel.setSize(myScreen.width,myScreen.height);
+    }*/
 
     /**
      * Creates new form LoginPage
      */
     public LoginPage() {
         initComponents();
+        //fullSizeFrame(this.BackgroundPanel);
+        //this.setState(Frame.NORMAL);
+        //this.setExtendedState(Frame.MAXIMIZED_BOTH);
     }
 
     /**
