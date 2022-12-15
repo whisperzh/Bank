@@ -249,8 +249,8 @@ public class DatabaseManager {
                 bean.setAmount(rs.getFloat("amount"));
                 bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
                 bean.setTimeStamp(rs.getString("datetime"));
-                bean.setFrom_uid(rs.getString("from_uid"));
-                bean.setTo_uid(rs.getString("to_uid"));
+                bean.setFrom_aid(rs.getString("from_uid"));
+                bean.setTo_aid(rs.getString("to_uid"));
                 bean.setFromName(rs.getString("from_name"));
                 bean.setToName(rs.getString("to_name"));
 
@@ -262,8 +262,8 @@ public class DatabaseManager {
     }
     public void insertTransactionBean(TransactionBean bean){
         String tid=strWrap(bean.getTid());
-        String from_uid=strWrap(bean.getFrom_uid());
-        String to_uid=strWrap(bean.getTo_uid());
+        String from_uid=strWrap(bean.getFrom_aid());
+        String to_uid=strWrap(bean.getTo_aid());
         String from_username=strWrap(bean.getFromName());
         String to_username=strWrap(bean.getToName());
         String amount= Double.toString(bean.getAmount());
@@ -745,8 +745,8 @@ public class DatabaseManager {
                 transactionBean.setTid(rs.getString("tid"));
                 transactionBean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
                 transactionBean.setTimeStamp(rs.getString("datetime"));
-                transactionBean.setFrom_uid(rs.getString("from_aid"));
-                transactionBean.setTo_uid(rs.getString("to_aid"));
+                transactionBean.setFrom_aid(rs.getString("from_aid"));
+                transactionBean.setTo_aid(rs.getString("to_aid"));
                 transactionBean.setFromName(rs.getString("from_name"));
                 transactionBean.setFromName(rs.getString("to_name"));
                 ans.add(transactionBean);

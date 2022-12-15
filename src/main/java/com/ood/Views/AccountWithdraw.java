@@ -92,7 +92,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
         withdrawButton.setText("Withdraw");
         withdrawButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                withdrawActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -243,7 +243,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
         jButton1.setText("Withdraw");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                withdrawActionPerformed(evt);
             }
         });
 
@@ -408,7 +408,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
 
     }
 
-    private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         System.out.println("5");
         // TODO add your handling code here:
 
@@ -432,7 +432,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
     }
 
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void withdrawActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("1");
         accountController.withdrawMoney(Double.valueOf(jTextField1.getText()));

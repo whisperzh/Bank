@@ -5,28 +5,28 @@ import com.ood.Enums.CurrencyEnum;
 public class TransactionBean {
 
     private String tid;
-    private String from_uid;
-    private String to_uid;
+    private String from_aid;
+    private String to_aid;
     private double amount;
     private CurrencyEnum currencyEnum;
     private String timeStamp;
     private String fromName;
     private String toName;
 
-    public String getFrom_uid() {
-        return from_uid;
+    public String getFrom_aid() {
+        return from_aid;
     }
 
-    public void setFrom_uid(String from_uid) {
-        this.from_uid = from_uid;
+    public void setFrom_aid(String from_aid) {
+        this.from_aid = from_aid;
     }
 
-    public String getTo_uid() {
-        return to_uid;
+    public String getTo_aid() {
+        return to_aid;
     }
 
-    public void setTo_uid(String to_uid) {
-        this.to_uid = to_uid;
+    public void setTo_aid(String to_aid) {
+        this.to_aid = to_aid;
     }
 
     public double getAmount() {
