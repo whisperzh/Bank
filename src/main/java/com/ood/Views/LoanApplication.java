@@ -542,6 +542,7 @@ public class LoanApplication extends javax.swing.JFrame {
     }
     //private void addLoanApplication
     private boolean validateSSN(int SSN){
+        //backend
         return true;
     }
     private boolean is_integer(String str) {
