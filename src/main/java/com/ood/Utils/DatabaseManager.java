@@ -680,4 +680,21 @@ public class DatabaseManager {
         }
         return ans;
     }
+
+    public double getTotalAmountForUser(String uid){
+        List<UserBean> ans=new ArrayList<>();
+        double amount = 0.0;
+        String sql = "SELECT Balance.amount FROM Account,Balance WHERE Account.aid = Balance.aid";
+        try {
+            rs = statement.executeQuery(sql);
+            while(rs.next())
+            {
+                UserBean userbean=new UserBean();
+                amount = amount + rs.getDouble("amount");
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return amount;
+    }
 }
