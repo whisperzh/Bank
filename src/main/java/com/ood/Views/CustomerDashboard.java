@@ -4,6 +4,13 @@
  */
 package com.ood.Views;
 
+import com.ood.Controllers.AccountController;
+import com.ood.Controllers.UserControllerManager;
+import com.ood.Model.Accounts.AbsAccount;
+import com.ood.Model.Accounts.IAccount;
+import com.ood.Model.Users.UserEntity;
+
+import javax.swing.*;
 import javax.swing.text.View;
 
 /**
@@ -16,7 +23,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
      * Creates new form CustomerDashboard
      */
     private ViewContainer viewContainer;
+    private UserControllerManager userControllerManager;
+
     public CustomerDashboard() {
+        userControllerManager=UserControllerManager.getInstance();
         viewContainer=ViewContainer.getInstance();
         initComponents();
     }
@@ -331,6 +341,14 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        AccountController controller=userControllerManager.getAccountController();
+        UserEntity user=userControllerManager.getControlling_user();
+        IAccount saving= user.getUserSavingAccount();
+        if(saving==null) {
+            JOptionPane.showMessageDialog(this, "You don't have Savings Account");
+            return;
+        }
+        controller.setControlledAccount((AbsAccount) saving);
         ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
 
@@ -339,11 +357,13 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //ViewContainer.getInstance().getPage("").setVisible();
+        //loan2
     }
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //ViewContainer.getInstance().getPage("").setVisible();
+        //loan3
 
     }
 
@@ -351,10 +371,12 @@ public class CustomerDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         //ViewContainer.getInstance().getPage("").setVisible(true);
         //this.setVisible(false);
+        //loan1
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        System.out.println("4");
         ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
         this.setVisible(false);
     }
@@ -367,13 +389,32 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        System.out.println("7");
+        // TODO add your handling code here:
+        AccountController controller=userControllerManager.getAccountController();
+        UserEntity user=userControllerManager.getControlling_user();
+        IAccount checking= user.getUserCheckingAccount();
+        if(checking==null) {
+            JOptionPane.showMessageDialog(this, "You don't have Checkings Account");
+            return;
+        }
+        controller.setControlledAccount((AbsAccount) checking);
+        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("SecurityApplication").setVisible(true);
+
+        AccountController controller=userControllerManager.getAccountController();
+        UserEntity user=userControllerManager.getControlling_user();
+        IAccount security= user.getUserSecurityAccount();
+        if(security==null) {
+            JOptionPane.showMessageDialog(this, "You don't have Security Account");
+            return;
+        }
+        controller.setControlledAccount((AbsAccount) security);
+        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
     }
 

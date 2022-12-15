@@ -25,8 +25,7 @@ public class LoginController {
 
     public boolean login(String userName, String password)
     {
-          DatabaseManager dbm=DatabaseManager.getInstance();
-          UserBean bean=dbm.getUserbean(userName, password);
+          UserBean bean=dbManager.getUserbean(userName, password);
           if(bean!=null)
           {
               UserEntity user;
