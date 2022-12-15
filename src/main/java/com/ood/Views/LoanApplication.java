@@ -14,7 +14,6 @@ import javax.swing.*;
  * @author revathivipinachandran
  */
 public class LoanApplication extends javax.swing.JFrame {
-//    private UserControllerManager user_controller_manager;
 
     private LoanController controller;
 
