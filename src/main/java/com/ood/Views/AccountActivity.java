@@ -311,7 +311,7 @@ public class AccountActivity extends javax.swing.JFrame {
         for(int i=0; i<transactions.size(); i++){
 
             TransactionBean bean = transactions.get(i);
-            String timestamp = bean.getTimeStamp().toString();
+            String timestamp = bean.getTimeStamp();
             String currency = bean.getCurrencyEnum().toString();
             String amount = String.valueOf(bean.getAmount());
             String from = String.valueOf(bean.getFrom_aid());
