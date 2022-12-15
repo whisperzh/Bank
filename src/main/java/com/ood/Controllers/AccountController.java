@@ -68,7 +68,9 @@ public class AccountController {
     }
 
     public void addMoney(double amount){
-        dbManager.updateBalance(controlledAccount.getBean().getAid(),amount+ Constants.WITHDRAW_FEE);
+        dbManager.updateBalance(controlledAccount.getBean().getAid(),amount- Constants.WITHDRAW_FEE);
+        controlledAccount.updateDeposits();
+        updateView();
     }
 
     public void buyStock(float stockProportion,String sid){
@@ -109,7 +111,6 @@ public class AccountController {
     public void setControlledAccount(AbsAccount controlledAccount) {
         this.controlledAccount = controlledAccount;
     }
-
     public void updateView(){
         AccountBean bean=controlledAccount.getBean();
         String aid= bean.getAid();
@@ -124,8 +125,6 @@ public class AccountController {
 
         detailTab.updateByBean(bean);
     }
-
-
     public void showPage(){
         activityTab.setVisible(true);
     }

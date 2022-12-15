@@ -53,7 +53,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        depositeButton = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -297,11 +297,11 @@ public class AccountWithdraw extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 17)); // NOI18N
         jLabel4.setText("Enter amount to be deposited:");
 
-        jButton2.setBackground(new java.awt.Color(205, 164, 164));
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(246, 232, 232));
-        jButton2.setText("Deposit");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        depositeButton.setBackground(new java.awt.Color(205, 164, 164));
+        depositeButton.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        depositeButton.setForeground(new java.awt.Color(246, 232, 232));
+        depositeButton.setText("Deposit");
+        depositeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
@@ -326,7 +326,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
                                                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(26, 26, 26)
                                                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(depositeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addContainerGap(34, Short.MAX_VALUE))
         );
@@ -340,7 +340,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jTextField2))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(depositeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(98, Short.MAX_VALUE))
@@ -429,6 +429,8 @@ public class AccountWithdraw extends javax.swing.JFrame {
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        accountController.addMoney(Double.valueOf(jTextField2.getText()));
+
     }
 
 
@@ -502,7 +504,7 @@ public class AccountWithdraw extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton depositeButton;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration
