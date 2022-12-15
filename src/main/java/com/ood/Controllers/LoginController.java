@@ -1,5 +1,8 @@
 package com.ood.Controllers;
+import com.ood.Model.Users.NormalUser;
+import com.ood.Model.Users.SuperUser;
 import com.ood.Model.Users.UserBean;
+import com.ood.Model.Users.UserEntity;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Validation.BankJudge;
 import com.ood.Views.LoginPage;
@@ -20,18 +23,29 @@ public class LoginController {
         view.setController(this);
     }
 
-    public void login(String userName, String password)
+    public boolean login(String userName, String password)
     {
-          DatabaseManager dbm=DatabaseManager.getInstance();
-          UserBean bean=dbm.getUserbean(userName, password);
+          UserBean bean=dbManager.getUserbean(userName, password);
           if(bean!=null)
           {
+              UserEntity user;
+              if(bean.isAdmin())
+              {
+                  user=new SuperUser(bean);
+              }else
+              {
+                  user=new NormalUser(bean);
+              }
+              UserControllerManager.getInstance().setControlling_user(user);
+
               //activate backend service.
               System.out.println("yes");
+              return true;
           }
           else{
               //alert
               System.out.printf("no");
+              return false;
           }
     }
 }

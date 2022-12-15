@@ -5,19 +5,16 @@ import com.ood.Model.Accounts.*;
  * Factory that generates Account
  */
 public class AccountFactory {
-    public static IAccount createAccount(String accountType, AccountBean bean){
-        if(accountType == null || accountType.isEmpty()){
-            return null;
-        }
+    public static IAccount createAccount( AccountBean bean){
         IAccount account = null;
-        switch(accountType){
-            case "saving":
+        switch(bean.getAccountEnum()){
+            case SAVINGS:
                 account= new SavingAccount(bean);
                 break;
-            case "checking":
+            case CHECKINGS:
                 account = new CheckingAccount(bean);
                 break;
-            case "security":
+            case SECURITY:
                 account = new SecurityAccount(bean);
                 break;
 //                throw new IllegalArgumentException("You can only create saving, checking, security account. You have entered "+accountType);

@@ -12,7 +12,7 @@ public abstract class AbsCurrency implements ICurrency{
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 }

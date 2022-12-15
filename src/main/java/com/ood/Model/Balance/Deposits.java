@@ -11,9 +11,16 @@ import com.ood.Utils.SimpleCollection;
  * Each Account has this class, this class is responsible for managing the currencies
  */
 public class Deposits extends SimpleCollection<ICurrency> {
-    public Deposits(float startAmount) {
+    public Deposits(double startAmount) {
         super();
         addItem(new USD_Currency(startAmount));
+        addItem(new JPY_Currency(0));
+        addItem(new EUR_Currency(0));
+    }
+
+    public Deposits() {
+        super();
+        addItem(new USD_Currency(0));
         addItem(new JPY_Currency(0));
         addItem(new EUR_Currency(0));
     }
@@ -42,6 +49,16 @@ public class Deposits extends SimpleCollection<ICurrency> {
     }
     public double getEURAmount(){
         return getItemAt(2).getAmount();
+    }
+
+    public void setUSDAmount(double amount){
+         getItemAt(0).setAmount(amount);
+    }
+    public void setJPYAmount(double amount){
+         getItemAt(1).setAmount(amount);
+    }
+    public void setEURAmount(double amount){
+         getItemAt(2).setAmount(amount);
     }
 
     public void addAmount(double amount)

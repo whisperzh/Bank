@@ -5,7 +5,7 @@ import com.ood.Utils.Constants;
 
 public class EUR_Currency extends AbsCurrency{
 
-    public EUR_Currency(float amount){
+    public EUR_Currency(double amount){
         this.amount = amount;
     }
     public void convertTo(float otherAmount, CurrencyEnum type) {

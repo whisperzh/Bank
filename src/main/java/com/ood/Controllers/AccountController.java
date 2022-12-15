@@ -107,11 +107,13 @@ public class AccountController {
         this.controlledAccount = controlledAccount;
     }
 
-    public void updateView(AccountBean bean){
+    public void updateView(){
+        AccountBean bean=controlledAccount.getBean();
         String aid= bean.getAid();
         String email= bean.getEmail();
         String accountType=controlledAccount.getBean().getAccountEnum().toString();
         List<TransactionBean> transactions=dbManager.getTransactionBeanByAid(aid);
+        activityTab.setBalance(controlledAccount.getBalance());
     }
 
     public void showPage(){

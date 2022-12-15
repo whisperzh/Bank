@@ -201,11 +201,12 @@ public class DatabaseManager {
                 bean.setAid(rs.getString("aid"));
                 bean.setAccountEnum(AccountEnum.StringtoType(rs.getString("type")));
                 bean.setEmail(rs.getString("email"));
+                ans.add(bean);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return ans;
 
     }
 
@@ -735,7 +736,7 @@ public class DatabaseManager {
     public List<TransactionBean> getTransactionBeanByAid(String aid) {
         List<TransactionBean> ans=new ArrayList<>();
         //checked - working
-        String sql = "SELECT * FROM Transaction WHERE from_aid = "+aid +"or to_aid = " +aid+";";
+        String sql = "SELECT * FROM `Transaction` WHERE from_aid = "+strWrap(aid) +" OR to_aid = " +strWrap(aid)+";";
         try {
             rs = statement.executeQuery(sql);
             while(rs.next())
