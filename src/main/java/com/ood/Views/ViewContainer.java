@@ -50,10 +50,7 @@ public class ViewContainer {
                 jFrame = new CheckingsTransfer();
             }else if (name.contains("CheckingsWithdraw")) {
                 jFrame = new CheckingsWithdraw();
-
-
-
-        }else if(name.contains("LoanApplication"))
+            }else if(name.contains("LoanApplication"))
             {
                 jFrame=new LoanApplication();
             }else if(name.contains("SavingsApplication")){
