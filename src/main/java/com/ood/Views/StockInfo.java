@@ -55,11 +55,11 @@ public class StockInfo extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(223, 223, 246));
         jLabel2.setText("What do you like to track:");
 
-        jButton1.setBackground(new java.awt.Color(205, 164, 164));
+        jButton1.setBackground(new java.awt.Color(233, 204, 204));
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton1.setText("Back to Dashboard");
 
-        jButton2.setBackground(new java.awt.Color(205, 164, 164));
+        jButton2.setBackground(new java.awt.Color(233, 204, 204));
         jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton2.setText("Stocks Owned");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

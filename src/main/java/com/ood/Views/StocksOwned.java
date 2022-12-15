@@ -90,8 +90,8 @@ public class StocksOwned extends javax.swing.JFrame {
 
             jButton5.setBackground(new java.awt.Color(238, 86, 34));
             jButton5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-            jButton5.setForeground(new java.awt.Color(224, 240, 234));
-            jButton5.setText("Sell Stocks");
+            jButton5.setForeground(new java.awt.Color(0,0,0));
+            jButton5.setText("Sell");
             jButton5.setBorderPainted(false);
             jButton5.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,7 +101,7 @@ public class StocksOwned extends javax.swing.JFrame {
 
             jButton6.setBackground(new java.awt.Color(238, 86, 34));
             jButton6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-            jButton6.setForeground(new java.awt.Color(224, 240, 234));
+            jButton6.setForeground(new java.awt.Color(0,0,0));
             jButton6.setText("DashBoard");
             jButton6.setBorderPainted(false);
             jButton6.addActionListener(new java.awt.event.ActionListener() {
