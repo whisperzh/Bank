@@ -12,12 +12,9 @@ import com.ood.Validation.BankJudge;
 import com.ood.Views.LoanApplication;
 import com.ood.Views.ViewContainer;
 
-
-import javax.swing.*;
-import java.util.Dictionary;
-import java.util.Map;
-
-
+/**
+ * Controller Class for handling connection between loans for user accounts in front end, validation using bankJudge and data in the backend
+ */
 public class LoanController {
 
     private BankJudge bankJudge;

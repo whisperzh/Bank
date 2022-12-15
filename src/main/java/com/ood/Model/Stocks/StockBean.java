@@ -1,5 +1,8 @@
 package com.ood.Model.Stocks;
 
+/**
+ * Concrete class that contains all the attributes and methods required to maintain stocks in the Bank
+ */
 public class StockBean {
     private String sid;
     private String company;

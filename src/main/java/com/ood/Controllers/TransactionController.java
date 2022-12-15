@@ -6,6 +6,9 @@ import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 
+/**
+ * Controller Class for handling transactions between user accounts and to connect transactions in front end, validation using bankJudge and data in the backend
+ */
 public class TransactionController {
     private String aid;
 

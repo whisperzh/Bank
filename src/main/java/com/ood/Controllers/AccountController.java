@@ -11,10 +11,10 @@ import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
 import com.ood.Views.*;
-
-import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Controller Class for handling connection between user accounts in front end, validation using bankJudge and data in the backend
+ */
 public class AccountController {
     private AbsAccount controlledAccount;
     private AccountActivity activityTab;

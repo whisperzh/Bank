@@ -1,5 +1,8 @@
 package com.ood.Enums;
 
+/**
+ * Enum Class for enumerating all possible types of accounts that a user in the bank can create and maintain
+ */
 public enum AccountEnum {
     CHECKINGS,
     SAVINGS,

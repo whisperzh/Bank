@@ -3,6 +3,9 @@ package com.ood.Model.Currency;
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Utils.Constants;
 
+/**
+ * Concrete class for maintaining functionality related to US dollars currency. This classes uses the functionality defined in the AbsCurrency class
+ */
 public class USD_Currency extends AbsCurrency{
     public USD_Currency(double amount){
         this.amount = amount;

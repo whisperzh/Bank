@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An abstract collection class used for store items.
+ * An abstract collection class used for storing items.
  * @param <T>
  */
 public abstract class SimpleCollection<T> {

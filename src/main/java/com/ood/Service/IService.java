@@ -1,7 +1,7 @@
 package com.ood.Service;
 
 /**
- * Interface of Service
+ * Interface for Service
  */
 public interface IService {
     void start();

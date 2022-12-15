@@ -4,10 +4,6 @@ import com.ood.Controllers.TransactionController;
 import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Balance.BalanceBean;
 import com.ood.Model.Balance.Deposits;
-import com.ood.Model.Currency.EUR_Currency;
-import com.ood.Model.Currency.ICurrency;
-import com.ood.Model.Currency.JPY_Currency;
-import com.ood.Model.Currency.USD_Currency;
 import com.ood.Utils.DatabaseManager;
 
 import java.util.List;
@@ -18,6 +14,9 @@ public abstract class AbsAccount implements IAccount{
     private DatabaseManager db;
     private TransactionController transactionController;
 
+    /**
+     * Concrete class that holds common properties possessed by each account
+     */
     public AbsAccount(AccountBean bean) {
         this.bean = bean;
         transactionController=new TransactionController(bean.getAid());

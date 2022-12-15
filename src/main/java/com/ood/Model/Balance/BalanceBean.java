@@ -2,6 +2,9 @@ package com.ood.Model.Balance;
 
 import com.ood.Enums.CurrencyEnum;
 
+/**
+ * Concrete class that contains all the attributes and methods required to maintain a bank balance in the Bank
+ */
 public class BalanceBean {
     private String aid;
     private CurrencyEnum currencyEnum;
