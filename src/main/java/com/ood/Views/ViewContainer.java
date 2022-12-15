@@ -87,6 +87,12 @@ public class ViewContainer {
             }else if(name.contains("HomePage"))
             {
                 jFrame=new HomePage();
+            } else if (name.contains("StockInfo")) {
+                jFrame = new StockInfo();
+            } else if (name.contains("StocksOwned")) {
+                jFrame = new StocksOwned();
+            } else if (name.contains("SellStocks")) {
+                jFrame = new SellStocks();
             }
             //fullSizeFrame(jFrame);
             //jFrame.setState(Frame.NORMAL);

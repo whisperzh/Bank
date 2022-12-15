@@ -48,6 +48,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jButton13 = new javax.swing.JButton();
         TitlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -82,6 +83,9 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        jButton13.setBackground(new java.awt.Color(233, 204, 204));
+        jButton13.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        jButton13.setText("Stocks Information");
 
         jButton4.setBackground(new java.awt.Color(233, 204, 204));
         jButton4.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
@@ -120,6 +124,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                         .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
                         .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                        .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -133,6 +138,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -274,6 +280,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -346,7 +357,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
+        viewContainer.getPage("SavingsApplication").setVisible(true);
         this.setVisible(false);
     }
 
@@ -360,7 +371,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return;
         }
         controller.setControlledAccount((AbsAccount) saving);
-        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
+        viewContainer.getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
 
     }
@@ -384,21 +395,26 @@ public class CustomerDashboard extends javax.swing.JFrame {
         //this.setVisible(false);
         //loan1
     }
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        viewContainer.getPage("StockInfo").setVisible(true);
+        this.setVisible(false);
+    }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("4");
-        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
+       viewContainer.getPage("SavingsApplication").setVisible(true);
         this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("LoginPage").setVisible(true);
+        viewContainer.getPage("LoginPage").setVisible(true);
         this.setVisible(false);
     }
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
-        ViewContainer.getInstance().getPage("HomePage").setVisible(true);
+        viewContainer.getPage("HomePage").setVisible(true);
         this.setVisible(false);
     }
 
@@ -414,7 +430,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return;
         }
         controller.setControlledAccount((AbsAccount) checking);
-        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
+        viewContainer.getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
     }
 
@@ -429,7 +445,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
             return;
         }
         controller.setControlledAccount((AbsAccount) security);
-        ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
+        viewContainer.getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
     }
 
@@ -457,6 +473,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
