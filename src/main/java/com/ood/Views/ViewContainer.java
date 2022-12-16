@@ -105,7 +105,5 @@ public class ViewContainer {
         }else {
             return map.get(name);
         }
-
-
     }
 }

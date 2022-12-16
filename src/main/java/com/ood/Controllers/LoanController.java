@@ -13,6 +13,8 @@ import com.ood.Validation.BankJudge;
 import com.ood.Views.LoanInformation;
 import com.ood.Views.ViewContainer;
 
+import java.util.List;
+
 /**
  * Controller Class for handling connection between loans for user accounts in front end, validation using bankJudge and data in the backend
  */
@@ -34,6 +36,10 @@ public class LoanController {
         view.setController(this);
         view.setVisible(false);
 
+    }
+
+    public List<LoanBean> get_user_loan(String uid){
+        return(dbManager.getLoanBean(uid));
     }
 
     public boolean check_if_user(String socialSecurityNumber) {
