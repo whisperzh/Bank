@@ -14,6 +14,8 @@ public class LoanBean {
     private boolean is_clear;
     private String clear_date;
 
+    private String type;
+
     public String getClear_date() {
         return clear_date;
     }
@@ -68,6 +70,13 @@ public class LoanBean {
 
     public void setDate(String date) {
         this.date = date;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

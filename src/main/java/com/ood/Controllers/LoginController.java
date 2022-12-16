@@ -25,7 +25,7 @@ public class LoginController {
         view.setController(this);
     }
 
-    public boolean login(String userName, String password)
+    public int login(String userName, String password)
     {
           UserBean bean=dbManager.getUserbean(userName, password);
           if(bean!=null)
@@ -43,12 +43,12 @@ public class LoginController {
               //activate backend service.
               System.out.println("yes");
               UserControllerManager.getInstance().setLoggedin(true);
-              return true;
+              return 1;
           }
           else{
               //alert
               System.out.printf("no");
-              return false;
+              return 0;
           }
     }
 }

@@ -324,6 +324,7 @@ public class DatabaseManager {
     }
 
     public void insertLoanBean(LoanBean bean){
+        String type = strWrap(bean.getType());
         String lid=strWrap(bean.getLid());
         String uid=strWrap(bean.getUid());
         String amount= Double.toString(bean.getAmount());
@@ -337,7 +338,8 @@ public class DatabaseManager {
                 "currency," +
                 "amount," +
                 "date,"+
-                "is_clear"+
+                "is_clear,"+
+                "loan_type"+
                 ")" +
                 "VALUES (" +
                 lid +","+
@@ -345,7 +347,8 @@ public class DatabaseManager {
                 currencyEnum+","+
                 amount+","+
                 date+","+
-                is_clear+
+                is_clear+","+
+                type+
                 ");";
         try {
             statement.execute(sql);

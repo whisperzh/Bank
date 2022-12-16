@@ -50,7 +50,7 @@ public class LoanController {
     }
 
 
-    public void createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
+    public AbsLoan createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
         LoanBean bean=new LoanBean();
         bean.setLid(Utils.generateRandomUUID());
         bean.setAmount(amount);
@@ -58,24 +58,26 @@ public class LoanController {
         bean.setDate(Utils.getTodaysDate());
         bean.setCurrencyEnum(currencyEnum);
         bean.setIs_clear(false);
-        DatabaseManager.getInstance().insertLoanBean(bean);
         AbsLoan loan=null;
         switch (loanType)
         {
             case EDUCATION:
                 loan=new EducationLoan(bean);
+                bean.setType("EDUCATION");
                 break;
             case HOME:
                 loan=new HomeLoan(bean);
+                bean.setType("HOME");
                 break;
         }
-        dbManager.insertLoanBean(bean);
+        DatabaseManager.getInstance().insertLoanBean(bean);
+        return loan;
     }
 
-//    public AbsLoan createLoan( String uid, double amount)
-//    {
-//        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
-//    }
+    public AbsLoan createLoan( String uid, double amount)
+    {
+        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
+    }
     /*public void validateCredentials(Map<String,String> loanCredentials){
         Boolean message = bankJudge.canCreateLoan(loanCredentials);
         if(message){

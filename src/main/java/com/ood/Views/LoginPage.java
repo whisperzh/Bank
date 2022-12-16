@@ -368,8 +368,11 @@ public class LoginPage extends javax.swing.JFrame {
         // TODO add your handling code here:
         //System.out.println("1");
         //login
-        if(controller.login(jTextField2.getText(),jTextField1.getText()))
+        if(controller.login(jTextField2.getText(),jTextField1.getText())==1)
         {
+            viewContainer.getPage("CustomerDashboard").setVisible(true);
+            this.setVisible(false);
+        }else if(controller.login(jTextField2.getText(),jTextField1.getText())==2){
             viewContainer.getPage("CustomerDashboard").setVisible(true);
             this.setVisible(false);
         }else{
