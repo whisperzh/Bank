@@ -1,10 +1,5 @@
 package com.ood.Views;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  * This class allows us to create a template for creating a page for the manager to see a specific customer's loan details.
  * This page prints read only information about the current loan of the customer.

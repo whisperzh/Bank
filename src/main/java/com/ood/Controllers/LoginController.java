@@ -16,7 +16,6 @@ public class LoginController {
     private DatabaseManager dbManager;
     private ViewContainer viewContainer;
     private BankJudge judge;
-
     public LoginController() {
         dbManager=DatabaseManager.getInstance();
         judge=BankJudge.getInstance();

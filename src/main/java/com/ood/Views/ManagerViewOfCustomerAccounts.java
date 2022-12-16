@@ -1,10 +1,5 @@
 package com.ood.Views;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  * This class allows us to create a template for the page which allows the manager to see a single customer's details.
  * Three options presented on the page - Savings, Security and Checkings.

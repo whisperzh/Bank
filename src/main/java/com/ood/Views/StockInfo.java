@@ -1,11 +1,5 @@
 package com.ood.Views;
 
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 /**
  * This class allows us to create a template for displaying the stock information that bank allows the user to invest in.
  * This page contains read only information.
