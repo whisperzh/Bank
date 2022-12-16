@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package com.ood.Views;
 
 import com.ood.Controllers.LoginController;
@@ -338,23 +342,29 @@ public class LoginPage extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("4");
+        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("8");
+        ViewContainer.getInstance().getPage("SecurityApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("5");
-        viewContainer.getPage("HomePage").setVisible(true);
+        ViewContainer.getInstance().getPage("HomePage").setVisible(true);
         this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("7");
+        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        this.setVisible(false);
 
     }
 
@@ -364,7 +374,6 @@ public class LoginPage extends javax.swing.JFrame {
         //login
         if(controller.login(jTextField2.getText(),jTextField1.getText()))
         {
-            System.out.println(jTextField1.getText());
             viewContainer.getPage("CustomerDashboard").setVisible(true);
             this.setVisible(false);
         }else{
