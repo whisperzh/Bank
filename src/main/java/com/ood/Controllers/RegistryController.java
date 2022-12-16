@@ -14,6 +14,7 @@ import com.ood.Views.ViewContainer;
 
 import javax.swing.*;
 import java.util.Dictionary;
+import java.util.List;
 
 /**
  * Controller Class for handling registered users and for connecting between user accounts in front end, validation using bankJudge and data in the backend
@@ -32,6 +33,7 @@ public class RegistryController {
         view= (SavingsApplication) viewContainer.getPage("SavingsApplication");
         view.setController(this);
         view.getjPanel2().setVisible(false);
+        view.getjLabel7().setVisible(true);
     }
     public void register(UserBean bean)
     {
@@ -53,7 +55,6 @@ public class RegistryController {
         String ssn = userDetails.get("ssn").toString();
         String birthdate = userDetails.get("birthdate").toString();
 
-
         int flag = 0;
         if(!BankJudge.getInstance().check_integer(ssn) || !BankJudge.getInstance().check_ssn(ssn)){
             JOptionPane.showMessageDialog(view, "Please enter a valid social security number of 9 digits");
@@ -69,6 +70,15 @@ public class RegistryController {
         }
         if(flag == 0){
             view.getjPanel2().setVisible(true);
+            view.getjLabel7().setVisible(true);
+            UserBean tempBean = DatabaseManager.getInstance().getUserbean(ssn);
+            if(tempBean == null){
+                view.getjLabel8().setVisible(false);
+            }
+            else
+            {
+                view.getjLabel8().setVisible(true);
+            }
         }
     }
 
@@ -82,6 +92,9 @@ public class RegistryController {
         String birthdate = bean.get("birthdate").toString();
         String first = bean.get("first").toString();
         String last = bean.get("last").toString();
+
+        UserBean tempBean = DatabaseManager.getInstance().getUserbean(uid);
+
 
         Boolean checking = (Boolean)bean.get("checking");
         String aid = Utils.generateRandomUUID();
@@ -114,31 +127,52 @@ public class RegistryController {
             b.setAccountEnum(accountType);
             b.setEmail(email);
             b.setAid(aid);
-            dbManager.insertAccountBean(b);
-            JOptionPane.showMessageDialog(view, "A new savings account has been opened for user with ssn "+uid);
+            int savingsAccountFlag = 0;
+            int checkingsAccountFlag = 0;
 
-            //create a balance record for the user
+            List<AccountBean> userAccounts = dbManager.getUsersAccounts(uid);
+            for(AccountBean abean: userAccounts){
+                if(abean.getAccountEnum().toString() == "SAVINGS"){
+                    savingsAccountFlag = 1;
+                }
+                if(abean.getAccountEnum().toString() == "CHECKINGS"){
+                    checkingsAccountFlag = 1;
+                }
+            }
             BalanceBean balanceBean = new BalanceBean();
-            balanceBean.setAid(aid);
-            balanceBean.setAmount(amount- Constants.OPEN_ACCOUNT_FEE);
-            balanceBean.setCurrencyEnum(CurrencyEnum.toType("USD"));
-            dbManager.insertBalanceBean(balanceBean);
+            if(savingsAccountFlag == 0){
+                dbManager.insertAccountBean(b);
+                //create a balance record for the user
+                balanceBean.setAid(aid);
+                //create a record in balance table with amount-fee
+                balanceBean.setAmount(amount- Constants.OPEN_ACCOUNT_FEE);
+                balanceBean.setCurrencyEnum(CurrencyEnum.toType("USD"));
+                dbManager.insertBalanceBean(balanceBean);
+                JOptionPane.showMessageDialog(view, "A new savings account has been opened for user with ssn "+uid);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(view, "Savings account already exists for user with ssn "+uid);
+            }
             //if user also wants a checking account
             if(checking == true){
                 String aid2 = Utils.generateRandomUUID();
                 b.setAid(aid2);
                 accountType= AccountEnum.StringtoType("CHECKINGS");
                 b.setAccountEnum(accountType);
-                dbManager.insertAccountBean(b);
-                JOptionPane.showMessageDialog(view, "A new checking account has been opened for user with ssn "+uid);
-
-                //create a 0 balance checking account
-                balanceBean.setAid(aid2);
-                balanceBean.setAmount(0);
-                balanceBean.setCurrencyEnum(CurrencyEnum.toType("USD"));
-                dbManager.insertBalanceBean(balanceBean);
+                if(checkingsAccountFlag == 0){
+                    dbManager.insertAccountBean(b);
+                    balanceBean.setAid(aid2);
+                    //create a 0 balance checking account
+                    balanceBean.setAmount(0);
+                    balanceBean.setCurrencyEnum(CurrencyEnum.toType("USD"));
+                    dbManager.insertBalanceBean(balanceBean);
+                    JOptionPane.showMessageDialog(view, "A new checking account has been opened for user with ssn "+uid);
+                }
+                else{
+                    JOptionPane.showMessageDialog(view, "Checking account already exists for user with ssn "+uid);
+                }
             }
-            //create a record in balance table with amount
         }
     }
 }
