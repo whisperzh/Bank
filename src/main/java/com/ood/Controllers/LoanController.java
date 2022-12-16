@@ -58,17 +58,19 @@ public class LoanController {
         bean.setDate(Utils.getTodaysDate());
         bean.setCurrencyEnum(currencyEnum);
         bean.setIs_clear(false);
-        DatabaseManager.getInstance().insertLoanBean(bean);
         AbsLoan loan=null;
         switch (loanType)
         {
             case EDUCATION:
                 loan=new EducationLoan(bean);
+                bean.setType("EDUCATION");
                 break;
             case HOME:
                 loan=new HomeLoan(bean);
+                bean.setType("HOME");
                 break;
         }
+        DatabaseManager.getInstance().insertLoanBean(bean);
         return loan;
     }
 
