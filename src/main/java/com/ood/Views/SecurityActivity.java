@@ -1,5 +1,9 @@
 package com.ood.Views;
 
+/**
+ * This class allows us to create an activity page for the customer's security account.
+ * The customer can navigate to other bank pages.
+ */
 public class SecurityActivity extends javax.swing.JFrame {
     public SecurityActivity(){
         initComponents();

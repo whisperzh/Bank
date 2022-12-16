@@ -1,5 +1,10 @@
 package com.ood.Views;
 
+
+/**
+ * This class allows us to create a page for the customer's security account withdraw details.
+ * The customer can navigate to other bank pages.
+ */
 public class SecurityWithdraw extends javax.swing.JFrame{
     public SecurityWithdraw(){
         initComponents();

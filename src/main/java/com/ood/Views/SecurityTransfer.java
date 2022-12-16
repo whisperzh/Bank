@@ -2,6 +2,10 @@ package com.ood.Views;
 
 import javax.swing.*;
 
+/**
+ * This class allows us to create a page for the customer's security account Transfer Details.
+ * The customer can navigate to other bank pages.
+ */
 public class SecurityTransfer extends javax.swing.JFrame{
     public SecurityTransfer(){
         initComponents();
