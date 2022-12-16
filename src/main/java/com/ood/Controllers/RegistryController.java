@@ -99,6 +99,7 @@ public class RegistryController {
             UserBean userbean = new UserBean();
             userbean.setAdmin(false);
             userbean.setBirthday(birthdate);
+            userbean.setPassword(password);
             userbean.setSsn(uid);
             userbean.setFirstName(first);
             userbean.setLastName(last);
