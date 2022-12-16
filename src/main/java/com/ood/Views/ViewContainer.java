@@ -72,6 +72,8 @@ public class ViewContainer {
             else if(name.contains("LoginPage"))
             {
                 jFrame=new LoginPage();
+            }else if(name.contains("LoanInformation")){
+             jFrame=new LoanInformation();
             }
             else if(name.contains("ManagerViewCustomers"))
             {

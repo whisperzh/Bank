@@ -17,10 +17,13 @@ public class StockInfo extends javax.swing.JFrame {
     /**
      * Creates new form StockInfo1
      */
+
+    private StockController stock_controller;
     private ViewContainer viewContainer;
     public StockInfo() {
         viewContainer=ViewContainer.getInstance();
         initComponents();
+
     }
 
     /**
@@ -30,6 +33,10 @@ public class StockInfo extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
+    public void setStock_controller(StockController stock_controller) {
+        this.stock_controller = stock_controller;
+    }
+
     private void initComponents() {
 
         BackgroundPanel = new javax.swing.JPanel();
@@ -212,7 +219,33 @@ public class StockInfo extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
+
+    public void WriteToTable(List<StockBean> stocks){
+
+        String[][] data = new String[10][];
+
+        for(int i=0; i<stocks.size(); i++){
+
+            StockBean bean = stocks.get(i);
+
+            String company = bean.getCompany();
+            String price = String.valueOf(bean.getPrice());
+            String last_updated_time = bean.getLast_update_time();
+
+            data[i] = new String[]{company, price, last_updated_time};
+
+        }
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Company Name", "Price", "Last Updated"
+                }
+        );
+        jTable1.setModel(model);
+    }
+
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
