@@ -748,7 +748,7 @@ public class DatabaseManager {
                 transactionBean.setFrom_aid(rs.getString("from_aid"));
                 transactionBean.setTo_aid(rs.getString("to_aid"));
                 transactionBean.setFromName(rs.getString("from_name"));
-                transactionBean.setFromName(rs.getString("to_name"));
+                transactionBean.setToName(rs.getString("to_name"));
                 ans.add(transactionBean);
             }
         }catch (SQLException ex) {
