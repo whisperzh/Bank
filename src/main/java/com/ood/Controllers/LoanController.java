@@ -50,7 +50,7 @@ public class LoanController {
     }
 
 
-    public AbsLoan createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
+    public void createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
         LoanBean bean=new LoanBean();
         bean.setLid(Utils.generateRandomUUID());
         bean.setAmount(amount);
@@ -69,13 +69,13 @@ public class LoanController {
                 loan=new HomeLoan(bean);
                 break;
         }
-        return loan;
+        dbManager.insertLoanBean(bean);
     }
 
-    public AbsLoan createLoan( String uid, double amount)
-    {
-        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
-    }
+//    public AbsLoan createLoan( String uid, double amount)
+//    {
+//        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
+//    }
     /*public void validateCredentials(Map<String,String> loanCredentials){
         Boolean message = bankJudge.canCreateLoan(loanCredentials);
         if(message){
