@@ -1,6 +1,9 @@
 package com.ood.Views;
 
 import com.ood.Controllers.ManagerController;
+import com.ood.Model.Transactions.TransactionBean;
+
+import java.util.List;
 
 /**
  * This class allows us to create template for create a bank page for the manager to see all the Bank transactions.
@@ -206,8 +209,8 @@ public class ManagerViewTransactions extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         ViewContainer.getInstance().getPage("ManagerViewAllCustomers").setVisible(true);
+        controller.updateView();
         this.setVisible(false);
-
         // TODO add your handling code here:
     }
 
@@ -216,6 +219,37 @@ public class ManagerViewTransactions extends javax.swing.JFrame {
 //        ViewContainer.getInstance().getPage("ManagerViewTransactions").setVisible(true);
 //        setVisible(false);
     }
+
+    public void WriteToTable(List<TransactionBean> transactions){
+
+        String[][] data = new String[30][];
+
+        for(int i=0; i<transactions.size(); i++){
+
+            TransactionBean bean = transactions.get(i);
+
+            String timestamp = bean.getTimeStamp();
+//            String currency = bean.getCurrencyEnum().toString();
+            String amount = String.valueOf(bean.getAmount());
+            String from_account = String.valueOf(bean.getFrom_aid());
+            String to_account = String.valueOf(bean.getTo_aid());
+//            String from_name = bean.getFromName();
+//            String to_name = bean.getToName();
+
+            data[i] = new String[]{timestamp, from_account, to_account,amount};
+
+        }
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Time of transaction", "Sender's Account", "Receiver's Account", "Amount"
+                }
+        );
+        jTable1.setModel(model);
+    }
+
+
 
     /**
      * @param args the command line arguments

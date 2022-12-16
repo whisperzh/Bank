@@ -249,11 +249,11 @@ public class DatabaseManager {
                 bean.setAmount(rs.getFloat("amount"));
                 bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
                 bean.setTimeStamp(rs.getString("datetime"));
-                bean.setFrom_aid(rs.getString("from_uid"));
-                bean.setTo_aid(rs.getString("to_uid"));
+                bean.setFrom_aid(rs.getString("from_aid"));
+                bean.setTo_aid(rs.getString("to_aid"));
                 bean.setFromName(rs.getString("from_name"));
                 bean.setToName(rs.getString("to_name"));
-
+                ans.add(bean);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -262,8 +262,8 @@ public class DatabaseManager {
     }
     public void insertTransactionBean(TransactionBean bean){
         String tid=strWrap(bean.getTid());
-        String from_uid=strWrap(bean.getFrom_aid());
-        String to_uid=strWrap(bean.getTo_aid());
+        String from_aid=strWrap(bean.getFrom_aid());
+        String to_aid=strWrap(bean.getTo_aid());
         String from_username=strWrap(bean.getFromName());
         String to_username=strWrap(bean.getToName());
         String amount= Double.toString(bean.getAmount());
@@ -272,8 +272,8 @@ public class DatabaseManager {
         //tested - works
         String sql = "INSERT INTO Account" +
                 " (tid," +
-                "from_uid," +
-                "to_uid," +
+                "from_aid," +
+                "to_aid," +
                 "amount," +
                 "currency,"+
                 "datetime,"+
@@ -282,8 +282,8 @@ public class DatabaseManager {
                 ")\n" +
                 "VALUES (" +
                 tid +","+
-                from_uid +","+
-                to_uid+","+
+                from_aid +","+
+                to_aid+","+
                 amount+","+
                 currencyEnum+","+
                 timeStamp+","+
@@ -607,7 +607,7 @@ public class DatabaseManager {
     public List<UserStock> getUserStocks(String aid){
         List<UserStock> stocks=new ArrayList();
         //checked - working
-        String sql="SELECT * FROM UserStock WHERE aid is "
+        String sql="SELECT * FROM `UserStock` WHERE aid is "
                 +aid+";";
         try {
             rs=statement.executeQuery(sql);
@@ -630,7 +630,7 @@ public class DatabaseManager {
     public List<UserStock> getAllUserStocks(){
         List<UserStock> stocks=new ArrayList();
         //checked - working
-        String sql="SELECT * FROM UserStock;";
+        String sql="SELECT * FROM `UserStock`;";
         try {
             rs=statement.executeQuery(sql);
             while(rs.next())
@@ -654,7 +654,7 @@ public class DatabaseManager {
         UserStock stock = new UserStock();
         Double newProportion;
         Double oldProportion = 0.0;
-        String sql="SELECT * FROM UserStock WHERE aid is "
+        String sql="SELECT * FROM `UserStock` WHERE aid is "
                 +aid+" AND sid is "+sid+";";
         int isProportionAdded = (proportion >= 0) ? 1 : 0;
         String currentDate=strWrap(Utils.getDateTime());
@@ -676,7 +676,7 @@ public class DatabaseManager {
         }
         else newProportion = oldProportion - proportion;
         //checked - working
-        String sqlUpdate="UPDATE UserStock "+
+        String sqlUpdate="UPDATE `UserStock` "+
                 "SET proportion ="+
                 newProportion+
                 "last_updated ="+
@@ -781,7 +781,7 @@ public class DatabaseManager {
         String currency= strWrap(bean.getCurrencyEnum().toString());
 
         //tested - works
-        String sql = "INSERT INTO Balance (aid, amount, currency)" +
+        String sql = "INSERT INTO `Balance` (aid, amount, currency)" +
                 "VALUES (" +
                 aid +","+
                 amount +","+
@@ -793,5 +793,31 @@ public class DatabaseManager {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    }
+
+    public List<TransactionBean> getAllTransactionBean() {
+        List<TransactionBean>  ans=new ArrayList<>();
+        //tested - works
+        String sql="SELECT * FROM `Transaction`;";
+        try {
+            rs=statement.executeQuery(sql);
+            while (rs.next())
+            {
+                TransactionBean bean=new TransactionBean();
+                bean.setTid(rs.getString("tid"));
+                bean.setAmount(rs.getFloat("amount"));
+                bean.setCurrencyEnum(CurrencyEnum.toType(rs.getString("currency")));
+                bean.setTimeStamp(rs.getString("datetime"));
+                bean.setFrom_aid(rs.getString("from_aid"));
+                bean.setTo_aid(rs.getString("to_aid"));
+                bean.setFromName(rs.getString("from_name"));
+                bean.setToName(rs.getString("to_name"));
+                ans.add(bean);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return ans;
+
     }
 }

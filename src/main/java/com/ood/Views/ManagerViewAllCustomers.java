@@ -1,6 +1,10 @@
 package com.ood.Views;
 
 import com.ood.Controllers.ManagerController;
+import com.ood.Model.Transactions.TransactionBean;
+import com.ood.Model.Users.UserBean;
+
+import java.util.List;
 
 /**
  * This class allows us to create template for create a bank page for the manager to see all the Bank customers.
@@ -200,7 +204,9 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+
         ViewContainer.getInstance().getPage("ManagerViewTransactions").setVisible(true);
+        controller.updateView();
         this.setVisible(false);
     }
 
@@ -254,6 +260,31 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+
+    public void WriteToTable(List<UserBean> userBeans) {
+        String[][] data = new String[30][];
+
+        for(int i=0; i<userBeans.size(); i++){
+
+            UserBean bean = userBeans.get(i);
+
+            String name=bean.getUserName();
+            String SSN= bean.getSsn();
+            String birthday=bean.getBirthday();
+            String required="true";
+
+            data[i] = new String[]{name, SSN, birthday,required,"Nothing"};
+
+        }
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Name", "SSN", "Birthday",  "Customer Enquiry Required","Customer Details"
+                }
+        );
+        jTable1.setModel(model);
+    }
     // End of variables declaration
 }
 

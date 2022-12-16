@@ -370,7 +370,10 @@ public class LoginPage extends javax.swing.JFrame {
         //login
         if(controller.login(jTextField2.getText(),jTextField1.getText())==1)
         {
-            viewContainer.getPage("ManagerViewAllCustomers").setVisible(true);
+
+            ManagerViewAllCustomers page = (ManagerViewAllCustomers) viewContainer.getPage("ManagerViewAllCustomers");
+            page.setVisible(true);
+            UserControllerManager.getInstance().getManagerController().updateView();
             this.setVisible(false);
         }else if(controller.login(jTextField2.getText(),jTextField1.getText())==2){
             viewContainer.getPage("CustomerDashboard").setVisible(true);
