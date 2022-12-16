@@ -525,7 +525,7 @@ public class SecurityApplication extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         System.out.println("6");
-        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        ViewContainer.getInstance().getPage("LoginPage").setVisible(true);
         this.setVisible(false);
     }
 

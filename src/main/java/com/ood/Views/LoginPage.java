@@ -340,21 +340,29 @@ public class LoginPage extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("4");
+        ViewContainer.getInstance().getPage("SavingsApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("8");
+        ViewContainer.getInstance().getPage("SecurityApplication").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("5");
+        ViewContainer.getInstance().getPage("HomePage").setVisible(true);
+        this.setVisible(false);
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("7");
+        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        this.setVisible(false);
 
     }
 
