@@ -1,6 +1,7 @@
 package com.ood.Views;
 
 import com.ood.Controllers.ManagerController;
+import com.ood.Controllers.UserControllerManager;
 import com.ood.Model.Transactions.TransactionBean;
 
 import java.util.List;
@@ -235,6 +236,7 @@ public class ManagerViewTransactions extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         ViewContainer.getInstance().getPage("HomePage").setVisible(true);
+        UserControllerManager.getInstance().setLoggedin(false);
         setVisible(false);
     }
 
