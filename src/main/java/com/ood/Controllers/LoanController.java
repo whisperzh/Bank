@@ -54,7 +54,7 @@ public class LoanController {
     }
 
 
-    public AbsLoan createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
+    public void createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
         LoanBean bean=new LoanBean();
         bean.setLid(Utils.generateRandomUUID());
         bean.setAmount(amount);
@@ -75,7 +75,6 @@ public class LoanController {
                 break;
         }
         DatabaseManager.getInstance().insertLoanBean(bean);
-        return loan;
     }
 
     public AbsLoan createLoan( String uid, double amount)
