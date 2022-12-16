@@ -5,20 +5,13 @@ import com.ood.Enums.LoanEnum;
 import com.ood.Model.Loan.AbsLoan;
 import com.ood.Model.Loan.EducationLoan;
 import com.ood.Model.Loan.LoanBean;
-import com.ood.Model.Loan.NormalLoan;
+import com.ood.Model.Loan.HomeLoan;
 import com.ood.Model.Users.UserBean;
-import com.ood.Model.Users.UserEntity;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
-import com.ood.Views.LoanApplication;
+import com.ood.Views.LoanInformation;
 import com.ood.Views.ViewContainer;
-
-
-import javax.swing.*;
-import java.awt.*;
-import java.util.Dictionary;
-import java.util.Map;
 
 /**
  * Controller Class for handling connection between loans for user accounts in front end, validation using bankJudge and data in the backend
@@ -27,7 +20,7 @@ public class LoanController {
 
     private BankJudge bankJudge;
 
-    private LoanApplication view;
+    private LoanInformation view;
 
     private ViewContainer viewContainer;
 
@@ -37,7 +30,7 @@ public class LoanController {
         dbManager = DatabaseManager.getInstance();
         this.bankJudge = BankJudge.getInstance();
         viewContainer=ViewContainer.getInstance();
-        view= (LoanApplication) viewContainer.getPage("LoanApplication");
+        view= (LoanInformation) viewContainer.getPage("LoanInformation");
         view.setController(this);
         view.setVisible(false);
 
@@ -56,6 +49,7 @@ public class LoanController {
         }
     }
 
+
     public AbsLoan createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
         LoanBean bean=new LoanBean();
         bean.setLid(Utils.generateRandomUUID());
@@ -71,8 +65,8 @@ public class LoanController {
             case EDUCATION:
                 loan=new EducationLoan(bean);
                 break;
-            case NORMAL:
-                loan=new NormalLoan(bean);
+            case HOME:
+                loan=new HomeLoan(bean);
                 break;
         }
         return loan;
@@ -80,7 +74,7 @@ public class LoanController {
 
     public AbsLoan createLoan( String uid, double amount)
     {
-        return createLoan(LoanEnum.NORMAL,uid,CurrencyEnum.USD,amount);
+        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
     }
     /*public void validateCredentials(Map<String,String> loanCredentials){
         Boolean message = bankJudge.canCreateLoan(loanCredentials);

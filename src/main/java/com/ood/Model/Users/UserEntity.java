@@ -15,7 +15,6 @@ import java.util.List;
 public abstract class UserEntity implements IUser{
     private UserBean bean;
     private List<IAccount> accounts;
-
     private LoanController loanController;
 
     public UserEntity(UserBean bean) {
@@ -67,5 +66,9 @@ public abstract class UserEntity implements IUser{
                 return i;
         }
         return null;
+    }
+
+    public UserBean getbean(){
+        return bean;
     }
 }

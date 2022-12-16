@@ -1,6 +1,12 @@
 
 package com.ood.Views;
 
+import com.ood.Controllers.LoanController;
+import com.ood.Controllers.UserControllerManager;
+import com.ood.Enums.CurrencyEnum;
+import com.ood.Enums.LoanEnum;
+import com.ood.Model.Users.NormalUser;
+
 import javax.swing.*;
 
 /**
@@ -9,8 +15,10 @@ import javax.swing.*;
  * The user can input data to check by when he can pay off the loan based on the interest, type of collateral.
  * This page allows user to navigate through other bank pages.
  */
+
 public class LoanInformation extends javax.swing.JFrame {
 
+    public LoanController loan_controller;
     /**
      * Creates new form LoanApplication
      */
@@ -489,7 +497,24 @@ public class LoanInformation extends javax.swing.JFrame {
     }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        NormalUser user = (NormalUser) UserControllerManager.getInstance().getControlling_user();
+
+        String ssn = user.getbean().getSsn();
+        String amount = jTextField5.getText();
+        LoanEnum loan_type = null;
+
+        if(jComboBox2.getSelectedItem().equals("Home Loan"))
+        {
+            loan_type = LoanEnum.HOME;
+        }
+        else if(jComboBox2.getSelectedItem().equals("Education Loan")){
+            loan_type = LoanEnum.EDUCATION;
+        }
+
+        CurrencyEnum currencyEnum = CurrencyEnum.USD;
+        loan_controller.createLoan(loan_type, ssn, currencyEnum, Double.parseDouble(amount));
+
+        JOptionPane.showMessageDialog(this, "Congratulations! Your loan application has been approved!");
     }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -566,5 +591,9 @@ public class LoanInformation extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+
+    public void setController(LoanController loanController) {
+        this.loan_controller = loanController;
+    }
     // End of variables declaration
 }
