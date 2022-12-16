@@ -89,6 +89,13 @@ public class BankJudge {
                 .matches();
     }
 
+    public static boolean check_birthdate(String date){
+        String regex = "\\d{4}-\\d{2}-\\d{2}";
+        return Pattern.compile(regex)
+                .matcher(date)
+                .matches();
+    }
+
     //verify whether a user who takes out a loan can actually repay the loan
     public boolean canPayForLoan(IAccount account, AbsLoan loan)
     {

@@ -3,7 +3,12 @@ package com.ood.Views;
 
 import com.ood.Controllers.UserControllerManager;
 
+import com.ood.Controllers.RegistryController;
+
 import javax.swing.*;
+import java.rmi.registry.Registry;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 
 /**
@@ -14,9 +19,18 @@ import javax.swing.*;
  */
 
 public class SavingsApplication extends javax.swing.JFrame {
+
+    private RegistryController controller;
+    public void setController(RegistryController controller) {
+        this.controller = controller;
+    }
+    /**
+     * Creates new form SavingsApplication
+     */
     private ViewContainer viewContainer;
     public SavingsApplication() {
         viewContainer=ViewContainer.getInstance();
+        jPanel2.setVisible(false);
         initComponents();
     }
 
@@ -198,7 +212,7 @@ public class SavingsApplication extends javax.swing.JFrame {
         jLabel3.setText("Email-Address:");
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel4.setText("Home Address:");
+        jLabel4.setText("Birth Date:");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel5.setText("Social Security Number: ");
@@ -229,7 +243,7 @@ public class SavingsApplication extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel10.setText("First Name: ");
 
-        jCheckBox1.setText("Open a checkings account too");
+        jCheckBox1.setText("Open a checkings account");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -308,7 +322,7 @@ public class SavingsApplication extends javax.swing.JFrame {
         jLabel12.setText("Amount:");
 
         jLabel13.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel13.setText("Passowrd:");
+        jLabel13.setText("Password:");
 
         jButton2.setText("Apply");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -428,10 +442,6 @@ public class SavingsApplication extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jButton4.setVisible(false);
-        jButton7.setVisible(false);
-        jButton8.setVisible(false);
-
         pack();
     }// </editor-fold>
 
@@ -453,9 +463,47 @@ public class SavingsApplication extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        //viewContainer.getPage("SecurityApplication").setVisible(true);
-        //this.setVisible(false);
-        //validation logic after db setup
+        String username = jTextField7.getText();
+        String password = jTextField8.getText();
+        String amount = jTextField6.getText();
+        String lname = jTextField5.getText();
+        String fname = jTextField1.getText();
+        String applicant_ssn = jTextField4.getText();
+        String email = jTextField2.getText();
+        String birthdate = jTextField3.getText();
+        Boolean checking = false;
+
+        int flag = 0;
+        if(username.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid username");
+            flag = 1;
+        }
+        if(password.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid password. \nPassword must have:\n-at least 8 characters and at most 20 characters\n-at least one digit\n-at least one upper case alphabet.\n -at least one lower case alphabet.\n-at least one special character which includes !@#$%&*()-+=^.\n-should not contain any white space.");
+            flag = 1;
+        }
+        if(amount.equals("")){
+            JOptionPane.showMessageDialog(this, "Please enter a valid amount");
+            flag = 1;
+        }
+        if(jCheckBox1.isSelected()){
+            checking = true;
+        }
+        if(flag == 0){
+            Dictionary userDetails = new Hashtable();
+            userDetails.put("ssn", applicant_ssn);
+            userDetails.put("username", username);
+            userDetails.put("email", email);
+            userDetails.put("password", password);
+            userDetails.put("amount", amount);
+            userDetails.put("first", fname);
+            userDetails.put("last", lname);
+            userDetails.put("birthdate", birthdate);
+            userDetails.put("checking", checking);
+
+            controller.secondFormValidation(userDetails);
+        }
+
     }
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -492,47 +540,33 @@ public class SavingsApplication extends javax.swing.JFrame {
         String firstName = jTextField1.getText();
         String lastName = jTextField5.getText();
         String emailAddress = jTextField2.getText();
-        String homeAddress = jTextField3.getText();
+        String birthday = jTextField3.getText();
         String socialSecurityNumber = jTextField4.getText();
         boolean pass = true;
-        if(firstName.equals("")){
-            pass=false;
-        }
-        if(lastName.equals("")){
+        if (firstName.equals("")) {
             pass = false;
         }
-        if(emailAddress.equals("") || emailAddress.toString().contains("@")){
-
+        if (lastName.equals("")) {
             pass = false;
         }
-        if(homeAddress.equals("")){
-            pass = false;}
-        if(socialSecurityNumber.equals("") || socialSecurityNumber.toString().length()<9|| !is_integer(socialSecurityNumber.toString())){
+        if (emailAddress.equals("")) {
+            pass = false;
+        }
+        if (birthday.equals("")) {
+            pass = false;
+        }
+        if(socialSecurityNumber.equals("")){
             pass = false;
         }
         if(!pass){
             JOptionPane.showMessageDialog(this, "Please enter valid input");
         }
-        /*Map<String,String> loanCredentials = new HashMap<>();
-        loanCredentials.put("firstName", firstName);
-        loanCredentials.put("lastName", lastName);
-        loanCredentials.put("emailAddress",emailAddress);
-        loanCredentials.put("homeAddress", homeAddress);
-        loanCredentials.put("socialSecurityNumber", socialSecurityNumber);
-        controller.validateCredentials(firstName, lastName, emailAddress, homeAddress,);*/
-
-    }
-    private boolean validateSSN(int SSN){
-        //backend
-        return true;
-    }
-    private boolean is_integer(String str) {
-        try {
-            Integer.parseInt(str);
-            return true;
-        }
-        catch (NumberFormatException e) {
-            return false;
+        else{
+            Dictionary userDetails = new Hashtable();
+            userDetails.put("email", emailAddress);
+            userDetails.put("ssn", socialSecurityNumber);
+            userDetails.put("birthdate", birthday);
+            controller.validateFirstForm(userDetails);
         }
     }
 
@@ -594,9 +628,25 @@ public class SavingsApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+
+    public JLabel getjLabel8() {
+        return jLabel8;
+    }
+
+    public void setjLabel8(JLabel jLabel8) {
+        this.jLabel8 = jLabel8;
+    }
+
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public void setjPanel2(JPanel jPanel2) {
+        this.jPanel2 = jPanel2;
+    }
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

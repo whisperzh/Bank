@@ -748,7 +748,7 @@ public class DatabaseManager {
                 transactionBean.setFrom_aid(rs.getString("from_aid"));
                 transactionBean.setTo_aid(rs.getString("to_aid"));
                 transactionBean.setFromName(rs.getString("from_name"));
-                transactionBean.setFromName(rs.getString("to_name"));
+                transactionBean.setToName(rs.getString("to_name"));
                 ans.add(transactionBean);
             }
         }catch (SQLException ex) {
@@ -770,5 +770,25 @@ public class DatabaseManager {
             ex.printStackTrace();
         }
         return username;
+    }
+
+    public void insertBalanceBean(BalanceBean bean){
+        String aid=strWrap(bean.getAid());
+        String amount=Double.toString(bean.getAmount());
+        String currency= strWrap(bean.getCurrencyEnum().toString());
+
+        //tested - works
+        String sql = "INSERT INTO Balance (aid, amount, currency)" +
+                "VALUES (" +
+                aid +","+
+                amount +","+
+                currency+
+                ");";
+        try {
+            statement.execute(sql);
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

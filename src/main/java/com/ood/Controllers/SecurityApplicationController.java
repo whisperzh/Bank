@@ -1,7 +1,10 @@
 package com.ood.Controllers;
 
 import com.ood.Enums.AccountEnum;
+import com.ood.Enums.CurrencyEnum;
 import com.ood.Model.Accounts.AccountBean;
+import com.ood.Model.Balance.BalanceBean;
+import com.ood.Utils.Constants;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
@@ -10,6 +13,7 @@ import com.ood.Views.ViewContainer;
 
 import javax.swing.*;
 import java.util.Dictionary;
+import java.util.List;
 
 /**
  * Controller Class for handling security accounts, connection between user accounts in front end, validation using bankJudge and data in the backend
@@ -67,12 +71,32 @@ public class SecurityApplicationController {
             String password = bean.get("password").toString();
             String uid = bean.get("ssn").toString();
             String email = bean.get("email").toString();
-            String amount = bean.get("amount").toString();
+            Double amount = Double.parseDouble(bean.get("amount").toString());
             String aid = Utils.generateRandomUUID();
             AccountEnum accountType= AccountEnum.StringtoType("SECURITY");
-            //todo have to deduct money from other account
-            //todo have to insert a new balance record
-            if(!(Integer.parseInt(amount)>1000)){
+            //deduct money from the account having most money
+            List<AccountBean> userAccounts = dbManager.getUsersAccounts(uid);
+            String finalAid = "";
+            String maxAid = "";
+            Double maxAmt = 0.0;
+            for(AccountBean abean: userAccounts){
+                finalAid = abean.getAid();
+                List<BalanceBean> balanceAccounts = dbManager.getBalanceBean(finalAid);
+                for (BalanceBean balbean: balanceAccounts){
+                    if(balbean.getAmount()>maxAmt){
+                        maxAmt = balbean.getAmount();
+                        maxAid = balbean.getAid();
+                    }
+                }
+            }
+            //insert a new balance record
+            dbManager.updateBalance(maxAid, -(amount+ Constants.OPEN_ACCOUNT_FEE));
+            BalanceBean bbean = new BalanceBean();
+            bbean.setAmount(amount);
+            bbean.setCurrencyEnum(CurrencyEnum.toType("USD"));
+            bbean.setAid(aid);
+            dbManager.insertBalanceBean(bbean);
+            if(!(amount<1000)){
                 JOptionPane.showMessageDialog(view, "The minimum amount of transfer must be over 1000 dollars");
             }
             if(!bankJudge.checkCorrectCombination(username, password, uid)){
@@ -86,7 +110,9 @@ public class SecurityApplicationController {
             dbManager.insertAccountBean(b);
             JOptionPane.showMessageDialog(view, "A new security account has been opened for user with ssn "+uid);
         }
-        JOptionPane.showMessageDialog(view, "You do not have sufficient balance to open a security account.\nMinimum required balance is 5000 dollars");;
+        else{
+            JOptionPane.showMessageDialog(view, "You do not have sufficient balance to open a security account.\nMinimum required balance is 5000 dollars");;
+        }
     }
 
     //handle primary validation for the second form in the Security Application
