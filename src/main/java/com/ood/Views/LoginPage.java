@@ -359,7 +359,7 @@ public class LoginPage extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         //System.out.println("7");
-        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
+        ViewContainer.getInstance().getPage("LoanInformation").setVisible(true);
         this.setVisible(false);
 
     }
