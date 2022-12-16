@@ -1,5 +1,9 @@
 package com.ood.Views;
 
+/**
+ * This class allows us to create a page for the customer's security account details.
+ * The customer can navigate to other bank pages.
+ */
 public class SecurityDetails extends javax.swing.JFrame{
     public SecurityDetails() {
         initComponents();
