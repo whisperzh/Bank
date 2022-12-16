@@ -43,9 +43,9 @@ public class CheckingsWithdraw extends javax.swing.JFrame {
         BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
         BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+        SidePanel.setBackground(new java.awt.Color(238, 86, 34));
 
-        jPanel2.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(238, 86, 34));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 17)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(223, 223, 246));
@@ -148,9 +148,9 @@ public class CheckingsWithdraw extends javax.swing.JFrame {
         TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel16.setForeground(new java.awt.Color(238, 86, 34));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("FANCY BANK");
+        jLabel16.setText("GOLDEN CAPITAL BANK");
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout TitlePanelLayout = new javax.swing.GroupLayout(TitlePanel);
@@ -173,7 +173,7 @@ public class CheckingsWithdraw extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(234, 227, 227));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel5.setForeground(new java.awt.Color(238, 86, 34));
         jLabel5.setText("Account Balance");
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -213,7 +213,7 @@ public class CheckingsWithdraw extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(234, 227, 227));
 
         jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel8.setForeground(new java.awt.Color(238, 86, 34));
         jLabel8.setText("Withdraw Cash");
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 17)); // NOI18N
