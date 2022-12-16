@@ -54,6 +54,8 @@ public class ViewContainer {
 
             }else if(name.contains("CustomerDashboard")) {
                 jFrame = new CustomerDashboard();
+            }else if(name.contains("LoanInformation")) {
+                jFrame = new LoanInformation();
             } else if (name.contains("CheckingsActivity")) {
                 jFrame = new CheckingsActivity();
             }else if (name.contains("CheckingsDetails")) {
