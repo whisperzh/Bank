@@ -36,6 +36,10 @@ public class LoanController {
 
     }
 
+    public java.util.List<LoanBean> get_user_loan(String uid){
+        return(dbManager.getLoanBean(uid));
+    }
+
     public boolean check_if_user(String socialSecurityNumber) {
         UserBean user = new UserBean();
         user.setSsn(socialSecurityNumber);

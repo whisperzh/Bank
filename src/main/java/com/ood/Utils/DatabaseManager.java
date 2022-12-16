@@ -315,6 +315,7 @@ public class DatabaseManager {
                 bean.setDate(rs.getString("date"));
                 bean.setIs_clear(rs.getBoolean("is_clear"));
                 bean.setClear_date(rs.getString("clear_date"));
+                bean.setType(rs.getString("loan_type"));
                 ans.add(bean);
             }
         }catch (SQLException ex) {

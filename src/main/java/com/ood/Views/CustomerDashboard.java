@@ -2,13 +2,18 @@
 package com.ood.Views;
 
 import com.ood.Controllers.AccountController;
+import com.ood.Controllers.LoanController;
 import com.ood.Controllers.UserControllerManager;
 import com.ood.Model.Accounts.AbsAccount;
 import com.ood.Model.Accounts.IAccount;
+import com.ood.Model.Loan.LoanBean;
+import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Model.Users.UserEntity;
+import com.ood.Utils.DatabaseManager;
 
 import javax.swing.*;
 import javax.swing.text.View;
+import java.util.List;
 
 /**
  * This class allows us to template a page for the Customer to see his dashboard.
@@ -24,12 +29,25 @@ public class CustomerDashboard extends javax.swing.JFrame {
      */
     private ViewContainer viewContainer;
     private UserControllerManager userControllerManager;
+    //public LoanController loan_controller;
+
 
     public CustomerDashboard() {
         userControllerManager=UserControllerManager.getInstance();
         viewContainer=ViewContainer.getInstance();
         initComponents();
+        updateTable();
 
+    }
+
+    public void updateTable(){
+        String uid = userControllerManager.getControlling_user().getbean().getSsn();
+
+        //List<LoanBean> loans = dbManager.getLoanBean(uid);
+        List<LoanBean> loans = userControllerManager.getLoanController().get_user_loan(uid);
+        if(loans!=null){
+            WriteToTable(loans);
+        }
     }
 
     private void initComponents() {
@@ -302,7 +320,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
         );
 
         pack();
-    }// </editor-fold>
+    }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -344,6 +362,10 @@ public class CustomerDashboard extends javax.swing.JFrame {
         //this.setVisible(false);
         //loan1
     }
+
+//    public void setController(LoanController loanController) {
+//        this.loan_controller = loanController;
+//    }
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         UserControllerManager.getInstance().getStockController().updateStockInfoView();
@@ -401,6 +423,33 @@ public class CustomerDashboard extends javax.swing.JFrame {
         controller.updateView();
         ViewContainer.getInstance().getPage("AccountActivity").setVisible(true);
         this.setVisible(false);
+    }
+
+    public void WriteToTable(List<LoanBean> loans){
+
+        String[][] data = new String[30][];
+
+        for(int i=0; i<loans.size(); i++){
+
+            LoanBean bean = loans.get(i);
+
+            String lid = bean.getLid();
+            String type = bean.getType();
+            String currency = String.valueOf(bean.getCurrencyEnum());
+            String amount = String.valueOf(bean.getAmount());
+            String date = bean.getDate();
+
+            data[i] = new String[]{lid, type, currency, amount, date};
+
+        }
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Loan ID", "Type", "Currency", "Amount", "Date"
+                }
+        );
+        jTable1.setModel(model);
     }
 
     /**
