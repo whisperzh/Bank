@@ -10,7 +10,6 @@ import com.ood.Utils.DatabaseManager;
 import com.ood.Utils.Utils;
 import com.ood.Validation.BankJudge;
 import com.ood.Views.SavingsApplication;
-import com.ood.Views.SecurityApplication;
 import com.ood.Views.ViewContainer;
 
 import javax.swing.*;
@@ -32,6 +31,7 @@ public class RegistryController {
         viewContainer = ViewContainer.getInstance();
         view= (SavingsApplication) viewContainer.getPage("SavingsApplication");
         view.setController(this);
+        view.getjPanel2().setVisible(false);
     }
     public void register(UserBean bean)
     {
@@ -46,15 +46,14 @@ public class RegistryController {
         }
     }
 
-    //handle validation of the first form passed from Views - Security Application
+    //handle validation of the first form passed from Views - Savings Application
     public void validateFirstForm(Dictionary userDetails){
 
         String email = userDetails.get("email").toString();
         String ssn = userDetails.get("ssn").toString();
         String birthdate = userDetails.get("birthdate").toString();
 
-        String firstname = userDetails.get("first").toString();
-        String lastname = userDetails.get("last").toString();
+
         int flag = 0;
         if(!BankJudge.getInstance().check_integer(ssn) || !BankJudge.getInstance().check_ssn(ssn)){
             JOptionPane.showMessageDialog(view, "Please enter a valid social security number of 9 digits");
@@ -79,6 +78,7 @@ public class RegistryController {
         String uid = bean.get("ssn").toString();
         String email = bean.get("email").toString();
         Double amount = Double.parseDouble(bean.get("amount").toString());
+        String amountStr = bean.get("amount").toString();
         String birthdate = bean.get("birthdate").toString();
         String first = bean.get("first").toString();
         String last = bean.get("last").toString();
@@ -86,12 +86,12 @@ public class RegistryController {
         Boolean checking = (Boolean)bean.get("checking");
         String aid = Utils.generateRandomUUID();
         int flag = 0;
-        if(!BankJudge.getInstance().checkPassword(password)){
+        if(!(BankJudge.getInstance().checkPassword(password))){
             JOptionPane.showMessageDialog(view, "Please enter a valid password. \nPassword must have:\n-at least 8 characters and at most 20 characters\n-at least one digit\n-at least one upper case alphabet.\n -at least one lower case alphabet.\n-at least one special character which includes !@#$%&*()-+=^.\n-should not contain any white space.");
             flag = 1;
         }
 
-        if(!BankJudge.getInstance().check_integer(amount.toString())){
+        if(!(BankJudge.getInstance().check_integer(amountStr))){
             JOptionPane.showMessageDialog(view, "Please enter a valid amount");
             flag = 1;
         }

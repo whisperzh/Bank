@@ -46,15 +46,17 @@ public class BankJudge {
         //a special character must occur at least once.
         //white spaces are not allowed
         //password must be between 8 and 20 characters long
-        String standard_regex = "^(?=.*[0-9])"
+        /***String standard_regex = "^(?=.*[0-9])"
                 + "(?=.*[a-z])(?=.*[A-Z])"
                 + "(?=.*[@#$%^&+=])"
-                + "(?=\\S+$).{8,20}$";
+                + "(?=\\S+$).{8,20}$";***/
+        String standard_regex = "^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$";
         Pattern pattern = Pattern.compile(standard_regex);
         if (password == null) {
             return false;
         }
         Matcher matcher = pattern.matcher(password);
+        System.out.println(matcher.matches());
         return matcher.matches();
     }
 

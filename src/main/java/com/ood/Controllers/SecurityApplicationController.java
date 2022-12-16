@@ -72,6 +72,7 @@ public class SecurityApplicationController {
             String uid = bean.get("ssn").toString();
             String email = bean.get("email").toString();
             Double amount = Double.parseDouble(bean.get("amount").toString());
+            String amountStr = bean.get("amount").toString();
             String aid = Utils.generateRandomUUID();
             AccountEnum accountType= AccountEnum.StringtoType("SECURITY");
             //deduct money from the account having most money
@@ -96,19 +97,28 @@ public class SecurityApplicationController {
             bbean.setCurrencyEnum(CurrencyEnum.toType("USD"));
             bbean.setAid(aid);
             dbManager.insertBalanceBean(bbean);
+            int flag = 0;
+            if(!(BankJudge.getInstance().check_integer(amountStr))){
+                JOptionPane.showMessageDialog(view, "Please enter a valid amount");
+                flag = 1;
+            }
             if(!(amount<1000)){
                 JOptionPane.showMessageDialog(view, "The minimum amount of transfer must be over 1000 dollars");
+                flag = 1;
             }
             if(!bankJudge.checkCorrectCombination(username, password, uid)){
                 JOptionPane.showMessageDialog(view, "Data mismatch occurred. Please verify ssn provided");
+                flag = 1;
             }
-            AccountBean b = new AccountBean();
-            b.setUid(uid);
-            b.setAccountEnum(accountType);
-            b.setEmail(email);
-            b.setAid(aid);
-            dbManager.insertAccountBean(b);
-            JOptionPane.showMessageDialog(view, "A new security account has been opened for user with ssn "+uid);
+            if(flag!=1){
+                AccountBean b = new AccountBean();
+                b.setUid(uid);
+                b.setAccountEnum(accountType);
+                b.setEmail(email);
+                b.setAid(aid);
+                dbManager.insertAccountBean(b);
+                JOptionPane.showMessageDialog(view, "A new security account has been opened for user with ssn "+uid);
+            }
         }
         else{
             JOptionPane.showMessageDialog(view, "You do not have sufficient balance to open a security account.\nMinimum required balance is 5000 dollars");;

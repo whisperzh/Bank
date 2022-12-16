@@ -1,12 +1,10 @@
 package com.ood.Views;
 
 
+import com.ood.Controllers.RegistryController;
 import com.ood.Controllers.UserControllerManager;
 
-import com.ood.Controllers.RegistryController;
-
 import javax.swing.*;
-import java.rmi.registry.Registry;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
@@ -29,8 +27,7 @@ public class SavingsApplication extends javax.swing.JFrame {
      */
     private ViewContainer viewContainer;
     public SavingsApplication() {
-        viewContainer=ViewContainer.getInstance();
-        jPanel2.setVisible(false);
+       // viewContainer=ViewContainer.getInstance();
         initComponents();
     }
 
