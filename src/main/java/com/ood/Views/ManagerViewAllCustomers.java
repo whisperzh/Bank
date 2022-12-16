@@ -1,5 +1,11 @@
 package com.ood.Views;
 
+import com.ood.Controllers.ManagerController;
+import com.ood.Model.Transactions.TransactionBean;
+import com.ood.Model.Users.UserBean;
+
+import java.util.List;
+
 /**
  * This class allows us to create template for create a bank page for the manager to see all the Bank customers.
  * This page displays all the bank customer details.
@@ -7,7 +13,11 @@ package com.ood.Views;
  */
 public class ManagerViewAllCustomers extends javax.swing.JFrame {
 
+    private ManagerController controller;
 
+    public void setController(ManagerController controller) {
+        this.controller = controller;
+    }
     public ManagerViewAllCustomers() {
         initComponents();
     }
@@ -20,8 +30,8 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
         SidePanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        viewCustomersButton = new javax.swing.JButton();
+        viewTransactionsButton = new javax.swing.JButton();
         TitlePanel = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -41,19 +51,19 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(223, 223, 246));
         jLabel2.setText("Would you like to track:");
 
-        jButton1.setBackground(new java.awt.Color(205, 164, 164));
-        jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton1.setText("View Customers");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        viewCustomersButton.setBackground(new java.awt.Color(205, 164, 164));
+        viewCustomersButton.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        viewCustomersButton.setText("View Customers");
+        viewCustomersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(233, 204, 204));
-        jButton2.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
-        jButton2.setText("View Transactions");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        viewTransactionsButton.setBackground(new java.awt.Color(233, 204, 204));
+        viewTransactionsButton.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
+        viewTransactionsButton.setText("View Transactions");
+        viewTransactionsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
@@ -66,8 +76,8 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                        .addComponent(viewCustomersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewTransactionsButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,9 +85,9 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(viewCustomersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(viewTransactionsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(108, Short.MAX_VALUE))
         );
 
@@ -194,6 +204,10 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+
+        ViewContainer.getInstance().getPage("ManagerViewTransactions").setVisible(true);
+        controller.updateView();
+        this.setVisible(false);
     }
 
     /**
@@ -238,14 +252,39 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
     private javax.swing.JPanel BackgroundPanel;
     private javax.swing.JPanel SidePanel;
     private javax.swing.JPanel TitlePanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton viewCustomersButton;
+    private javax.swing.JButton viewTransactionsButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+
+    public void WriteToTable(List<UserBean> userBeans) {
+        String[][] data = new String[30][];
+
+        for(int i=0; i<userBeans.size(); i++){
+
+            UserBean bean = userBeans.get(i);
+
+            String name=bean.getUserName();
+            String SSN= bean.getSsn();
+            String birthday=bean.getBirthday();
+            String required="true";
+
+            data[i] = new String[]{name, SSN, birthday,required,"Nothing"};
+
+        }
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Name", "SSN", "Birthday",  "Customer Enquiry Required","Customer Details"
+                }
+        );
+        jTable1.setModel(model);
+    }
     // End of variables declaration
 }
 

@@ -472,7 +472,17 @@ public class AccountTransfer extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        jLabel10.setVisible(false);
+        jButton1.setVisible(false);
+        jLabel11.setVisible(false);
+        jLabel12.setVisible(false);
+        textField1.setVisible(false);
+        textField2.setVisible(false);
+        jLabel9.setVisible(false);
+        jComboBox1.setVisible(false);
+
         pack();
+
     }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {

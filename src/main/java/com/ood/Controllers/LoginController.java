@@ -25,30 +25,32 @@ public class LoginController {
         view.setController(this);
     }
 
-    public boolean login(String userName, String password)
+    public int login(String userName, String password)
     {
           UserBean bean=dbManager.getUserbean(userName, password);
           if(bean!=null)
           {
               UserEntity user;
+              int ans=1;
               if(bean.isAdmin())
               {
                   user=new SuperUser(bean);
               }else
               {
                   user=new NormalUser(bean);
+                  ans=2;
               }
               UserControllerManager.getInstance().setControlling_user(user);
 
               //activate backend service.
               System.out.println("yes");
               UserControllerManager.getInstance().setLoggedin(true);
-              return true;
+              return ans;
           }
           else{
               //alert
               System.out.printf("no");
-              return false;
+              return 0;
           }
     }
 }

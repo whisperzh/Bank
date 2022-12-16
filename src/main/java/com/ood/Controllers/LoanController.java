@@ -13,6 +13,8 @@ import com.ood.Validation.BankJudge;
 import com.ood.Views.LoanInformation;
 import com.ood.Views.ViewContainer;
 
+import java.util.List;
+
 /**
  * Controller Class for handling connection between loans for user accounts in front end, validation using bankJudge and data in the backend
  */
@@ -36,6 +38,10 @@ public class LoanController {
 
     }
 
+    public List<LoanBean> get_user_loan(String uid){
+        return(dbManager.getLoanBean(uid));
+    }
+
     public boolean check_if_user(String socialSecurityNumber) {
         UserBean user = new UserBean();
         user.setSsn(socialSecurityNumber);
@@ -50,7 +56,7 @@ public class LoanController {
     }
 
 
-    public AbsLoan createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
+    public void createLoan(LoanEnum loanType, String uid, CurrencyEnum currencyEnum, double amount){
         LoanBean bean=new LoanBean();
         bean.setLid(Utils.generateRandomUUID());
         bean.setAmount(amount);
@@ -58,24 +64,25 @@ public class LoanController {
         bean.setDate(Utils.getTodaysDate());
         bean.setCurrencyEnum(currencyEnum);
         bean.setIs_clear(false);
-        DatabaseManager.getInstance().insertLoanBean(bean);
         AbsLoan loan=null;
         switch (loanType)
         {
             case EDUCATION:
                 loan=new EducationLoan(bean);
+                bean.setType("EDUCATION");
                 break;
             case HOME:
                 loan=new HomeLoan(bean);
+                bean.setType("HOME");
                 break;
         }
-        return loan;
+        dbManager.insertLoanBean(bean);
     }
 
-    public AbsLoan createLoan( String uid, double amount)
-    {
-        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
-    }
+//    public AbsLoan createLoan( String uid, double amount)
+//    {
+//        return createLoan(LoanEnum.HOME,uid,CurrencyEnum.USD,amount);
+//    }
     /*public void validateCredentials(Map<String,String> loanCredentials){
         Boolean message = bankJudge.canCreateLoan(loanCredentials);
         if(message){

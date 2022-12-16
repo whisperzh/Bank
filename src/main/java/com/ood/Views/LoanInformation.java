@@ -234,7 +234,7 @@ public class LoanInformation extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Real Estate", "Car" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Home Loan", "Education Loan", "Business Loan" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Home Loan", "Education Loan"}));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -514,7 +514,7 @@ public class LoanInformation extends javax.swing.JFrame {
         CurrencyEnum currencyEnum = CurrencyEnum.USD;
         loan_controller.createLoan(loan_type, ssn, currencyEnum, Double.parseDouble(amount));
 
-        JOptionPane.showMessageDialog(this, "Congratulations! Your loan application has been approved!");
+        JOptionPane.showMessageDialog(this, "Congratulations! Your loan application has been approved, please visit bank to start disbursement!");
     }
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:

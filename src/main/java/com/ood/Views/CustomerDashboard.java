@@ -2,13 +2,18 @@
 package com.ood.Views;
 
 import com.ood.Controllers.AccountController;
+import com.ood.Controllers.LoanController;
 import com.ood.Controllers.UserControllerManager;
 import com.ood.Model.Accounts.AbsAccount;
 import com.ood.Model.Accounts.IAccount;
+import com.ood.Model.Loan.LoanBean;
+import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Model.Users.UserEntity;
+import com.ood.Utils.DatabaseManager;
 
 import javax.swing.*;
 import javax.swing.text.View;
+import java.util.List;
 
 /**
  * This class allows us to template a page for the Customer to see his dashboard.
@@ -29,6 +34,18 @@ public class CustomerDashboard extends javax.swing.JFrame {
         userControllerManager=UserControllerManager.getInstance();
         viewContainer=ViewContainer.getInstance();
         initComponents();
+        updateTable();
+
+    }
+
+    public void updateTable(){
+        String uid = userControllerManager.getControlling_user().getbean().getSsn();
+
+        //List<LoanBean> loans = dbManager.getLoanBean(uid);
+        List<LoanBean> loans = userControllerManager.getLoanController().get_user_loan(uid);
+        if(loans!=null){
+            WriteToTable(loans);
+        }
     }
 
     /**
@@ -58,9 +75,8 @@ public class CustomerDashboard extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -251,35 +267,19 @@ public class CustomerDashboard extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(153, 51, 0));
         jLabel5.setText("Loans:");
 
-        jButton9.setBackground(new java.awt.Color(205, 164, 164));
-        jButton9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(51, 51, 51));
-        jButton9.setText("Loan2");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-
-        jButton10.setBackground(new java.awt.Color(205, 164, 164));
-        jButton10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton10.setForeground(new java.awt.Color(51, 51, 51));
-        jButton10.setText("Loan3");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-
-        jButton11.setBackground(new java.awt.Color(205, 164, 164));
-        jButton11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jButton11.setForeground(new java.awt.Color(51, 51, 51));
-        jButton11.setText("Loan1");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null}
+                },
+                new String [] {
+                        "Loan ID", "Type", "Currency", "Amount", "Date"
+                }
+        ));
+        jScrollPane1.setViewportView(jTable1);
         jButton13.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton13ActionPerformed(evt);
@@ -292,22 +292,16 @@ public class CustomerDashboard extends javax.swing.JFrame {
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 543, Short.MAX_VALUE))
-                        .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
                 jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 53, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 136, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout BackgroundPanelLayout = new javax.swing.GroupLayout(BackgroundPanel);
@@ -325,7 +319,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
                                                 .addGroup(BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                                .addGap(0, 667, Short.MAX_VALUE))))
         );
         BackgroundPanelLayout.setVerticalGroup(
                 BackgroundPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -333,9 +327,9 @@ public class CustomerDashboard extends javax.swing.JFrame {
                                 .addComponent(TitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(51, 51, 51)
                                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(202, Short.MAX_VALUE))
+                                .addContainerGap(131, Short.MAX_VALUE))
                         .addComponent(SidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -383,12 +377,11 @@ public class CustomerDashboard extends javax.swing.JFrame {
         //loan2
     }
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    //private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
         //ViewContainer.getInstance().getPage("").setVisible();
         //loan3
 
-    }
+    //}
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
@@ -455,26 +448,39 @@ public class CustomerDashboard extends javax.swing.JFrame {
         this.setVisible(false);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new CustomerDashboard().setVisible(true);
-//            }
-//        });
-//    }
+    public void WriteToTable(List<LoanBean> loans){
 
+        String[][] data = new String[30][];
+
+        for(int i=0; i<loans.size(); i++){
+
+            LoanBean bean = loans.get(i);
+
+            String lid = bean.getLid();
+            String type = bean.getType();
+            String currency = String.valueOf(bean.getCurrencyEnum());
+            String amount = String.valueOf(bean.getAmount());
+            String date = bean.getDate();
+
+            data[i] = new String[]{lid, type, currency, amount, date};
+
+        }
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
+                data,
+                new String [] {
+                        "Loan ID", "Type", "Currency", "Amount", "Date"
+                }
+        );
+        jTable1.setModel(model);
+    }
     // Variables declaration - do not modify
     private javax.swing.JPanel BackgroundPanel;
     private javax.swing.JPanel SidePanel;
     private javax.swing.JPanel TitlePanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
+
+    //private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -493,5 +499,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration
 }
