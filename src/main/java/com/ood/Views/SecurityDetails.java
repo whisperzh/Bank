@@ -42,9 +42,9 @@ public class SecurityDetails extends javax.swing.JFrame{
             BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
             BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-            SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+            SidePanel.setBackground(new java.awt.Color(236, 167, 44));
 
-            jPanel2.setBackground(new java.awt.Color(102, 0, 0));
+            jPanel2.setBackground(new java.awt.Color(236, 167, 44));
 
             jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 17)); // NOI18N
             jLabel3.setForeground(new java.awt.Color(223, 223, 246));
@@ -147,7 +147,7 @@ public class SecurityDetails extends javax.swing.JFrame{
             TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
             jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-            jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+            jLabel16.setForeground(new java.awt.Color(236, 167, 44));
             jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             jLabel16.setText("FANCY BANK");
             jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -170,7 +170,7 @@ public class SecurityDetails extends javax.swing.JFrame{
             );
 
             jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel1.setForeground(new java.awt.Color(236, 167, 44));
             jLabel1.setText("Account Balance:");
 
             jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -203,7 +203,7 @@ public class SecurityDetails extends javax.swing.JFrame{
             );
 
             jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-            jLabel5.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel5.setForeground(new java.awt.Color(236, 167, 44));
             jLabel5.setText("Account Number:");
 
             jLabel6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -230,7 +230,7 @@ public class SecurityDetails extends javax.swing.JFrame{
             );
 
             jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-            jLabel7.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel7.setForeground(new java.awt.Color(236, 167, 44));
             jLabel7.setText("Account Type:");
 
             jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -257,7 +257,7 @@ public class SecurityDetails extends javax.swing.JFrame{
             );
 
             jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-            jLabel9.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel9.setForeground(new java.awt.Color(236, 167, 44));
             jLabel9.setText("Routing Number:");
 
             jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -364,37 +364,37 @@ public class SecurityDetails extends javax.swing.JFrame{
         /**
          * @param args the command line arguments
          */
-//        public static void main(String args[]) {
-//            /* Set the Nimbus look and feel */
-//            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//             */
-//            try {
-//                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                    if ("Nimbus".equals(info.getName())) {
-//                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                        break;
-//                    }
-//                }
-//            } catch (ClassNotFoundException ex) {
-//                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//            } catch (InstantiationException ex) {
-//                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//            } catch (IllegalAccessException ex) {
-//                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//            }
-//            //</editor-fold>
-//
-//            /* Create and display the form */
-//            java.awt.EventQueue.invokeLater(new Runnable() {
-//                public void run() {
-//                    new SecurityDetails().setVisible(true);
-//                }
-//            });
-//        }
+        public static void main(String args[]) {
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+             */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(com.ood.Views.AccountDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
+
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                public void run() {
+                    new SecurityDetails().setVisible(true);
+                }
+            });
+        }
 
         // Variables declaration - do not modify
         private javax.swing.JPanel BackgroundPanel;
