@@ -81,15 +81,15 @@ public class SavingsApplication extends javax.swing.JFrame {
         BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
         BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+        SidePanel.setBackground(new java.awt.Color(49, 38, 62));
 
-        jPanel7.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel7.setBackground(new java.awt.Color(49, 38, 62));
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 2, 17)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(223, 223, 246));
         jLabel17.setText("Would you like to:");
 
-        jButton4.setBackground(new java.awt.Color(233, 204, 204));
+        jButton4.setBackground(new java.awt.Color(130, 108, 127));
         jButton4.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton4.setText("Open Savings & Checkings Account");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +98,7 @@ public class SavingsApplication extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(205, 164, 164));
+        jButton7.setBackground(new java.awt.Color(130, 108, 127));
         jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton7.setText("Apply for Loan");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +107,7 @@ public class SavingsApplication extends javax.swing.JFrame {
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(233, 204, 204));
+        jButton8.setBackground(new java.awt.Color(130, 108, 127));
         jButton8.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
         jButton8.setText("Open Security Account");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class SavingsApplication extends javax.swing.JFrame {
             }
         });
 
-        backButton.setBackground(new java.awt.Color(233, 204, 204));
+        backButton.setBackground(new java.awt.Color(130, 108, 127));
         backButton.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
 //        jButton5.setText("Back to HomePage");
         backButton.setText("Back");
@@ -172,13 +172,13 @@ public class SavingsApplication extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        TitlePanel.setBackground(new java.awt.Color(252, 250, 250));
+        TitlePanel.setBackground(new java.awt.Color(130, 108, 127));
         TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel16.setForeground(new java.awt.Color(49, 38, 62));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("FANCY BANK");
+        jLabel16.setText("GOLDEN CAPITAL BANK");
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout TitlePanelLayout = new javax.swing.GroupLayout(TitlePanel);
@@ -228,7 +228,7 @@ public class SavingsApplication extends javax.swing.JFrame {
                 jTextField3ActionPerformed(evt);
             }
         });
-
+        jButton1.setBackground(new java.awt.Color(130, 108, 127));
         jButton1.setText("Verify Details");
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -320,7 +320,7 @@ public class SavingsApplication extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel13.setText("Password:");
-
+        jButton2.setBackground(new java.awt.Color(130, 108, 127));
         jButton2.setText("Apply");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -573,37 +573,37 @@ public class SavingsApplication extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new SavingsApplication().setVisible(true);
-//            }
-//        });
-//    }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SavingsApplication.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new SavingsApplication().setVisible(true);
+            }
+        });
+    }
     // Variables declaration - do not modify
     private javax.swing.JPanel BackgroundPanel;
     private javax.swing.JPanel SidePanel;

@@ -62,9 +62,9 @@ public class LoanInformation extends javax.swing.JFrame {
         BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
         BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+        SidePanel.setBackground(new java.awt.Color(130, 108, 127));
 
-        jPanel7.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel7.setBackground(new java.awt.Color(130, 108, 127));
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 2, 17)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(223, 223, 246));
@@ -167,9 +167,9 @@ public class LoanInformation extends javax.swing.JFrame {
         TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel16.setForeground(new java.awt.Color(49, 38, 62));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("FANCY BANK");
+        jLabel16.setText("GOLDEN CAPITAL BANK");
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout TitlePanelLayout = new javax.swing.GroupLayout(TitlePanel);

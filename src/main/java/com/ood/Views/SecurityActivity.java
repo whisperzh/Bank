@@ -33,18 +33,18 @@ public class SecurityActivity extends javax.swing.JFrame {
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-            BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
+            BackgroundPanel.setBackground(new java.awt.Color(153, 153, 153));
             BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-            SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+            SidePanel.setBackground(new java.awt.Color(236, 167, 44));
 
-            jPanel2.setBackground(new java.awt.Color(102, 0, 0));
+            jPanel2.setBackground(new java.awt.Color(236, 167, 44));
 
             jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 17)); // NOI18N
-            jLabel3.setForeground(new java.awt.Color(223, 223, 246));
+            jLabel3.setForeground(new java.awt.Color(245, 246, 207));
             jLabel3.setText("Would you like to:");
 
-            jButton3.setBackground(new java.awt.Color(205, 164, 164));
+            jButton3.setBackground(new java.awt.Color(215, 213, 213));
             jButton3.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
             jButton3.setText("Activity");
             jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -53,7 +53,7 @@ public class SecurityActivity extends javax.swing.JFrame {
                 }
             });
 
-            jButton4.setBackground(new java.awt.Color(233, 204, 204));
+            jButton4.setBackground(new java.awt.Color(215, 213, 213));
             jButton4.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
             jButton4.setText("Transfer");
             jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -62,7 +62,7 @@ public class SecurityActivity extends javax.swing.JFrame {
                 }
             });
 
-            jButton5.setBackground(new java.awt.Color(233, 204, 204));
+            jButton5.setBackground(new java.awt.Color(215, 213, 213));
             jButton5.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
             jButton5.setText("Withdraw");
             jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class SecurityActivity extends javax.swing.JFrame {
                 }
             });
 
-            jButton6.setBackground(new java.awt.Color(233, 204, 204));
+            jButton6.setBackground(new java.awt.Color(215, 213, 213));
             jButton6.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
             jButton6.setText("Back to Dashboard");
             jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -80,7 +80,7 @@ public class SecurityActivity extends javax.swing.JFrame {
                 }
             });
 
-            jButton7.setBackground(new java.awt.Color(233, 204, 204));
+            jButton7.setBackground(new java.awt.Color(215, 213, 213));
             jButton7.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
             jButton7.setText("Account Details");
             jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -137,13 +137,13 @@ public class SecurityActivity extends javax.swing.JFrame {
                                     .addContainerGap(625, Short.MAX_VALUE))
             );
 
-            TitlePanel.setBackground(new java.awt.Color(252, 250, 250));
+            TitlePanel.setBackground(new java.awt.Color(215, 213, 213));
             TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
             jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-            jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+            jLabel16.setForeground(new java.awt.Color(236, 167, 44));
             jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-            jLabel16.setText("FANCY BANK");
+            jLabel16.setText("GOLDEN CAPITAL BANK");
             jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
             javax.swing.GroupLayout TitlePanelLayout = new javax.swing.GroupLayout(TitlePanel);
@@ -163,10 +163,10 @@ public class SecurityActivity extends javax.swing.JFrame {
                                     .addContainerGap())
             );
 
-            jPanel1.setBackground(new java.awt.Color(234, 227, 227));
+            jPanel1.setBackground(new java.awt.Color(215, 213, 213));
 
             jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel1.setForeground(new java.awt.Color(236, 167, 44));
             jLabel1.setText("Account Balance");
 
             jLabel2.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -204,13 +204,13 @@ public class SecurityActivity extends javax.swing.JFrame {
                                     .addContainerGap(14, Short.MAX_VALUE))
             );
 
-            jPanel3.setBackground(new java.awt.Color(234, 227, 227));
+            jPanel3.setBackground(new java.awt.Color(215, 213, 213));
 
             jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-            jLabel5.setForeground(new java.awt.Color(102, 51, 0));
+            jLabel5.setForeground(new java.awt.Color(236, 167, 44));
             jLabel5.setText("Transaction History");
 
-            jTable1.setBackground(new java.awt.Color(234, 234, 234));
+            jTable1.setBackground(new java.awt.Color(215, 213, 213));
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object [][] {
                             {null, null, null, null, null, null},
