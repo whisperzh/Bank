@@ -510,24 +510,24 @@ public class SavingsApplication extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        viewContainer.getPage("SecurityApplication").setVisible(true);
+        ViewContainer.getInstance().getPage("SecurityApplication").setVisible(true);
         this.setVisible(false);
     }
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
         if(!UserControllerManager.getInstance().isLoggedin()) {
-            viewContainer.getPage("HomePage").setVisible(true);
+            ViewContainer.getInstance().getPage("HomePage").setVisible(true);
             this.setVisible(false);
         }else {
-            viewContainer.getPage("CustomerDashboard").setVisible(true);
+            ViewContainer.getInstance().getPage("CustomerDashboard").setVisible(true);
             this.setVisible(false);
         }
     }
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        viewContainer.getPage("LoanApplication").setVisible(true);
+        ViewContainer.getInstance().getPage("LoanApplication").setVisible(true);
         this.setVisible(false);
     }
 
