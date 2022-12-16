@@ -4,7 +4,6 @@ import com.ood.Model.Transactions.TransactionBean;
 import com.ood.Model.Users.UserBean;
 import com.ood.Utils.DatabaseManager;
 import com.ood.Views.ManagerViewAllCustomers;
-import com.ood.Views.ManagerViewCustomers;
 import com.ood.Views.ManagerViewTransactions;
 import com.ood.Views.ViewContainer;
 
