@@ -5,7 +5,9 @@ import com.ood.Model.Transactions.TransactionBean;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is a class to create a savings activity page for the logged in customer.
@@ -230,16 +232,15 @@ public class AccountActivity extends javax.swing.JFrame {
         jLabel5.setText("Transaction History");
 
         jTable1.setBackground(new java.awt.Color(234, 234, 234));
-
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null}
+                        {null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null}
                 },
                 new String [] {
-                        "Time Stamp", "Currency", "Amount", "From Account", "To Account"
+                        "Time Stamp", "Currency", "Amount", "From Account", "To Account", "From Name", "To Name"
                 }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -306,33 +307,32 @@ public class AccountActivity extends javax.swing.JFrame {
         );
 
         pack();
-    }
+    }// </editor-fold>
 
-    private void WriteToTable(ArrayList<TransactionBean> transactions){
+    public void WriteToTable(List<TransactionBean> transactions){
 
-        Object[][] data = new Object[4][];
+        String[][] data = new String[30][];
 
         for(int i=0; i<transactions.size(); i++){
 
             TransactionBean bean = transactions.get(i);
-            String timestamp = bean.getTimeStamp().toString();
+
+            String timestamp = bean.getTimeStamp();
             String currency = bean.getCurrencyEnum().toString();
             String amount = String.valueOf(bean.getAmount());
-            String from = String.valueOf(bean.getFrom_aid());
-            String to = String.valueOf(bean.getTo_aid());
+            String from_account = String.valueOf(bean.getFrom_aid());
+            String to_account = String.valueOf(bean.getTo_aid());
+            String from_name = bean.getFromName();
+            String to_name = bean.getToName();
 
-            data[i][0] = timestamp;
-            data[i][1] = currency;
-            data[i][2] = amount;
-            data[i][3] = from;
-            data[i][4] = to;
+            data[i] = new String[]{timestamp, currency, amount, from_account, to_account, from_name, to_name};
 
         }
 
         javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel(
                 data,
                 new String [] {
-                        "Time Stamp", "Currency", "Amount", "From Account", "To Account"
+                        "Time Stamp", "Currency", "Amount", "From Account", "To Account", "From Name", "To Name"
                 }
         );
         jTable1.setModel(model);

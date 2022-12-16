@@ -398,6 +398,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
     }
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        UserControllerManager.getInstance().getStockController().updateStockInfoView();
         viewContainer.getPage("StockInfo").setVisible(true);
         this.setVisible(false);
     }
@@ -411,7 +412,7 @@ public class CustomerDashboard extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        viewContainer.getPage("LoanApplication").setVisible(true);
+        viewContainer.getPage("LoanInformation").setVisible(true);
         this.setVisible(false);
     }
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {

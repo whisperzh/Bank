@@ -1,5 +1,12 @@
 package com.ood.Views;
 
+import com.ood.Controllers.StockController;
+import com.ood.Controllers.UserControllerManager;
+import com.ood.Model.Stocks.StockBean;
+import com.ood.Model.Transactions.TransactionBean;
+
+import java.util.List;
+
 /**
  * This class allows us to create a template for displaying the stock information that bank allows the user to invest in.
  * This page contains read only information.

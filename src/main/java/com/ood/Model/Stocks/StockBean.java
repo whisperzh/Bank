@@ -7,7 +7,6 @@ public class StockBean {
     private String sid;
     private String company;
     private double price;
-
     private String last_update_time;
 
     public StockBean() {

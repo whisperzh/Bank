@@ -120,6 +120,8 @@ public class AccountController {
         String accountType=bean.getAccountEnum().toString();
         List<TransactionBean> transactions=dbManager.getTransactionBeanByAid(aid);
 
+        activityTab.WriteToTable(transactions);
+
         activityTab.setBalance(controlledAccount.getBalance());
         detailTab.setBalance(controlledAccount.getBalance());
         transferTab.setBalance(controlledAccount.getBalance());
