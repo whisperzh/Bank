@@ -80,8 +80,12 @@ public class SecurityApplicationController {
             String finalAid = "";
             String maxAid = "";
             Double maxAmt = 0.0;
+            int securityAccountFlag = 0;
             for(AccountBean abean: userAccounts){
                 finalAid = abean.getAid();
+                if(abean.getAccountEnum().toString() == "SECURITY"){
+                    securityAccountFlag = 1;
+                }
                 List<BalanceBean> balanceAccounts = dbManager.getBalanceBean(finalAid);
                 for (BalanceBean balbean: balanceAccounts){
                     if(balbean.getAmount()>maxAmt){
@@ -90,13 +94,13 @@ public class SecurityApplicationController {
                     }
                 }
             }
-            //insert a new balance record
-            dbManager.updateBalance(maxAid, -(amount+ Constants.OPEN_ACCOUNT_FEE));
             BalanceBean bbean = new BalanceBean();
             bbean.setAmount(amount);
             bbean.setCurrencyEnum(CurrencyEnum.toType("USD"));
             bbean.setAid(aid);
-            dbManager.insertBalanceBean(bbean);
+            //insert a new balance record
+
+
             int flag = 0;
             if(!(BankJudge.getInstance().check_integer(amountStr))){
                 JOptionPane.showMessageDialog(view, "Please enter a valid amount");
@@ -110,7 +114,9 @@ public class SecurityApplicationController {
                 JOptionPane.showMessageDialog(view, "Data mismatch occurred. Please verify ssn provided");
                 flag = 1;
             }
-            if(flag!=1){
+            if(securityAccountFlag == 0 && flag != 1){
+                dbManager.updateBalance(maxAid, -(amount+ Constants.OPEN_ACCOUNT_FEE));
+                dbManager.insertBalanceBean(bbean);
                 AccountBean b = new AccountBean();
                 b.setUid(uid);
                 b.setAccountEnum(accountType);
@@ -118,6 +124,9 @@ public class SecurityApplicationController {
                 b.setAid(aid);
                 dbManager.insertAccountBean(b);
                 JOptionPane.showMessageDialog(view, "A new security account has been opened for user with ssn "+uid);
+            }
+            else{
+                JOptionPane.showMessageDialog(view, "Security account already exists for user with ssn "+uid);
             }
         }
         else{
