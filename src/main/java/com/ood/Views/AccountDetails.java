@@ -56,9 +56,9 @@ public class AccountDetails extends javax.swing.JFrame {
         BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
         BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        SidePanel.setBackground(new java.awt.Color(102, 0, 0));
+        SidePanel.setBackground(new java.awt.Color(49, 38, 62));
 
-        jPanel2.setBackground(new java.awt.Color(102, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(49, 38, 62));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 2, 17)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(223, 223, 246));
@@ -161,9 +161,9 @@ public class AccountDetails extends javax.swing.JFrame {
         TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel16.setForeground(new java.awt.Color(49, 38, 62));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("FANCY BANK");
+        jLabel16.setText("GOLDEN CAPITAL BANK");
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout TitlePanelLayout = new javax.swing.GroupLayout(TitlePanel);
@@ -184,7 +184,7 @@ public class AccountDetails extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel1.setForeground(new java.awt.Color(49, 38, 62));
         jLabel1.setText("Account Balance:");
 
         balanceText.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -217,7 +217,7 @@ public class AccountDetails extends javax.swing.JFrame {
         );
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel5.setForeground(new java.awt.Color(49, 38, 62));
         jLabel5.setText("Account Number:");
 
         accountNumbertext.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -244,7 +244,7 @@ public class AccountDetails extends javax.swing.JFrame {
         );
 
         jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel7.setForeground(new java.awt.Color(49, 38, 62));
         jLabel7.setText("Account Type:");
 
         accountTypeText.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
@@ -271,7 +271,7 @@ public class AccountDetails extends javax.swing.JFrame {
         );
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 17)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 51, 0));
+        jLabel9.setForeground(new java.awt.Color(49, 38, 62));
         jLabel9.setText("Routing Number:");
 
         routingNumberText.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
