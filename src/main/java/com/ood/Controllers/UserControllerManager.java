@@ -22,6 +22,8 @@ public class UserControllerManager {
     private LoginController loginController;
     private RegistryController registryController;
     private SecurityApplicationController securityApplicationController;
+
+    private ManagerController managerController;
     private StockController stockController;
     private static UserControllerManager userControllerManager;
     public static UserControllerManager getInstance(){
@@ -44,6 +46,7 @@ public class UserControllerManager {
         registryController=new RegistryController();
         securityApplicationController=new SecurityApplicationController();
         stockController=new StockController();
+        managerController=new ManagerController();
     }
 
     public void closeAccount(String aid){
@@ -69,6 +72,10 @@ public class UserControllerManager {
 
     public AccountController getAccountController() {
         return accountController;
+    }
+
+    public ManagerController getManagerController() {
+        return managerController;
     }
 
     public LoanController getLoanController() {
