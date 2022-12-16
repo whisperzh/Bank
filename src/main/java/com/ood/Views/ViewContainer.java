@@ -77,9 +77,9 @@ public class ViewContainer {
             }else if(name.contains("LoanInformation")){
              jFrame=new LoanInformation();
             }
-            else if(name.contains("ManagerViewCustomers"))
+            else if(name.contains("ManagerViewAllCustomers"))
             {
-                jFrame=new ManagerViewCustomers();
+                jFrame=new ManagerViewAllCustomers();
             }else if(name.contains("ManagerViewTransactions"))
             {
                 jFrame=new ManagerViewTransactions();

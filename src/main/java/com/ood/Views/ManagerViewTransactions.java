@@ -205,7 +205,7 @@ public class ManagerViewTransactions extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        ViewContainer.getInstance().getPage("ManagerViewAllCustomers");
+        ViewContainer.getInstance().getPage("ManagerViewAllCustomers").setVisible(true);
         this.setVisible(false);
 
         // TODO add your handling code here:

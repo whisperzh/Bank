@@ -31,19 +31,21 @@ public class LoginController {
           if(bean!=null)
           {
               UserEntity user;
+              int ans=1;
               if(bean.isAdmin())
               {
                   user=new SuperUser(bean);
               }else
               {
                   user=new NormalUser(bean);
+                  ans=2;
               }
               UserControllerManager.getInstance().setControlling_user(user);
 
               //activate backend service.
               System.out.println("yes");
               UserControllerManager.getInstance().setLoggedin(true);
-              return 1;
+              return ans;
           }
           else{
               //alert

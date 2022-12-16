@@ -200,7 +200,7 @@ public class ManagerViewAllCustomers extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-        ViewContainer.getInstance().getPage("ManagerViewTransactions");
+        ViewContainer.getInstance().getPage("ManagerViewTransactions").setVisible(true);
         this.setVisible(false);
     }
 
