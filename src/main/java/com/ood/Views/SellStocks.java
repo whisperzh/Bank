@@ -46,14 +46,14 @@ public class SellStocks extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
+        BackgroundPanel.setBackground(new java.awt.Color(218, 215, 205));
         BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-        TitlePanel.setBackground(new java.awt.Color(252, 250, 250));
+        TitlePanel.setBackground(new java.awt.Color(218, 215, 205));
         TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
         jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+        jLabel16.setForeground(new java.awt.Color(52, 78,65));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("STOCK INFORMATION");
         jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -76,14 +76,14 @@ public class SellStocks extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setForeground(new java.awt.Color(52, 78,65));
         jLabel1.setText("Latest Stock Prices");
 
-        jButton6.setBackground(new java.awt.Color(238, 86, 34));
+        jButton6.setBackground(new java.awt.Color(52, 78,65));
         jButton6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(0,0,0));
+        jButton6.setForeground(new java.awt.Color(218, 215, 205));
         jButton6.setText("Sell");
-        jButton6.setBorderPainted(false);
+        jButton6.setBorderPainted(true);
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton6ActionPerformed(evt);
@@ -102,14 +102,15 @@ public class SellStocks extends javax.swing.JFrame {
                 }
         ));
         jScrollPane1.setViewportView(jTable1);
+        jLabel2.setForeground(new java.awt.Color(52, 78, 65));
 
         jLabel2.setText("Enter the number of Stocks you want to sell -");
 
-        jButton7.setBackground(new java.awt.Color(238, 86, 34));
+        jButton7.setBackground(new java.awt.Color(52, 78,65));
         jButton7.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(0,0,0));
-        jButton7.setText("Dashboard");
-        jButton7.setBorderPainted(false);
+        jButton7.setForeground(new java.awt.Color(218, 215, 205));
+        jButton7.setText("Back to Dashboard");
+        jButton7.setBorderPainted(true);
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);

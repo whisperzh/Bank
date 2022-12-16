@@ -37,14 +37,14 @@ public class StocksOwned extends javax.swing.JFrame {
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-            BackgroundPanel.setBackground(new java.awt.Color(234, 227, 227));
+            BackgroundPanel.setBackground(new java.awt.Color(218, 215, 205));
             BackgroundPanel.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
-            TitlePanel.setBackground(new java.awt.Color(252, 250, 250));
+            TitlePanel.setBackground(new java.awt.Color(218, 215, 205));
             TitlePanel.setPreferredSize(new java.awt.Dimension(900, 52));
 
             jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-            jLabel16.setForeground(new java.awt.Color(102, 0, 51));
+            jLabel16.setForeground(new java.awt.Color(52, 78,65));
             jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
             jLabel16.setText("STOCK INFORMATION");
             jLabel16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -67,10 +67,10 @@ public class StocksOwned extends javax.swing.JFrame {
             );
 
             jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 20)); // NOI18N
-            jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+            jLabel1.setForeground(new java.awt.Color(52, 78,65));
             jLabel1.setText("Latest Stock Prices");
 
-            jTable1.setBackground(new java.awt.Color(234, 234, 234));
+            jTable1.setBackground(new java.awt.Color(218, 215, 205));
             jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 15)); // NOI18N
             jTable1.setModel(new javax.swing.table.DefaultTableModel(
                     new Object [][] {
@@ -85,9 +85,9 @@ public class StocksOwned extends javax.swing.JFrame {
             ));
             jScrollPane1.setViewportView(jTable1);
 
-            jButton5.setBackground(new java.awt.Color(238, 86, 34));
+            jButton5.setBackground(new java.awt.Color(52, 78,65));
             jButton5.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-            jButton5.setForeground(new java.awt.Color(0,0,0));
+            jButton5.setForeground(new java.awt.Color(218, 215, 205));
             jButton5.setText("Sell");
             jButton5.setBorderPainted(false);
             jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -96,9 +96,9 @@ public class StocksOwned extends javax.swing.JFrame {
                 }
             });
 
-            jButton6.setBackground(new java.awt.Color(238, 86, 34));
+            jButton6.setBackground(new java.awt.Color(52, 78,65));
             jButton6.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
-            jButton6.setForeground(new java.awt.Color(0,0,0));
+            jButton6.setForeground(new java.awt.Color(218, 215, 205));
             jButton6.setText("DashBoard");
             jButton6.setBorderPainted(false);
             jButton6.addActionListener(new java.awt.event.ActionListener() {
